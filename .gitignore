@@ -1,0 +1,7 @@
+.env
+app/.env
+api/.env
+
+# Local editor and OS clutter
+.DS_Store
+.idea/

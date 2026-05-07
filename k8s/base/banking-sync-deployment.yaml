@@ -16,7 +16,7 @@ spec:
       serviceAccountName: ledgora-runtime
       containers:
         - name: banking-sync
-          image: ledgora/backend:latest
+          image: ledgora/banking-sync:latest
           imagePullPolicy: IfNotPresent
           command:
             - /bin/sh

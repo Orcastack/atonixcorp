@@ -15,7 +15,7 @@ The stack is deployed as Kubernetes-native workloads:
 - `ConfigMap` and `Secret` objects for runtime configuration
 - `Role` and `RoleBinding` for namespace-scoped deploy access
 
-The background workers intentionally reuse the backend image so all Python services stay on the same dependency set and release version.
+The background workers can either reuse the backend image or run as separately tagged images when you want local image parity.
 
 ## Namespaces
 
@@ -57,6 +57,61 @@ docker push registry/project/app:version
 ```
 
 ## Deploy
+
+### Local Images
+
+If you want Kubernetes to use the images you already built locally, use `k8s/overlays/local`.
+
+Expected images:
+
+- `atonixdev/legdora-api:latest`
+- `atonixdev/legdora-app:latest`
+- `atonixdev/legdora-banking-sync:latest`
+- `atonixdev/legdora-approval-digest:latest`
+
+Create the namespace:
+
+```sh
+kubectl create namespace ledgora-local
+```
+
+If your cluster does not share the host Docker daemon, load the images first.
+
+For `kind`:
+
+```sh
+kind load docker-image atonixdev/legdora-api:latest
+kind load docker-image atonixdev/legdora-app:latest
+kind load docker-image atonixdev/legdora-banking-sync:latest
+kind load docker-image atonixdev/legdora-approval-digest:latest
+```
+
+For `minikube`:
+
+```sh
+minikube image load atonixdev/legdora-api:latest
+minikube image load atonixdev/legdora-app:latest
+minikube image load atonixdev/legdora-banking-sync:latest
+minikube image load atonixdev/legdora-approval-digest:latest
+```
+
+Deploy locally:
+
+```sh
+kubectl apply -k k8s/overlays/local
+kubectl rollout status statefulset/postgres -n ledgora-local
+kubectl rollout status deployment/backend -n ledgora-local
+kubectl rollout status deployment/banking-sync -n ledgora-local
+kubectl rollout status deployment/approval-digest -n ledgora-local
+kubectl rollout status deployment/app -n ledgora-local
+```
+
+If you do not have an ingress controller locally, use port-forwarding:
+
+```sh
+kubectl port-forward service/app 3000:80 -n ledgora-local
+kubectl port-forward service/backend 8000:8000 -n ledgora-local
+```
 
 Preview the rendered manifests:
 

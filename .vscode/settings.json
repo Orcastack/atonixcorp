@@ -1,3 +1,5 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "python.envFile": "${workspaceFolder}/api/.env",
+    "python.terminal.useEnvFile": true
 }

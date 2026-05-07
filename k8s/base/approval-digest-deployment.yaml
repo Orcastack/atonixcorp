@@ -16,7 +16,7 @@ spec:
       serviceAccountName: ledgora-runtime
       containers:
         - name: approval-digest
-          image: ledgora/backend:latest
+          image: ledgora/approval-digest:latest
           imagePullPolicy: IfNotPresent
           command:
             - /bin/sh
