@@ -23,7 +23,7 @@ org, created = Organization.objects.get_or_create(
     id=1,
     defaults={
         'owner': user,
-        'name': 'Ledgora',
+        'name': 'AtonixCorp',
         'slug': 'atonix-capital',
         'description': 'Test organization',
         'industry': 'Financial Services',

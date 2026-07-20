@@ -1,6 +1,6 @@
-# Ledgora Kubernetes Operations
+# AtonixCorp Kubernetes Operations
 
-This directory is the canonical kubectl-managed deployment surface for Ledgora. Apply every environment from the repo root with `kubectl apply -k k8s/overlays/<environment>`.
+This directory is the canonical kubectl-managed deployment surface for AtonixCorp. Apply every environment from the repo root with `kubectl apply -k k8s/overlays/<environment>`.
 
 ## Architecture
 
@@ -72,7 +72,7 @@ Expected images:
 Create the namespace:
 
 ```sh
-kubectl create namespace ledgora-local
+kubectl create namespace atonixcorp-local
 ```
 
 If your cluster does not share the host Docker daemon, load the images first.
@@ -99,18 +99,18 @@ Deploy locally:
 
 ```sh
 kubectl apply -k k8s/overlays/local
-kubectl rollout status statefulset/postgres -n ledgora-local
-kubectl rollout status deployment/backend -n ledgora-local
-kubectl rollout status deployment/banking-sync -n ledgora-local
-kubectl rollout status deployment/approval-digest -n ledgora-local
-kubectl rollout status deployment/app -n ledgora-local
+kubectl rollout status statefulset/postgres -n atonixcorp-local
+kubectl rollout status deployment/backend -n atonixcorp-local
+kubectl rollout status deployment/banking-sync -n atonixcorp-local
+kubectl rollout status deployment/approval-digest -n atonixcorp-local
+kubectl rollout status deployment/app -n atonixcorp-local
 ```
 
 If you do not have an ingress controller locally, use port-forwarding:
 
 ```sh
-kubectl port-forward service/app 3000:80 -n ledgora-local
-kubectl port-forward service/backend 8000:8000 -n ledgora-local
+kubectl port-forward service/app 3000:80 -n atonixcorp-local
+kubectl port-forward service/backend 8000:8000 -n atonixcorp-local
 ```
 
 Preview the rendered manifests:
@@ -163,7 +163,7 @@ Check workload health:
 ```sh
 kubectl get pods -n staging
 kubectl top pods -n production
-kubectl describe ingress ledgora -n production
+kubectl describe ingress atonixcorp -n production
 ```
 
 Read logs:
@@ -186,12 +186,12 @@ kubectl rollout undo deployment/app -n production
 
 ## RBAC And Context Switching
 
-Namespace-scoped deployment rights are bound to the `ledgora-deployers` group. Switch clusters or users with kubectl contexts:
+Namespace-scoped deployment rights are bound to the `atonixcorp-deployers` group. Switch clusters or users with kubectl contexts:
 
 ```sh
 kubectl config get-contexts
 kubectl config use-context your-cluster-admin-context
-kubectl auth can-i update deployments --as-group=ledgora-deployers -n staging
+kubectl auth can-i update deployments --as-group=atonixcorp-deployers -n staging
 ```
 
 ## Troubleshooting

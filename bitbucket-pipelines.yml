@@ -57,18 +57,18 @@ definitions:
           - docker
         script:
           - echo "$DOCKER_PASSWORD" | docker login "$DOCKER_REGISTRY" -u "$DOCKER_USERNAME" --password-stdin
-          - docker build -f api/Dockerfile.prod -t "$DOCKER_REGISTRY/ledgora/backend:$BITBUCKET_COMMIT" api
-          - docker build -f app/Dockerfile.prod -t "$DOCKER_REGISTRY/ledgora/app:$BITBUCKET_COMMIT" app
-          - docker push "$DOCKER_REGISTRY/ledgora/backend:$BITBUCKET_COMMIT"
-          - docker push "$DOCKER_REGISTRY/ledgora/app:$BITBUCKET_COMMIT"
+          - docker build -f api/Dockerfile.prod -t "$DOCKER_REGISTRY/atonixcorp/backend:$BITBUCKET_COMMIT" api
+          - docker build -f app/Dockerfile.prod -t "$DOCKER_REGISTRY/atonixcorp/app:$BITBUCKET_COMMIT" app
+          - docker push "$DOCKER_REGISTRY/atonixcorp/backend:$BITBUCKET_COMMIT"
+          - docker push "$DOCKER_REGISTRY/atonixcorp/app:$BITBUCKET_COMMIT"
 
     - step: &build-verify
         name: Verify production image builds
         services:
           - docker
         script:
-          - docker build -f api/Dockerfile.prod -t ledgora/backend:pr-check api
-          - docker build -f app/Dockerfile.prod -t ledgora/app:pr-check app
+          - docker build -f api/Dockerfile.prod -t atonixcorp/backend:pr-check api
+          - docker build -f app/Dockerfile.prod -t atonixcorp/app:pr-check app
 
     - step: &deploy-dev
         name: Deploy to dev

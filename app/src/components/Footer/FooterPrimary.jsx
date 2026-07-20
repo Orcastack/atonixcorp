@@ -5,7 +5,7 @@ export const footerLinks = {
   company: {
     title: 'Company',
     links: [
-      { label: 'About Ledgora', to: '/about' },
+      { label: 'About AtonixCorp', to: '/about' },
       { label: 'Leadership', to: '/about#leadership' },
       { label: 'Careers', to: '/about#careers' },
       { label: 'Press & Media', to: '/contact#media' },

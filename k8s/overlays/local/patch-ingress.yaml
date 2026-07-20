@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ledgora
+  name: atonixcorp
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   tls: []
   rules:
-    - host: app.ledgora.local
+    - host: app.atonixcorp.local

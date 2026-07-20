@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: dev
   labels:
-    app.kubernetes.io/part-of: ledgora
+    app.kubernetes.io/part-of: atonixcorp
     environment: dev

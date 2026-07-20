@@ -1,15 +1,15 @@
 openapi: 3.0.3
 info:
-  title: Ledgora API
+  title: AtonixCorp API
   version: 1.0.0
   description: >
-    Ledgora is an institution-grade financial accounting API designed for
+    AtonixCorp is an institution-grade financial accounting API designed for
     multi-tenant organizations, ledger-driven financial operations, and
     enterprise integrations.
 servers:
-  - url: https://api.ledgora.com/v1
+  - url: https://api.atonixcorp.com/v1
     description: Production
-  - url: https://sandbox.api.ledgora.com/v1
+  - url: https://sandbox.api.atonixcorp.com/v1
     description: Sandbox
 security:
   - OAuth2: []
@@ -176,9 +176,9 @@ paths:
       operationId: cliLogin
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       requestBody:
         required: true
@@ -206,9 +206,9 @@ paths:
       operationId: cliRefresh
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       requestBody:
         required: true
@@ -233,9 +233,9 @@ paths:
       summary: Validate the current CLI session
       operationId: cliAuthMe
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - $ref: '#/components/parameters/OrganizationIdHeader'
@@ -945,13 +945,13 @@ paths:
   /:
     get:
       tags: [Developer Portal]
-      summary: Render the public Ledgora API landing page
+      summary: Render the public AtonixCorp API landing page
       operationId: renderDeveloperLandingPage
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       responses:
         '200':
@@ -967,9 +967,9 @@ paths:
       operationId: listDeveloperCatalogApis
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: q
@@ -1013,9 +1013,9 @@ paths:
       operationId: getDeveloperCatalogApi
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: slug
@@ -1039,9 +1039,9 @@ paths:
       operationId: listDeveloperCatalogEndpoints
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: slug
@@ -1065,9 +1065,9 @@ paths:
       operationId: getDeveloperCatalogEndpoint
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: slug
@@ -1096,9 +1096,9 @@ paths:
       operationId: searchDeveloperCatalog
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: q
@@ -1133,9 +1133,9 @@ paths:
       operationId: registerDeveloperApiKey
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       requestBody:
         required: true
@@ -1159,9 +1159,9 @@ paths:
       operationId: listDeveloperApiDocs
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       responses:
         '200':
@@ -1177,9 +1177,9 @@ paths:
       operationId: getDeveloperApiDoc
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       parameters:
         - name: slug
@@ -1203,9 +1203,9 @@ paths:
       operationId: getDeveloperPortalStatus
       security: []
       servers:
-        - url: https://api.ledgora.com
+        - url: https://api.atonixcorp.com
           description: Production root
-        - url: https://sandbox.api.ledgora.com
+        - url: https://sandbox.api.atonixcorp.com
           description: Sandbox root
       responses:
         '200':

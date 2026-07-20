@@ -13,10 +13,10 @@ spec:
       labels:
         app.kubernetes.io/name: approval-digest
     spec:
-      serviceAccountName: ledgora-runtime
+      serviceAccountName: atonixcorp-runtime
       containers:
         - name: approval-digest
-          image: ledgora/approval-digest:latest
+          image: atonixcorp/approval-digest:latest
           imagePullPolicy: IfNotPresent
           command:
             - /bin/sh
@@ -28,17 +28,17 @@ spec:
               done
           envFrom:
             - configMapRef:
-                name: ledgora-config
+                name: atonixcorp-config
           env:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: database-url
             - name: DJANGO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: django-secret-key
           resources:
             requests:

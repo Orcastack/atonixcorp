@@ -193,12 +193,12 @@
   background: transparent;
 }
 
-.footer-secondary .ledgora-logo--white {
+.footer-secondary .atonixcorp-logo--white {
   color: #ffffff;
 }
 
-.footer-secondary .ledgora-logo--white .ledgora-logo-wordmark__secondary,
-.footer-secondary .ledgora-logo--white .ledgora-logo-mark__orbit {
+.footer-secondary .atonixcorp-logo--white .atonixcorp-logo-wordmark__secondary,
+.footer-secondary .atonixcorp-logo--white .atonixcorp-logo-mark__orbit {
   color: rgba(255, 255, 255, 0.72);
   stroke: rgba(255, 255, 255, 0.72);
 }

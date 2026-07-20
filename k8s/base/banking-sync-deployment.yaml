@@ -13,10 +13,10 @@ spec:
       labels:
         app.kubernetes.io/name: banking-sync
     spec:
-      serviceAccountName: ledgora-runtime
+      serviceAccountName: atonixcorp-runtime
       containers:
         - name: banking-sync
-          image: ledgora/banking-sync:latest
+          image: atonixcorp/banking-sync:latest
           imagePullPolicy: IfNotPresent
           command:
             - /bin/sh
@@ -28,52 +28,52 @@ spec:
               done
           envFrom:
             - configMapRef:
-                name: ledgora-config
+                name: atonixcorp-config
           env:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: database-url
             - name: DJANGO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: django-secret-key
             - name: BANKING_TOKEN_ENCRYPTION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: banking-token-encryption-key
             - name: PLAID_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: plaid-client-id
             - name: PLAID_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: plaid-client-secret
             - name: YODLEE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: yodlee-client-id
             - name: YODLEE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: yodlee-client-secret
             - name: FINICITY_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: finicity-client-id
             - name: FINICITY_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: finicity-client-secret
           resources:
             requests:

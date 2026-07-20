@@ -379,7 +379,7 @@ const WhiteLabel = () => {
                     </thead>
                     <tbody>
                       {[
-                        { type: 'CNAME', name: branding.custom_domain || 'portal.yourfirm.com', value: 'custom.ledgora.com' },
+                        { type: 'CNAME', name: branding.custom_domain || 'portal.yourfirm.com', value: 'custom.atonixcorp.com' },
                         { type: 'TXT', name: '_verify.' + (branding.custom_domain || 'portal.yourfirm.com'), value: `atonix-verify=${currentOrganization.id}` },
                       ].map((rec, i) => (
                         <tr key={i}>

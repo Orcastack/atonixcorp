@@ -8,7 +8,7 @@ from . import __version__
 from .errors import CLIError
 
 
-DEFAULT_HOST = 'https://api.ledgora.com'
+DEFAULT_HOST = 'https://api.atonixcorp.com'
 LOCAL_HOSTS = {'localhost', '127.0.0.1', '::1'}
 REFRESH_BUFFER_SECONDS = 60
 
@@ -28,14 +28,14 @@ def normalize_host(raw_host):
     if not parsed.hostname:
         raise CLIError('Host must include a valid network location.', 'INVALID_HOST')
     if parsed.scheme != 'https' and parsed.hostname not in LOCAL_HOSTS:
-        raise CLIError('Ledgora CLI requires HTTPS for non-local hosts.', 'INSECURE_HOST')
+        raise CLIError('AtonixCorp CLI requires HTTPS for non-local hosts.', 'INSECURE_HOST')
     return candidate.rstrip('/')
 
 
 class LedgoraClient:
     def __init__(self, host=None):
         self.host = normalize_host(host)
-        self.user_agent = f'Ledgora-CLI/{__version__}'
+        self.user_agent = f'AtonixCorp-CLI/{__version__}'
 
     def _request_json(self, method, path, *, payload=None, access_token=None, organization_id=None):
         url = urljoin(f'{self.host}/', path.lstrip('/'))

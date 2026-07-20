@@ -13,87 +13,87 @@ spec:
       labels:
         app.kubernetes.io/name: backend
     spec:
-      serviceAccountName: ledgora-runtime
+      serviceAccountName: atonixcorp-runtime
       containers:
         - name: backend
-          image: ledgora/backend:latest
+          image: atonixcorp/backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
               name: http
           envFrom:
             - configMapRef:
-                name: ledgora-config
+                name: atonixcorp-config
           env:
             - name: DJANGO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: django-secret-key
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: database-url
             - name: PLATFORM_EVENT_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: platform-event-token
             - name: BANKING_TOKEN_ENCRYPTION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: banking-token-encryption-key
             - name: ANTHROPIC_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: anthropic-api-key
             - name: PLAID_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: plaid-client-id
             - name: PLAID_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: plaid-client-secret
             - name: PLAID_OAUTH_AUTHORIZE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: plaid-oauth-authorize-url
             - name: YODLEE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: yodlee-client-id
             - name: YODLEE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: yodlee-client-secret
             - name: YODLEE_OAUTH_AUTHORIZE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: yodlee-oauth-authorize-url
             - name: FINICITY_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: finicity-client-id
             - name: FINICITY_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: finicity-client-secret
             - name: FINICITY_OAUTH_AUTHORIZE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: finicity-oauth-authorize-url
           readinessProbe:
             httpGet:

@@ -30,7 +30,7 @@ class CLITestCase(unittest.TestCase):
             'organization_id': 'org_123',
             'user': {'id': 'user_1', 'email': 'dev@example.com', 'role': 'developer'},
         }), patch.object(LedgoraClient, 'me', return_value={
-            'organization': {'id': 'org_123', 'name': 'Ledgora Demo LLC'},
+            'organization': {'id': 'org_123', 'name': 'AtonixCorp Demo LLC'},
             'user': {'id': 'user_1', 'email': 'dev@example.com', 'role': 'developer'},
             'session': {'expires_at': expires_at_from_now(3600)},
         }):
@@ -45,7 +45,7 @@ class CLITestCase(unittest.TestCase):
         stored = config['profiles']['prod']
         self.assertNotIn('access-token-123', json.dumps(stored))
         self.assertNotIn('cli_123.secret_456', json.dumps(stored))
-        self.assertIn('Successfully logged in to Ledgora', stdout.getvalue())
+        self.assertIn('Successfully logged in to AtonixCorp', stdout.getvalue())
 
     def test_request_with_session_refreshes_expired_token(self):
         client = LedgoraClient('https://api.example.com')
@@ -96,7 +96,7 @@ class CLITestCase(unittest.TestCase):
             {
                 'host': 'https://api.example.com',
                 'organization_id': 'org_123',
-                'organization_name': 'Ledgora Demo LLC',
+                'organization_name': 'AtonixCorp Demo LLC',
                 'access_token': 'access-token-123',
                 'api_key': 'cli_123.secret_456',
                 'expires_at': expires_at_from_now(3600),
@@ -120,7 +120,7 @@ class CLITestCase(unittest.TestCase):
             {
                 'host': 'https://api.example.com',
                 'organization_id': 'org_123',
-                'organization_name': 'Ledgora Demo LLC',
+                'organization_name': 'AtonixCorp Demo LLC',
                 'access_token': 'access-token-123',
                 'api_key': 'cli_123.secret_456',
                 'expires_at': expires_at_from_now(3600),

@@ -20,8 +20,12 @@ WHITE = "#FFFFFF"
 BASE_SIZE = 1024
 TEXT_BASELINE_Y = 864
 TEXT_FONT_SIZE = 86
+SUBTITLE_FONT_SIZE = 40
+DETAIL_FONT_SIZE = 28
 TEXT_LETTER_SPACING = -1.9
 WORDMARK = "AtonixCorp"
+SUBTITLE = "Governance and Enterprise Management Platform"
+DETAIL = "Subscriptions, policy enforcement, finance, equity, workflows, and analytics"
 
 
 def scale_value(size: int, value: float) -> float:
@@ -79,10 +83,29 @@ def draw_wordmark(
             x_cursor += letter_spacing
 
 
+def draw_centered_text(
+    image: Image.Image,
+    size: int,
+    text: str,
+    y_position: float,
+    font: ImageFont.FreeTypeFont,
+) -> None:
+    draw = ImageDraw.Draw(image)
+    bbox = draw.textbbox((0, 0), text, font=font)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+    x_position = (size - text_width) / 2
+    draw.text((x_position, y_position - text_height / 2), text, font=font, fill=WHITE)
+
+
 def render_png(size: int, output_path: Path) -> None:
     image = render_icon_background(size)
-    font = ImageFont.truetype(str(FONT_FILE), round(scale_value(size, TEXT_FONT_SIZE)))
-    draw_wordmark(image, size, font)
+    wordmark_font = ImageFont.truetype(str(FONT_FILE), round(scale_value(size, TEXT_FONT_SIZE)))
+    subtitle_font = ImageFont.truetype(str(FONT_FILE), round(scale_value(size, SUBTITLE_FONT_SIZE)))
+    detail_font = ImageFont.truetype(str(FONT_FILE), round(scale_value(size, DETAIL_FONT_SIZE)))
+    draw_wordmark(image, size, wordmark_font)
+    draw_centered_text(image, size, SUBTITLE, scale_value(size, 940), subtitle_font)
+    draw_centered_text(image, size, DETAIL, scale_value(size, 992), detail_font)
     image.save(output_path, format="PNG")
 
 

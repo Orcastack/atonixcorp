@@ -1,5 +1,5 @@
 /**
- * Ledgora - Monthly Financial Tracking & Analysis Service
+ * AtonixCorp - Monthly Financial Tracking & Analysis Service
  *
  * Provides automatic monthly aggregation, analysis, and insights
  * Integrates with the unified calculation engine

@@ -13,7 +13,7 @@ spec:
       labels:
         app.kubernetes.io/name: postgres
     spec:
-      serviceAccountName: ledgora-runtime
+      serviceAccountName: atonixcorp-runtime
       containers:
         - name: postgres
           image: postgres:14-alpine
@@ -25,17 +25,17 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: postgres-db
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: postgres-user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: postgres-password
           volumeMounts:
             - name: postgres-data

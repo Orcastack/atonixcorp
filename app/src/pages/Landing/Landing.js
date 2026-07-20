@@ -9,51 +9,51 @@ import './Landing.css';
 const systemSteps = [
   {
     step: '01',
-    title: 'Model the structure',
-    text: 'Map entities, ownership relationships, and operating jurisdictions into one coordinated control environment.',
+    title: 'Define the governance model',
+    text: 'Map organizational hierarchy, roles, permissions, and policy boundaries into one controlled environment.',
   },
   {
     step: '02',
-    title: 'Run governed workflows',
-    text: 'Move accounting, approvals, filings, and team responsibilities through clear, reviewable stages.',
+    title: 'Automate policy execution',
+    text: 'Move approvals, compliance checks, workflows, and exception handling through clear, reviewable stages.',
   },
   {
     step: '03',
     title: 'Stay inspection-ready',
-    text: 'Surface decisions, deadlines, and supporting evidence in a form that withstands scrutiny.',
+    text: 'Surface decisions, audit trails, subscription access, and supporting evidence in a form that withstands scrutiny.',
   },
 ];
 
 const operatingPrinciples = [
-  'One environment for entity records, approvals, and responsibilities — without losing enterprise visibility.',
-  'Controllers, tax leads, and administrators share one source of operational truth.',
-  'Execution stays structured enough for audits, board reviews, and regulated reporting cycles.',
-  'Ownership, accounting, and tax execution stay inside one governed system — reducing handoffs.',
+  'One environment for governance, finance, equity, and workflows — without losing enterprise visibility.',
+  'Controllers, administrators, compliance leads, and finance teams share one source of operational truth.',
+  'Execution stays structured enough for audits, board reviews, policy enforcement, and regulated reporting cycles.',
+  'Subscription tiers control access to the right modules, dashboards, and integrations for each organization.',
 ];
 
 const operationalPillars = [
   {
-    title: 'Governance records',
-    text: 'Maintain ownership records, approvals, permissions, and board-ready evidence in one controlled environment.',
+    title: 'Governance engine',
+    text: 'Maintain organizational hierarchy, role-based access, policy rules, and board-ready evidence in one controlled environment.',
   },
   {
-    title: 'Operational books',
-    text: 'Keep ledger activity, reconciliations, close processes, and reporting structures aligned across entities.',
+    title: 'Finance and equity',
+    text: 'Keep ledger activity, allocations, ownership, reconciliations, and reporting aligned across entities and divisions.',
   },
   {
-    title: 'Compliance execution',
-    text: 'Track obligations, filing calendars, supporting evidence, and review checkpoints without losing traceability.',
+    title: 'Policy and workflow enforcement',
+    text: 'Track obligations, filing calendars, subscription entitlements, approvals, and review checkpoints without losing traceability.',
   },
 ];
-
-const heroDomains = ['Equity', 'Finance', 'Tax', 'Governance', 'Compliance'];
 
 const heroSignals = ['Entity governance', 'Approval discipline', 'Filing readiness'];
 
 const heroSummary = [
-  { label: 'Coverage', value: 'Equity + Finance + Tax' },
-  { label: 'Execution mode', value: 'Structured and accountable' },
+  { label: 'Coverage', value: 'Governance + Finance + Equity' },
+  { label: 'Execution mode', value: 'Structured, subscribed, and accountable' },
 ];
+
+const heroDomains = ['Governance', 'Finance', 'Equity', 'Policy', 'Analytics'];
 
 const heroTimeline = [
   {
@@ -91,14 +91,14 @@ const Landing = () => {
       <Header />
 
       <main className="landing-main">
-        <section className="landing-hero" aria-label="Ledgora overview">
+        <section className="landing-hero" aria-label="AtonixCorp overview">
           <div className="landing-shell landing-hero__layout">
             <div className="landing-hero__copy">
-              <p className="landing-kicker">Institutional Equity, Finance, and Tax Operations</p>
-              <h1>One operating system for ownership, finance, tax, and governed execution.</h1>
+              <p className="landing-kicker">Governance-as-a-Service for modern institutions</p>
+              <h1>One operating system for governance, finance, equity, subscriptions, and controlled execution.</h1>
               <p className="landing-lead">
-                Ledgora gives firms a calmer operating model for entity records, accounting control,
-                compliance execution, and reviewable approvals across the whole organization.
+                AtonixCorp gives organizations a single platform for policy enforcement, finance and equity management,
+                workflow approvals, analytics, and subscription-based access across the whole institution.
               </p>
 
               <div className="landing-actions">
@@ -111,6 +111,9 @@ const Landing = () => {
                   <span key={signal}>{signal}</span>
                 ))}
               </div>
+              <p className="landing-hero__microcopy">
+                Built to align with OrcaOS, OrcaCLI, OrcaSDK, and OrcaCompute for end-to-end institutional operations.
+              </p>
             </div>
 
             <aside className="landing-hero__frame" aria-label="Platform operating frame">
@@ -146,6 +149,14 @@ const Landing = () => {
 
         <section className="landing-section landing-section--system">
           <div className="landing-shell">
+            <div className="landing-section__intro">
+              <p className="landing-kicker">What the platform does</p>
+              <h2>It turns governance into a digital operating framework.</h2>
+              <p>
+                Organizations subscribe to AtonixCorp to manage policy, finance, equity, approvals, and records from one dashboard.
+                Each tier unlocks the right modules and integrations for the organization’s size and complexity.
+              </p>
+            </div>
             <div className="landing-system-grid">
               {systemSteps.map((lane) => (
                 <article key={lane.step} className="landing-system-card">

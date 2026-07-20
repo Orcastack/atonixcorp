@@ -2,12 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useEnterprise } from '../../context/EnterpriseContext';
-import LedgoraLogo from '../../components/branding/LedgoraLogo';
+import AtonixCorpLogo from '../../components/branding/LedgoraLogo';
 import { globalInviteAPI, platformAuditEventsAPI, platformTasksAPI } from '../../services/api';
 import './GlobalConsole.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-  Ledgora — Global Capital Console
+  AtonixCorp — Global Capital Console
    The cross-company control center a user sees immediately after login.
    Shows: My Entities · Global Notifications · Global Tasks · Quick Actions
 ───────────────────────────────────────────────────────────────────────────── */
@@ -83,9 +83,9 @@ const emitAnalyticsEvent = (eventName, payload = {}) => {
     window.dataLayer.push(eventPayload);
   }
 
-  window.__LEDGORA_ANALYTICS_QUEUE__ = window.__LEDGORA_ANALYTICS_QUEUE__ || [];
-  window.__LEDGORA_ANALYTICS_QUEUE__.push(eventPayload);
-  window.dispatchEvent(new CustomEvent('ledgora:analytics', { detail: eventPayload }));
+  window.__ATONIXCORP_ANALYTICS_QUEUE__ = window.__ATONIXCORP_ANALYTICS_QUEUE__ || [];
+  window.__ATONIXCORP_ANALYTICS_QUEUE__.push(eventPayload);
+  window.dispatchEvent(new CustomEvent('atonixcorp:analytics', { detail: eventPayload }));
 };
 
 const GlobalConsole = () => {
@@ -359,11 +359,11 @@ const GlobalConsole = () => {
       <header className="gc-topnav">
         <div className="gc-topnav-left">
           <div className="gc-topnav-brand">
-            <LedgoraLogo variant="white" size="small" withText text="Ledgora" />
+            <AtonixCorpLogo variant="white" size="small" withText text="AtonixCorp" />
           </div>
           <div className="gc-topnav-org-block">
             <span className="gc-topnav-org-label">Organization</span>
-            <strong className="gc-topnav-org-name">{currentOrganization?.name || 'Ledgora Organization'}</strong>
+            <strong className="gc-topnav-org-name">{currentOrganization?.name || 'AtonixCorp Organization'}</strong>
           </div>
         </div>
         <div className="gc-topnav-right" ref={profileRef}>
@@ -417,7 +417,7 @@ const GlobalConsole = () => {
         </div>
         <div className="gc-capital-badges">
           <span className="gc-compliance-badge">Compliance: Current</span>
-          <span className="gc-capital-watermark">LEDGORA GLOBAL</span>
+          <span className="gc-capital-watermark">ATONIXCORP GLOBAL</span>
         </div>
       </section>
 

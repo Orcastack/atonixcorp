@@ -1,5 +1,5 @@
 // =============================================================================
-// Ledgora – Infrastructure Promotion Pipeline
+// AtonixCorp – Infrastructure Promotion Pipeline
 // Trigger: Manual dispatch (or Gerrit Ready-For-Test / Ready-For-Prod label)
 //
 // Promotes already-merged infrastructure from one environment to the next.
@@ -63,7 +63,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: params.SOURCE_COMMIT]],
                     userRemoteConfigs: [[
-                        url: 'ssh://gerrit.ledgora.internal:29418/infra/openstack-ledgora',
+                        url: 'ssh://gerrit.atonixcorp.internal:29418/infra/openstack-atonixcorp',
                         credentialsId: 'gerrit-ssh-key'
                     ]]
                 ])
@@ -134,7 +134,7 @@ Plan summary:
 ${plan.readLines().findAll { it =~ /Plan:|No changes/ }.join('\n')}
 
 Approve to proceed. This action is logged and irreversible without a rollback change.""",
-                        submitter: 'Ledgora Owners,Infra Leads',
+                        submitter: 'AtonixCorp Owners,Infra Leads',
                         parameters: [
                             string(name: 'JUSTIFICATION', description: 'Brief justification for this production apply.')
                         ]

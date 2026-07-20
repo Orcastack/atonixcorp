@@ -1,5 +1,5 @@
 """
-Ledgora API v1 – Authentication helpers
+AtonixCorp API v1 – Authentication helpers
 ============================================
 Supports two credential flows:
 
@@ -30,7 +30,11 @@ CLI_API_KEY_DELIMITER = '.'
 
 
 def current_api_environment() -> str:
-    return getattr(settings, 'LEDGORA_API_ENVIRONMENT', 'sandbox' if settings.DEBUG else 'production')
+    return getattr(
+        settings,
+        'ATONIXCORP_API_ENVIRONMENT',
+        getattr(settings, 'LEDGORA_API_ENVIRONMENT', 'sandbox' if settings.DEBUG else 'production'),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -166,4 +170,4 @@ class APIKeyAuthentication(BaseAuthentication):
         return (user, api_key)
 
     def authenticate_header(self, request):
-        return 'Bearer realm="Ledgora API v1"'
+        return 'Bearer realm="AtonixCorp API v1"'

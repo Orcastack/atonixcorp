@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ledgora-local
+  name: atonixcorp-local
   labels:
-    app.kubernetes.io/part-of: ledgora
+    app.kubernetes.io/part-of: atonixcorp
     environment: local

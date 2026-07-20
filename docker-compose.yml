@@ -5,7 +5,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: ledgora-api
+    container_name: atonixcorp-api
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
@@ -40,7 +40,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: ledgora-banking-sync
+    container_name: atonixcorp-banking-sync
     command: >
       /bin/sh -c "while true; do
       python manage.py sync_banking_integrations;
@@ -69,7 +69,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: ledgora-approval-digest
+    container_name: atonixcorp-approval-digest
     command: >
       /bin/sh -c "while true; do
       python manage.py send_approval_notification_digest --hours ${APPROVAL_DIGEST_LOOKBACK_HOURS:-24};
@@ -99,7 +99,7 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    container_name: ledgora-app
+    container_name: atonixcorp-app
     command: npm start
     ports:
       - "3000:3000"
@@ -114,10 +114,10 @@ services:
 
   db:
     image: postgres:14-alpine
-    container_name: ledgora-db
+    container_name: atonixcorp-db
     environment:
-      - POSTGRES_DB=ledgora
-      - POSTGRES_USER=ledgora
+      - POSTGRES_DB=atonixcorp
+      - POSTGRES_USER=atonixcorp
       - POSTGRES_PASSWORD=ledgorapassword
     ports:
       - "5433:5432"

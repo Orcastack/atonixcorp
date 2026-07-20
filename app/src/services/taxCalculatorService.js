@@ -1,4 +1,4 @@
-// Tax Calculator Service for Ledgora
+// Tax Calculator Service for AtonixCorp
 // Comprehensive global tax rates database with AI-powered validation
 // Specification-compliant with modular, future-proof architecture
 

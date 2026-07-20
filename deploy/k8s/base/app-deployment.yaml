@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ledgora/app:latest
+          image: atonixcorp/app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

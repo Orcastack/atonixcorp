@@ -13,10 +13,10 @@ spec:
       labels:
         app.kubernetes.io/name: app
     spec:
-      serviceAccountName: ledgora-runtime
+      serviceAccountName: atonixcorp-runtime
       containers:
         - name: app
-          image: ledgora/app:latest
+          image: atonixcorp/app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

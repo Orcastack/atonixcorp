@@ -13,9 +13,9 @@ patchesStrategicMerge:
   - patch-scale.yaml
 
 images:
-  - name: ledgora/backend
-    newName: registry.example.com/ledgora/backend
+  - name: atonixcorp/backend
+    newName: registry.example.com/atonixcorp/backend
     newTag: dev
-  - name: ledgora/app
-    newName: registry.example.com/ledgora/app
+  - name: atonixcorp/app
+    newName: registry.example.com/atonixcorp/app
     newTag: dev

@@ -4,7 +4,7 @@ const LanguageContext = createContext();
 
 const MESSAGES = {
   en: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'English',
     nav: {
       home: 'Home',
@@ -85,7 +85,7 @@ const MESSAGES = {
     },
   },
   fr: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'Français',
     nav: {
       home: 'Accueil',
@@ -166,7 +166,7 @@ const MESSAGES = {
     },
   },
   es: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'Español',
     nav: {
       home: 'Inicio',
@@ -247,7 +247,7 @@ const MESSAGES = {
     },
   },
   de: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'Deutsch',
     nav: {
       home: 'Startseite',
@@ -328,7 +328,7 @@ const MESSAGES = {
     },
   },
   pt: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'Português',
     nav: {
       home: 'Início',
@@ -409,7 +409,7 @@ const MESSAGES = {
     },
   },
   zh: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: '',
     nav: {
       home: '',
@@ -490,7 +490,7 @@ const MESSAGES = {
     },
   },
   ar: {
-    appName: 'Ledgora',
+    appName: 'AtonixCorp',
     languageName: 'العربية',
     nav: {
       home: 'الرئيسية',

@@ -1,6 +1,6 @@
-# Ledgora CLI
+# AtonixCorp CLI
 
-Python implementation of the `ledgora` command for API-key based Ledgora authentication.
+Python implementation of the `atonixcorp` command for API-key based AtonixCorp authentication.
 
 Install with repo bootstrap:
 
@@ -18,13 +18,13 @@ cd tools/ledgora_cli
 Core commands:
 
 ```bash
-ledgora login --api-key <API_KEY> --org <ORGANIZATION_ID>
-ledgora whoami
-ledgora use <PROFILE>
-ledgora logout
-ledgora organizations list
-ledgora accounts list
-ledgora customers list
-ledgora vendors list
-ledgora reports trial-balance --as-of-date 2026-03-31
+atonixcorp login --api-key <API_KEY> --org <ORGANIZATION_ID>
+atonixcorp whoami
+atonixcorp use <PROFILE>
+atonixcorp logout
+atonixcorp organizations list
+atonixcorp accounts list
+atonixcorp customers list
+atonixcorp vendors list
+atonixcorp reports trial-balance --as-of-date 2026-03-31
 ```

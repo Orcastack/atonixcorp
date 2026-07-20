@@ -3,13 +3,13 @@ import { PageHeader, Card, Button, Input } from '../../components/ui';
 
 export default function FirmSettings() {
   const [form, setForm] = useState({
-    firmName: 'Ledgora LLC',
-    legalName: 'Ledgora Management LLC',
+    firmName: 'AtonixCorp LLC',
+    legalName: 'AtonixCorp Management LLC',
     taxId: '88-1234567',
     address: '350 Fifth Avenue, Suite 4200, New York, NY 10118',
     phone: '+1 (212) 555-0100',
-    email: 'admin@ledgora.com',
-    website: 'https://ledgora.com',
+    email: 'admin@atonixcorp.com',
+    website: 'https://atonixcorp.com',
     fiscalYearEnd: '12',
     currency: 'USD',
     timezone: 'America/New_York',

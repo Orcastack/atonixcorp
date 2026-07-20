@@ -16,7 +16,7 @@ SEED_DOCUMENTS = [
             'while capital expenditure usually requires capitalization or separate allowance treatment.'
         ),
         'metadata': {
-            'references': ['South African Income Tax Act', 'Ledgora Phase 1 ZA expense treatment baseline'],
+            'references': ['South African Income Tax Act', 'AtonixCorp Phase 1 ZA expense treatment baseline'],
             'effective_period': '2025+',
         },
         'chunks': [
@@ -37,7 +37,7 @@ SEED_DOCUMENTS = [
             'timing, and limitation rules.'
         ),
         'metadata': {
-            'references': ['IRC Section 162', 'Ledgora US baseline'],
+            'references': ['IRC Section 162', 'AtonixCorp US baseline'],
             'effective_period': '2025+',
         },
         'chunks': [
@@ -57,7 +57,7 @@ SEED_DOCUMENTS = [
             'deductible and capital items requiring capital allowance analysis or separate treatment.'
         ),
         'metadata': {
-            'references': ['HMRC corporation tax guidance', 'Ledgora UK baseline'],
+            'references': ['HMRC corporation tax guidance', 'AtonixCorp UK baseline'],
             'effective_period': '2025+',
         },
         'chunks': [
@@ -69,12 +69,12 @@ SEED_DOCUMENTS = [
     {
         'title': 'Global Hybrid AI Governance Baseline',
         'source_type': 'internal_seed',
-        'source': 'Ledgora hybrid AI governance baseline',
+        'source': 'AtonixCorp hybrid AI governance baseline',
         'jurisdiction': 'GLOBAL',
         'topic': 'tax',
         'content': (
             'Claude is the reasoning layer, not the final calculator. Deterministic tax engines, audit logs, '
-            'workspace isolation, and traceable references are mandatory in the Ledgora hybrid AI design.'
+            'workspace isolation, and traceable references are mandatory in the AtonixCorp hybrid AI design.'
         ),
         'metadata': {
             'references': ['Hybrid Claude Integration Directive'],

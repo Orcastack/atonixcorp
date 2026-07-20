@@ -1,5 +1,5 @@
 /**
- * Ledgora - Unified Financial Calculation Engine
+ * AtonixCorp - Unified Financial Calculation Engine
  *
  * This is the SINGLE SOURCE OF TRUTH for all financial calculations.
  * Every module must use these functions - NO calculations in components.

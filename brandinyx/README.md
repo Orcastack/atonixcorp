@@ -1,6 +1,6 @@
 # Brandinyx Social Assets
 
-This folder contains square social-media-ready logo exports for Ledgora.
+This folder contains square social-media-ready logo exports for AtonixCorp.
 
 These files are generated from the current platform icon so the social avatar stays identical to the existing product icon.
 
@@ -14,5 +14,5 @@ Files:
 Regenerate:
 
 ```bash
-/Users/ofidohubvm/Ledgora/api/.venv/bin/python brandinyx/generate_social_pngs.py
+/Users/ofidohubvm/AtonixCorp/api/.venv/bin/python brandinyx/generate_social_pngs.py
 ```

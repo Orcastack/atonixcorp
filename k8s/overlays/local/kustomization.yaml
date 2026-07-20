@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: ledgora-local
+namespace: atonixcorp-local
 
 resources:
   - ../../base
@@ -13,15 +13,15 @@ patchesStrategicMerge:
   - patch-scale.yaml
 
 images:
-  - name: ledgora/backend
+  - name: atonixcorp/backend
     newName: atonixdev/legdora-api
     newTag: latest
-  - name: ledgora/banking-sync
+  - name: atonixcorp/banking-sync
     newName: atonixdev/legdora-banking-sync
     newTag: latest
-  - name: ledgora/approval-digest
+  - name: atonixcorp/approval-digest
     newName: atonixdev/legdora-approval-digest
     newTag: latest
-  - name: ledgora/app
+  - name: atonixcorp/app
     newName: atonixdev/legdora-app
     newTag: latest

@@ -15,29 +15,29 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ledgora/backend:latest
+          image: atonixcorp/backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
               name: http
           envFrom:
             - configMapRef:
-                name: ledgora-config
+                name: atonixcorp-config
           env:
             - name: DJANGO_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: django-secret-key
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: database-url
             - name: PLATFORM_EVENT_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: ledgora-app-secrets
+                  name: atonixcorp-app-secrets
                   key: platform-event-token
           readinessProbe:
             httpGet:

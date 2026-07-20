@@ -13,7 +13,7 @@ except ImportError:  # pragma: no cover
 from .errors import CLIError
 
 
-SERVICE_NAME = 'Ledgora CLI'
+SERVICE_NAME = 'AtonixCorp CLI'
 CONFIG_FILENAME = 'config.json'
 
 
@@ -24,13 +24,13 @@ def config_dir():
 
     system_name = platform.system()
     if system_name == 'Darwin':
-        return Path.home() / 'Library' / 'Application Support' / 'ledgora'
+        return Path.home() / 'Library' / 'Application Support' / 'atonixcorp'
     if system_name == 'Windows':
         appdata = os.getenv('APPDATA')
         if appdata:
-            return Path(appdata) / 'ledgora'
-        return Path.home() / 'AppData' / 'Roaming' / 'ledgora'
-    return Path.home() / '.config' / 'ledgora'
+            return Path(appdata) / 'atonixcorp'
+        return Path.home() / 'AppData' / 'Roaming' / 'atonixcorp'
+    return Path.home() / '.config' / 'atonixcorp'
 
 
 def config_path():

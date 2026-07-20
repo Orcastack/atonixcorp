@@ -15,10 +15,9 @@ const About = () => {
         <div className="about-hero-bg" />
         <div className="container">
           <div className="about-hero-inner">
-            <p className="about-eyebrow">The Enterprise Operating System</p>
-            <h1>Ledgora</h1>
-            <p className="about-hero-sub">Not an accounting tool. Not a bookkeeping app. Not a reporting dashboard.<br />A unified Enterprise Operating System built for all firms, businesses,
-              and financial institutions.
+            <p className="about-eyebrow">Governance and Enterprise Management Platform</p>
+            <h1>AtonixCorp</h1>
+            <p className="about-hero-sub">AtonixCorp is the digital framework for modern institutions.<br />It unifies governance, finance, equity, workflows, subscriptions, and analytics into one controlled platform.
             </p>
             <div className="about-hero-cta">
               <Link to="/register" className="btn-primary btn-large">Get Started
@@ -34,22 +33,22 @@ const About = () => {
       <section className="about-problem-section">
         <div className="container">
           <div className="about-section-header">
-            <p className="about-eyebrow-dark">The Industry Problem</p>
-            <h2>Why Financial Operations Are Broken</h2>
-            <p className="about-section-sub">Across industries, accounting firms and businesses face the same challenges — and they cost
-              firms their time, accuracy, clients, and growth.
+            <p className="about-eyebrow-dark">The Core Problem</p>
+            <h2>Why Organizations Need a Governance Operating System</h2>
+            <p className="about-section-sub">Most institutions still manage policy, finance, HR, compliance, and approvals in separate tools.
+              That fragmentation creates blind spots, slows execution, and weakens accountability.
             </p>
           </div>
           <div className="problem-grid">
             {[
-              'Too many disconnected tools',
-              'Manual processes that waste time',
-              'Outdated systems that slow operations',
-              'No real-time financial visibility',
-              'Poor collaboration between accountants and clients',
-              'Compliance burdens that grow every year',
-              'Banking systems that don\'t integrate with accounting',
-              'Reporting that is slow, inconsistent, or incomplete',
+              'Policy and approvals live in disconnected tools',
+              'Governance rules are enforced manually or inconsistently',
+              'Finance, equity, and compliance data are split across systems',
+              'Leadership lacks real-time visibility into organizational health',
+              'Teams lose time reconciling records and chasing sign-offs',
+              'Subscription access and module control are handled ad hoc',
+              'External integrations are bolted on instead of governed centrally',
+              'Audit readiness is delayed by incomplete or inconsistent records',
             ].map((p) => (
               <div className="problem-row" key={p}>
                 <span className="problem-x"></span>
@@ -57,7 +56,7 @@ const About = () => {
               </div>
             ))}
           </div>
-          <div className="problem-resolve-banner">Ledgora exists to eliminate every one of these problems — permanently.
+          <div className="problem-resolve-banner">AtonixCorp exists to turn those fragmented processes into a governed digital system.
           </div>
         </div>
       </section>
@@ -68,25 +67,25 @@ const About = () => {
           <div className="solution-split">
             <div className="solution-text">
               <p className="about-eyebrow-purple">The Solution</p>
-              <h2>One Platform. All Financial Operations. Fully Connected.</h2>
-              <p>Ledgora is a unified financial-operations environment — a single platform where
-                accounting firms and businesses manage everything: financial data, accounting workflows,
-                client relationships, documents, compliance, reporting, automation, and banking integrations.
+              <h2>One platform. All governance operations. Fully connected.</h2>
+              <p>AtonixCorp is a unified enterprise management environment — a single platform where organizations
+                manage governance, finance, equity, policy enforcement, workflow automation, analytics, and subscriptions.
               </p>
               <p className="solution-manifesto">Everything in one place.<br />Everything connected.<br />Everything real-time.
               </p>
-              <p>This is the new standard for financial operations.</p>
+              <p>This is the new standard for governance-led enterprise operations.</p>
             </div>
             <div className="solution-cards">
               {[
-                { label: 'Financial Data' },
-                { label: 'Accounting Workflows' },
-                { label: 'Client Relationships' },
-                { label: 'Document Management' },
+                { label: 'Governance Engine' },
+                { label: 'Policy Enforcement' },
+                { label: 'Finance & Equity' },
+                { label: 'Workflow Automation' },
                 { label: 'Compliance' },
-                { label: 'Reporting' },
-                { label: 'Automation' },
-                { label: 'Banking Integration' },
+                { label: 'Analytics' },
+                { label: 'Subscription Management' },
+                { label: 'OrcaStack Integrations' },
+                { label: 'Audit Trails' },
               ].map((c) => (
                 <div className="solution-chip" key={c.label}>
                   <span className="solution-chip-icon">{c.icon}</span>
@@ -103,22 +102,19 @@ const About = () => {
         <div className="container">
           <div className="about-section-header">
             <p className="about-eyebrow-dark">Core Architecture</p>
-            <h2>Nine Foundational Pillars</h2>
-            <p className="about-section-sub">Every decision, every feature, every line of code is anchored to these principles.
-              They define Ledgora's identity and guide everything we build.
+            <h2>Six Platform Layers</h2>
+            <p className="about-section-sub">AtonixCorp is built as a layered operating system so every institution can subscribe to the right capabilities
+              without losing governance, accountability, or auditability.
             </p>
           </div>
           <div className="about-pillars-grid">
             {[
-              { n: '01', title: 'Institutional-Grade Security', desc: 'Every component designed with enterprise-level protection at its core. No exceptions.' },
-              { n: '02', title: 'Multi-Tenant Architecture', desc: 'Each accounting firm receives its own fully isolated, secure, and independent environment.' },
-              { n: '03', title: 'Multi-Entity Support', desc: 'Manage multiple businesses under one umbrella without switching accounts or dashboards.' },
-              { n: '04', title: 'Multi-Currency Engine', desc: 'Global operations require global currency support. Built in, not bolted on.' },
-              { n: '05', title: 'API-Driven Integrations', desc: 'Seamless, secure connections to banks, payment processors, and financial data providers.' },
-              { n: '06', title: 'Automation-Powered Workflows', desc: 'Every manual, repetitive task replaced with intelligent, rule-based automation.' },
-              { n: '07', title: 'Real-Time Financial Visibility', desc: 'Balances, transactions, and insights that update the moment they change.' },
-              { n: '08', title: 'Compliance-Aware Infrastructure', desc: 'KYC, KYB, AML, and immutable audit trails embedded at the platform core.' },
-              { n: '09', title: 'Client Collaboration Tools', desc: 'Portals, messaging, approvals, and document sharing — unified in one seamless flow.' },
+              { n: '01', title: 'Governance Engine', desc: 'Define organizational hierarchy, roles, permissions, and policy boundaries.' },
+              { n: '02', title: 'Policy Enforcement', desc: 'Automate compliance rules, approvals, and operational controls across the platform.' },
+              { n: '03', title: 'Finance and Equity System', desc: 'Manage budgets, transactions, ownership, and capital records in one place.' },
+              { n: '04', title: 'Workflow Automation', desc: 'Run tasks, reviews, and institutional processes through structured workflows.' },
+              { n: '05', title: 'Analytics Dashboard', desc: 'Surface real-time insights for leadership, compliance, and decision-making.' },
+              { n: '06', title: 'Subscription Layer', desc: 'Control access, billing, and organizational tiers with subscription-based entitlements.' },
             ].map((p) => (
               <div className="about-pillar-card" key={p.n}>
                 <div className="about-pillar-num">{p.n}</div>
@@ -138,15 +134,15 @@ const About = () => {
             <div className="ux-text">
               <p className="about-eyebrow-purple">The User Experience</p>
               <h2>What AtonixCorp Feels Like</h2>
-              <p>When a user logs into Ledgora, they must feel empowered, in control, supported,
-                efficient, confident, and secure. Every screen, every button, every workflow reflects this.
+              <p>When a user logs into AtonixCorp, they should immediately understand what the platform does:
+                it organizes the institution, enforces policy, and gives leadership a clear operating view.
               </p>
               <div className="ux-qualities">
                 {[
-                  'A modern financial command center',
-                  'A professional, clean, elegant interface',
-                  'A system built for serious work',
-                  'A platform that respects the user\'s time',
+                  'A governance-first operating system',
+                  'A premium, disciplined enterprise interface',
+                  'A system built for serious institutional work',
+                  'A platform that respects the user\'s time and accountability',
                 ].map((q) => (
                   <div className="ux-quality" key={q}>
 
@@ -157,7 +153,7 @@ const About = () => {
             </div>
             <div className="ux-feelings">
               <p className="ux-feelings-title">When you use AtonixCorp, you feel:</p>
-              {['Empowered', 'In Control', 'Supported', 'Efficient', 'Confident', 'Secure'].map((f) => (
+              {['Informed', 'In Control', 'Structured', 'Efficient', 'Confident', 'Secure'].map((f) => (
                 <div className="ux-feeling-chip" key={f}>{f}</div>
               ))}
             </div>
@@ -173,7 +169,7 @@ const About = () => {
             <h2>Built on Seven Commitments</h2>
           </div>
           <div className="brand-values-row">
-            {['Precision', 'Security', 'Automation', 'Clarity', 'Professionalism', 'Scalability', 'Trust'].map((v) => (
+            {['Precision', 'Security', 'Automation', 'Clarity', 'Governance', 'Scalability', 'Trust'].map((v) => (
               <div className="brand-value-tile" key={v}>{v}</div>
             ))}
           </div>
@@ -189,8 +185,8 @@ const About = () => {
             <div className="brand-promise-card">
               <h3>Brand Promise</h3>
               <blockquote>
-                "AtonixCorp gives accounting firms the power, speed, and intelligence they need to
-                operate at the highest level."
+                "AtonixCorp gives organizations the governance, automation, and visibility they need to
+                operate with structure, transparency, and control."
               </blockquote>
             </div>
             <div className="brand-taglines-card">

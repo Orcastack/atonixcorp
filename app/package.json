@@ -1,7 +1,7 @@
 {
   "name": "atonixcorp",
   "version": "1.0.0",
-  "homepage": "",
+  "homepage": "https://orcadevstack.github.io/Ledgora",
   "private": true,
   "proxy": "http://localhost:8000",
   "engines": {
