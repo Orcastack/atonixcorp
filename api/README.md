@@ -41,8 +41,8 @@ This is the Django REST API for the AI Financial Modeling Integration System. It
 ## Quick Start
 
 ### Prerequisites
-- Python 3.8+
-- Django 4.2+
+- Python 3.13 (the supported runtime for the production image)
+- Django 5.2 LTS
 - Virtual environment
 
 ### Installation
@@ -77,6 +77,36 @@ This is the Django REST API for the AI Financial Modeling Integration System. It
    - **Landing Page**: http://localhost:8000/
    - **API Root**: http://localhost:8000/api/
    - **Admin Panel**: http://localhost:8000/admin/
+
+## Production Deployment
+
+Build and run the production image with a supported Python 3.13 runtime:
+
+```bash
+docker build -f Dockerfile.prod -t atonixcorp-api:latest .
+docker run --rm -p 8000:8000 --env-file .env atonixcorp-api:latest
+```
+
+Before deployment, set these values in `.env`:
+
+```dotenv
+DJANGO_DEBUG=False
+DJANGO_SECRET_KEY=<a unique random value of at least 50 characters>
+DJANGO_ALLOWED_HOSTS=api.example.com
+DATABASE_URL=postgres://<user>:<password>@<host>:5432/<database>
+CORS_ALLOWED_ORIGINS=https://app.example.com
+CSRF_TRUSTED_ORIGINS=https://app.example.com
+FRONTEND_BASE_URL=https://app.example.com
+DJANGO_SECURE_SSL_REDIRECT=True
+```
+
+Run migrations as a release step before starting new application instances:
+
+```bash
+docker run --rm --env-file .env atonixcorp-api:latest python manage.py migrate --noinput
+```
+
+The container health check calls `GET /status`; route TLS termination through a reverse proxy or load balancer that sets `X-Forwarded-Proto: https`.
 
 ## API Endpoints
 

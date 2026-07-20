@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}AtonixCorp{% endblock %}</title>
+    <meta name="theme-color" content="#0b1f3a">
+    <link rel="icon" href="{% static 'branding/atc-logo-round.svg' %}" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+    <title>{% block title %}AtonixCorp Backend{% endblock %}</title>
     <style>
         :root {
             --lgx-color-primary: #0b1f3a;
@@ -163,7 +166,7 @@
     <div class="site-shell">
         <header class="site-header">
             <a class="brand-lockup" href="/">
-                <img class="brand-mark" src="{% static 'branding/lgx-logo-round.svg' %}" alt="AtonixCorp logo">
+                <img class="brand-mark" src="{% static 'branding/atc-logo-round.svg' %}" alt="AtonixCorp logo">
                 <span class="brand-copy">
                     <span class="brand-kicker">AtonixCorp</span>
                     <span class="brand-name">Institutional Developer Platform</span>

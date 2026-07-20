@@ -28,6 +28,12 @@ DEBUG = env_bool('DJANGO_DEBUG', True)
 
 ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1')
 
+if not DEBUG:
+    if SECRET_KEY.startswith('django-insecure-') or len(SECRET_KEY) < 50:
+        raise RuntimeError('DJANGO_SECRET_KEY must be a unique, random value of at least 50 characters in production.')
+    if not ALLOWED_HOSTS:
+        raise RuntimeError('DJANGO_ALLOWED_HOSTS must list the production hostnames when DJANGO_DEBUG is false.')
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',

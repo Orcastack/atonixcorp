@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from finances.developer_portal_views import (
     DeveloperAPIDetailView,
     DeveloperAPIEndpointDetailView,
@@ -17,6 +18,10 @@ from finances.developer_portal_views import (
 from finances.views import landing_page
 
 urlpatterns = [
+    path(
+        'favicon.ico',
+        RedirectView.as_view(url=f'{settings.STATIC_URL}branding/atc-logo-round.svg', permanent=False),
+    ),
     path('admin/', admin.site.urls),
     path('auth/', include('finances.cli_auth_urls')),
     path('developer/', include('finances.developer_portal_urls')),

@@ -604,6 +604,14 @@ class DeveloperPortalViewTests(TestCase):
         self.assertIn('AtonixCorp APIs', content)
         self.assertIn('Request API key', content)
         self.assertIn('Search APIs', content)
+        self.assertIn('branding/atc-logo-round.svg', content)
+        self.assertIn('rel="icon"', content)
+
+    def test_favicon_compatibility_route_redirects_to_atonixcorp_mark(self):
+        response = self.client.get('/favicon.ico')
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/static/branding/atc-logo-round.svg')
 
     def test_api_catalog_list_returns_seeded_results(self):
         response = self.client.get('/developer/apis')
