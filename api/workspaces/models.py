@@ -2,6 +2,7 @@
 Workspace models.
 Workspace tables are workspace-scoped, and the workspace root can optionally link to a finance entity.
 """
+import secrets
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
@@ -86,6 +87,18 @@ class WorkspaceMember(models.Model):
     def __str__(self):
         role_label = self.role or 'invited'
         return f'{self.user.email} → {self.workspace.name} ({role_label})'
+
+    @staticmethod
+    def generate_member_code():
+        while True:
+            member_code = f'{secrets.randbelow(1_000_000):06d}'
+            if not WorkspaceMember.objects.filter(member_code=member_code).exists():
+                return member_code
+
+    def save(self, *args, **kwargs):
+        if not self.member_code:
+            self.member_code = self.generate_member_code()
+        super().save(*args, **kwargs)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

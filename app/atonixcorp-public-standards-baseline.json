@@ -1,82 +1,292 @@
 {
-  "generatedAt": "2026-04-10T06:57:00.915Z",
+  "generatedAt": "2026-07-20T16:35:03.334Z",
   "findings": [
     {
-      "key": "src/components/Footer/Footer.css|forbidden-pill-radius|183|border-radius: 999px",
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|101|#1f1f1f",
+      "file": "src/components/footer/Footer.css",
+      "line": 101,
+      "rule": "forbidden-hex-color",
+      "snippet": "#1f1f1f"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|101|#1f1f1f",
       "file": "src/components/Footer/Footer.css",
-      "line": 183,
+      "line": 101,
+      "rule": "forbidden-hex-color",
+      "snippet": "#1f1f1f"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|178|#d9d9d9",
+      "file": "src/components/footer/Footer.css",
+      "line": 178,
+      "rule": "forbidden-hex-color",
+      "snippet": "#d9d9d9"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|178|#d9d9d9",
+      "file": "src/components/Footer/Footer.css",
+      "line": 178,
+      "rule": "forbidden-hex-color",
+      "snippet": "#d9d9d9"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|180|#111111",
+      "file": "src/components/footer/Footer.css",
+      "line": 180,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|180|#111111",
+      "file": "src/components/Footer/Footer.css",
+      "line": 180,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|249|#e5e5e5",
+      "file": "src/components/footer/Footer.css",
+      "line": 249,
+      "rule": "forbidden-hex-color",
+      "snippet": "#e5e5e5"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|249|#e5e5e5",
+      "file": "src/components/Footer/Footer.css",
+      "line": 249,
+      "rule": "forbidden-hex-color",
+      "snippet": "#e5e5e5"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|3|#111111",
+      "file": "src/components/footer/Footer.css",
+      "line": 3,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|3|#111111",
+      "file": "src/components/Footer/Footer.css",
+      "line": 3,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|40|#111111",
+      "file": "src/components/footer/Footer.css",
+      "line": 40,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|40|#111111",
+      "file": "src/components/Footer/Footer.css",
+      "line": 40,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|5|#e5e5e5",
+      "file": "src/components/footer/Footer.css",
+      "line": 5,
+      "rule": "forbidden-hex-color",
+      "snippet": "#e5e5e5"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|5|#e5e5e5",
+      "file": "src/components/Footer/Footer.css",
+      "line": 5,
+      "rule": "forbidden-hex-color",
+      "snippet": "#e5e5e5"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|54|#111111",
+      "file": "src/components/footer/Footer.css",
+      "line": 54,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|54|#111111",
+      "file": "src/components/Footer/Footer.css",
+      "line": 54,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-hex-color|84|#111111",
+      "file": "src/components/footer/Footer.css",
+      "line": 84,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|forbidden-hex-color|84|#111111",
+      "file": "src/components/Footer/Footer.css",
+      "line": 84,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/components/footer/Footer.css|forbidden-pill-radius|179|border-radius: 999px",
+      "file": "src/components/footer/Footer.css",
+      "line": 179,
       "rule": "forbidden-pill-radius",
       "snippet": "border-radius: 999px"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|113|padding-top: 20px;",
+      "key": "src/components/Footer/Footer.css|forbidden-pill-radius|179|border-radius: 999px",
       "file": "src/components/Footer/Footer.css",
-      "line": 113,
+      "line": 179,
+      "rule": "forbidden-pill-radius",
+      "snippet": "border-radius: 999px"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|109|padding-top: 20px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 109,
       "rule": "off-grid-spacing",
       "snippet": "padding-top: 20px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|114|padding-bottom: 20px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|109|padding-top: 20px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 114,
+      "line": 109,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-top: 20px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|110|padding-bottom: 20px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 110,
       "rule": "off-grid-spacing",
       "snippet": "padding-bottom: 20px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|120|gap: 20px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|110|padding-bottom: 20px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 120,
+      "line": 110,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-bottom: 20px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|116|gap: 20px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 116,
       "rule": "off-grid-spacing",
       "snippet": "gap: 20px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|172|gap: 10px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|116|gap: 20px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 172,
+      "line": 116,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 20px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|168|gap: 10px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 168,
       "rule": "off-grid-spacing",
       "snippet": "gap: 10px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|218|padding-left: 20px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|168|gap: 10px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 218,
+      "line": 168,
       "rule": "off-grid-spacing",
-      "snippet": "padding-left: 20px;"
+      "snippet": "gap: 10px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|219|padding-right: 20px;",
-      "file": "src/components/Footer/Footer.css",
-      "line": 219,
+      "key": "src/components/footer/Footer.css|off-grid-spacing|216|row-gap: 28px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 216,
       "rule": "off-grid-spacing",
-      "snippet": "padding-right: 20px;"
+      "snippet": "row-gap: 28px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|224|padding-top: 40px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|216|row-gap: 28px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 224,
+      "line": 216,
       "rule": "off-grid-spacing",
-      "snippet": "padding-top: 40px;"
+      "snippet": "row-gap: 28px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|225|padding-bottom: 28px;",
-      "file": "src/components/Footer/Footer.css",
-      "line": 225,
+      "key": "src/components/footer/Footer.css|off-grid-spacing|22|gap: 36px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 22,
       "rule": "off-grid-spacing",
-      "snippet": "padding-bottom: 28px;"
+      "snippet": "gap: 36px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|23|padding-top: 64px;",
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|22|gap: 36px;",
+      "file": "src/components/Footer/Footer.css",
+      "line": 22,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 36px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|23|padding-top: 56px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 23,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-top: 56px;"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|23|padding-top: 56px;",
       "file": "src/components/Footer/Footer.css",
       "line": 23,
       "rule": "off-grid-spacing",
-      "snippet": "padding-top: 64px;"
+      "snippet": "padding-top: 56px;"
     },
     {
-      "key": "src/components/Footer/Footer.css|off-grid-spacing|77|gap: 10px;",
+      "key": "src/components/footer/Footer.css|off-grid-spacing|24|padding-bottom: 36px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 24,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-bottom: 36px;"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|24|padding-bottom: 36px;",
       "file": "src/components/Footer/Footer.css",
-      "line": 77,
+      "line": 24,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-bottom: 36px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|244|padding-top: 36px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 244,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-top: 36px;"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|244|padding-top: 36px;",
+      "file": "src/components/Footer/Footer.css",
+      "line": 244,
+      "rule": "off-grid-spacing",
+      "snippet": "padding-top: 36px;"
+    },
+    {
+      "key": "src/components/footer/Footer.css|off-grid-spacing|73|gap: 10px;",
+      "file": "src/components/footer/Footer.css",
+      "line": 73,
       "rule": "off-grid-spacing",
       "snippet": "gap: 10px;"
+    },
+    {
+      "key": "src/components/Footer/Footer.css|off-grid-spacing|73|gap: 10px;",
+      "file": "src/components/Footer/Footer.css",
+      "line": 73,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 10px;"
+    },
+    {
+      "key": "src/components/Layout/Layout.js|inline-style|240|style={{",
+      "file": "src/components/Layout/Layout.js",
+      "line": 240,
+      "rule": "inline-style",
+      "snippet": "style={{"
     },
     {
       "key": "src/pages/About/About.css|forbidden-clamp|125|clamp(",
@@ -674,135 +884,149 @@
       "snippet": "padding: 0 18px;"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-clamp|123|clamp(",
+      "key": "src/pages/Features/Features.css|forbidden-clamp|143|clamp(",
       "file": "src/pages/Features/Features.css",
-      "line": 123,
+      "line": 143,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-clamp|183|clamp(",
+      "key": "src/pages/Features/Features.css|forbidden-clamp|203|clamp(",
       "file": "src/pages/Features/Features.css",
-      "line": 183,
+      "line": 203,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-clamp|38|clamp(",
+      "key": "src/pages/Features/Features.css|forbidden-clamp|58|clamp(",
       "file": "src/pages/Features/Features.css",
-      "line": 38,
+      "line": 58,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|142|rgba(0, 181, 226, 0.35)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|162|rgba(0, 181, 226, 0.35)",
       "file": "src/pages/Features/Features.css",
-      "line": 142,
+      "line": 162,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.35)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|144|rgba(0, 181, 226, 0.02)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|164|rgba(0, 181, 226, 0.02)",
       "file": "src/pages/Features/Features.css",
-      "line": 144,
+      "line": 164,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.02)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|144|rgba(0, 181, 226, 0.12)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|164|rgba(0, 181, 226, 0.12)",
       "file": "src/pages/Features/Features.css",
-      "line": 144,
+      "line": 164,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.12)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|149|rgba(0, 181, 226, 0.08)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|169|rgba(0, 181, 226, 0.08)",
       "file": "src/pages/Features/Features.css",
-      "line": 149,
+      "line": 169,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.08)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|150|rgba(0, 181, 226, 0.08)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|170|rgba(0, 181, 226, 0.08)",
       "file": "src/pages/Features/Features.css",
-      "line": 150,
+      "line": 170,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.08)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|173|rgba(0, 181, 226, 0.25)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|193|rgba(0, 181, 226, 0.25)",
       "file": "src/pages/Features/Features.css",
-      "line": 173,
+      "line": 193,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.25)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|190|rgba(197, 198, 199, 0.92)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|210|rgba(197, 198, 199, 0.92)",
       "file": "src/pages/Features/Features.css",
-      "line": 190,
+      "line": 210,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(197, 198, 199, 0.92)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|205|rgba(197, 198, 199, 0.45)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|225|rgba(197, 198, 199, 0.45)",
       "file": "src/pages/Features/Features.css",
-      "line": 205,
+      "line": 225,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(197, 198, 199, 0.45)"
     },
     {
-      "key": "src/pages/Features/Features.css|forbidden-rgb-color|211|rgba(0, 181, 226, 0.1)",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|231|rgba(0, 181, 226, 0.1)",
       "file": "src/pages/Features/Features.css",
-      "line": 211,
+      "line": 231,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 181, 226, 0.1)"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|107|margin-bottom: 6px;",
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|28|rgba(40, 120, 189, 0.18)",
       "file": "src/pages/Features/Features.css",
-      "line": 107,
+      "line": 28,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(40, 120, 189, 0.18)"
+    },
+    {
+      "key": "src/pages/Features/Features.css|forbidden-rgb-color|41|rgba(179, 220, 248, 0.2)",
+      "file": "src/pages/Features/Features.css",
+      "line": 41,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(179, 220, 248, 0.2)"
+    },
+    {
+      "key": "src/pages/Features/Features.css|off-grid-spacing|127|margin-bottom: 6px;",
+      "file": "src/pages/Features/Features.css",
+      "line": 127,
       "rule": "off-grid-spacing",
       "snippet": "margin-bottom: 6px;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|116|padding: 74px 0;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|136|padding: 74px 0;",
       "file": "src/pages/Features/Features.css",
-      "line": 116,
+      "line": 136,
       "rule": "off-grid-spacing",
       "snippet": "padding: 74px 0;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|172|padding: 72px 0;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|192|padding: 72px 0;",
       "file": "src/pages/Features/Features.css",
-      "line": 172,
+      "line": 192,
       "rule": "off-grid-spacing",
       "snippet": "padding: 72px 0;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|236|padding-top: 56px;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|256|padding-top: 56px;",
       "file": "src/pages/Features/Features.css",
-      "line": 236,
+      "line": 256,
       "rule": "off-grid-spacing",
       "snippet": "padding-top: 56px;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|237|padding-bottom: 56px;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|257|padding-bottom: 56px;",
       "file": "src/pages/Features/Features.css",
-      "line": 237,
+      "line": 257,
       "rule": "off-grid-spacing",
       "snippet": "padding-bottom: 56px;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|24|padding: 88px 0 72px;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|30|padding: 88px 0 72px;",
       "file": "src/pages/Features/Features.css",
-      "line": 24,
+      "line": 30,
       "rule": "off-grid-spacing",
       "snippet": "padding: 88px 0 72px;"
     },
     {
-      "key": "src/pages/Features/Features.css|off-grid-spacing|54|padding: 78px 0;",
+      "key": "src/pages/Features/Features.css|off-grid-spacing|74|padding: 78px 0;",
       "file": "src/pages/Features/Features.css",
-      "line": 54,
+      "line": 74,
       "rule": "off-grid-spacing",
       "snippet": "padding: 78px 0;"
     },
@@ -1129,438 +1353,130 @@
       "snippet": "padding-bottom: 56px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|forbidden-clamp|512|clamp(",
+      "key": "src/pages/Landing/Landing.css|forbidden-clamp|3|clamp(",
       "file": "src/pages/Landing/Landing.css",
-      "line": 512,
+      "line": 3,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Landing/Landing.css|forbidden-clamp|567|clamp(",
+      "key": "src/pages/Landing/Landing.css|forbidden-clamp|391|clamp(",
       "file": "src/pages/Landing/Landing.css",
-      "line": 567,
+      "line": 391,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Landing/Landing.css|forbidden-clamp|801|clamp(",
+      "key": "src/pages/Landing/Landing.css|forbidden-clamp|67|clamp(",
       "file": "src/pages/Landing/Landing.css",
-      "line": 801,
+      "line": 67,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|111|gap: 5px;",
+      "key": "src/pages/Landing/Landing.css|forbidden-effect|189|box-shadow:",
       "file": "src/pages/Landing/Landing.css",
-      "line": 111,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 5px;"
+      "line": 189,
+      "rule": "forbidden-effect",
+      "snippet": "box-shadow:"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|163|gap: 3px;",
+      "key": "src/pages/Landing/Landing.css|forbidden-hex-color|173|#b8c6d2",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 173,
+      "rule": "forbidden-hex-color",
+      "snippet": "#b8c6d2"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|forbidden-hex-color|59|#c7e1f7",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 59,
+      "rule": "forbidden-hex-color",
+      "snippet": "#c7e1f7"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|forbidden-hex-color|76|#d6e0e8",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 76,
+      "rule": "forbidden-hex-color",
+      "snippet": "#d6e0e8"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|forbidden-rgb-color|186|rgba(203, 213, 223, 0.8)",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 186,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(203, 213, 223, 0.8)"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|forbidden-rgb-color|57|rgba(232, 242, 251, 0.28)",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 57,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(232, 242, 251, 0.28)"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|forbidden-rgb-color|60|rgba(232, 242, 251, 0.08)",
+      "file": "src/pages/Landing/Landing.css",
+      "line": 60,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(232, 242, 251, 0.08)"
+    },
+    {
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|163|gap: 1px;",
       "file": "src/pages/Landing/Landing.css",
       "line": 163,
       "rule": "off-grid-spacing",
-      "snippet": "gap: 3px;"
+      "snippet": "gap: 1px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|227|margin-top: 2px;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|217|margin-top: 3px;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 227,
+      "line": 217,
       "rule": "off-grid-spacing",
-      "snippet": "margin-top: 2px;"
+      "snippet": "margin-top: 3px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|245|margin: 28px 0;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|289|margin: 5px 0;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 245,
+      "line": 289,
       "rule": "off-grid-spacing",
-      "snippet": "margin: 28px 0;"
+      "snippet": "margin: 5px 0;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|255|padding: 80px 0;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|35|padding: 72px 0 80px;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 255,
+      "line": 35,
       "rule": "off-grid-spacing",
-      "snippet": "padding: 80px 0;"
+      "snippet": "padding: 72px 0 80px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|261|padding: 0 40px;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|360|padding: 3px 7px;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 261,
+      "line": 360,
       "rule": "off-grid-spacing",
-      "snippet": "padding: 0 40px;"
+      "snippet": "padding: 3px 7px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|302|margin-bottom: 20px;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|496|padding: 48px 0 56px;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 302,
+      "line": 496,
       "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 20px;"
+      "snippet": "padding: 48px 0 56px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|335|padding-bottom: 1px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 335,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-bottom: 1px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|34|padding: 56px 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 34,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 56px 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|351|gap: 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 351,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|352|padding: 52px 32px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 352,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 52px 32px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|368|gap: 36px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 368,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 36px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|369|padding: 44px 24px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 369,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 44px 24px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|37|gap: 56px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 37,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 56px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|390|padding: 60px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 390,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 60px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|405|padding: 32px 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 405,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 32px 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|409|padding: 0 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 409,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 0 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|439|padding: 56px 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 439,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 56px 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|443|margin: 0 0 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 443,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|454|gap: 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 454,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|485|padding: 0 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 485,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 0 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|488|gap: 18px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 488,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 18px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|518|margin: 14px 0 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 518,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 14px 0 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|539|padding: 88px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 539,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 88px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|548|padding: 0 40px;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|548|padding: 0 10px;",
       "file": "src/pages/Landing/Landing.css",
       "line": 548,
       "rule": "off-grid-spacing",
-      "snippet": "padding: 0 40px;"
+      "snippet": "padding: 0 10px;"
     },
     {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|55|margin: 0 0 18px 0;",
+      "key": "src/pages/Landing/Landing.css|off-grid-spacing|93|padding: 0 18px;",
       "file": "src/pages/Landing/Landing.css",
-      "line": 55,
+      "line": 93,
       "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 18px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|553|margin: 0 0 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 553,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|557|margin: 0 0 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 557,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|566|margin: 0 0 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 566,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|587|gap: 18px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 587,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 18px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|592|padding: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 592,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|606|margin: 0 0 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 606,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|624|gap: 18px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 624,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 18px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|630|padding: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 630,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|637|margin-bottom: 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 637,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|642|margin: 0 0 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 642,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|649|padding-left: 18px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 649,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-left: 18px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|65|margin: 0 0 28px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 65,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 28px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|653|margin-bottom: 6px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 653,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 6px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|674|padding: 88px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 674,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 88px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|682|padding: 0 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 682,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 0 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|703|margin-top: 18px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 703,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-top: 18px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|714|gap: 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 714,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|733|padding: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 733,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|750|gap: 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 750,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|759|gap: 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 759,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|760|padding: 0 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 760,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 0 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|779|padding: 88px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 779,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 88px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|786|padding: 0 40px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 786,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 0 40px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|791|margin: 0 0 10px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 791,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 10px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|800|margin: 0 0 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 800,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|813|margin-top: 28px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 813,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-top: 28px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|817|gap: 14px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 817,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 14px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|862|padding: 64px 0;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 862,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 64px 0;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|868|padding-left: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 868,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-left: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|869|padding-right: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 869,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-right: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|890|padding-left: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 890,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-left: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|891|padding-right: 20px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 891,
-      "rule": "off-grid-spacing",
-      "snippet": "padding-right: 20px;"
-    },
-    {
-      "key": "src/pages/Landing/Landing.css|off-grid-spacing|895|margin-bottom: 28px;",
-      "file": "src/pages/Landing/Landing.css",
-      "line": 895,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 28px;"
+      "snippet": "padding: 0 18px;"
     },
     {
       "key": "src/pages/Pricing/Pricing.css|forbidden-clamp|209|clamp(",
@@ -1738,81 +1654,95 @@
       "snippet": "padding: 8px 10px;"
     },
     {
-      "key": "src/pages/Product/Product.css|forbidden-clamp|167|clamp(",
+      "key": "src/pages/Product/Product.css|forbidden-clamp|111|clamp(",
       "file": "src/pages/Product/Product.css",
-      "line": 167,
+      "line": 111,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Product/Product.css|forbidden-clamp|38|clamp(",
+      "key": "src/pages/Product/Product.css|forbidden-clamp|187|clamp(",
       "file": "src/pages/Product/Product.css",
-      "line": 38,
+      "line": 187,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Product/Product.css|forbidden-clamp|69|clamp(",
+      "key": "src/pages/Product/Product.css|forbidden-clamp|58|clamp(",
       "file": "src/pages/Product/Product.css",
-      "line": 69,
+      "line": 58,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Product/Product.css|forbidden-clamp|91|clamp(",
+      "key": "src/pages/Product/Product.css|forbidden-clamp|89|clamp(",
       "file": "src/pages/Product/Product.css",
-      "line": 91,
+      "line": 89,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/pages/Product/Product.css|forbidden-rgb-color|189|rgba(197, 198, 199, 0.45)",
+      "key": "src/pages/Product/Product.css|forbidden-rgb-color|209|rgba(197, 198, 199, 0.45)",
       "file": "src/pages/Product/Product.css",
-      "line": 189,
+      "line": 209,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(197, 198, 199, 0.45)"
     },
     {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|146|margin-bottom: 6px;",
+      "key": "src/pages/Product/Product.css|forbidden-rgb-color|40|rgba(154, 205, 245, 0.26)",
       "file": "src/pages/Product/Product.css",
-      "line": 146,
+      "line": 40,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(154, 205, 245, 0.26)"
+    },
+    {
+      "key": "src/pages/Product/Product.css|forbidden-rgb-color|41|rgba(40, 120, 189, 0.16)",
+      "file": "src/pages/Product/Product.css",
+      "line": 41,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(40, 120, 189, 0.16)"
+    },
+    {
+      "key": "src/pages/Product/Product.css|off-grid-spacing|104|padding: 80px 0;",
+      "file": "src/pages/Product/Product.css",
+      "line": 104,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 80px 0;"
+    },
+    {
+      "key": "src/pages/Product/Product.css|off-grid-spacing|166|margin-bottom: 6px;",
+      "file": "src/pages/Product/Product.css",
+      "line": 166,
       "rule": "off-grid-spacing",
       "snippet": "margin-bottom: 6px;"
     },
     {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|156|padding: 72px 0;",
+      "key": "src/pages/Product/Product.css|off-grid-spacing|176|padding: 72px 0;",
       "file": "src/pages/Product/Product.css",
-      "line": 156,
+      "line": 176,
       "rule": "off-grid-spacing",
       "snippet": "padding: 72px 0;"
     },
     {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|219|padding-top: 56px;",
+      "key": "src/pages/Product/Product.css|off-grid-spacing|239|padding-top: 56px;",
       "file": "src/pages/Product/Product.css",
-      "line": 219,
+      "line": 239,
       "rule": "off-grid-spacing",
       "snippet": "padding-top: 56px;"
     },
     {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|220|padding-bottom: 56px;",
+      "key": "src/pages/Product/Product.css|off-grid-spacing|240|padding-bottom: 56px;",
       "file": "src/pages/Product/Product.css",
-      "line": 220,
+      "line": 240,
       "rule": "off-grid-spacing",
       "snippet": "padding-bottom: 56px;"
     },
     {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|23|padding: 88px 0 72px;",
+      "key": "src/pages/Product/Product.css|off-grid-spacing|30|padding: 88px 0 72px;",
       "file": "src/pages/Product/Product.css",
-      "line": 23,
+      "line": 30,
       "rule": "off-grid-spacing",
       "snippet": "padding: 88px 0 72px;"
-    },
-    {
-      "key": "src/pages/Product/Product.css|off-grid-spacing|84|padding: 80px 0;",
-      "file": "src/pages/Product/Product.css",
-      "line": 84,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 80px 0;"
     },
     {
       "key": "src/pages/Support/Support.css|forbidden-clamp|119|clamp(",
@@ -2025,6 +1955,13 @@
       "snippet": "padding: 72px 0;"
     },
     {
+      "key": "src/styles/pages.css|forbidden-clamp|1027|clamp(",
+      "file": "src/styles/pages.css",
+      "line": 1027,
+      "rule": "forbidden-clamp",
+      "snippet": "clamp("
+    },
+    {
       "key": "src/styles/pages.css|forbidden-clamp|157|clamp(",
       "file": "src/styles/pages.css",
       "line": 157,
@@ -2032,681 +1969,793 @@
       "snippet": "clamp("
     },
     {
-      "key": "src/styles/pages.css|forbidden-clamp|635|clamp(",
+      "key": "src/styles/pages.css|forbidden-clamp|753|clamp(",
       "file": "src/styles/pages.css",
-      "line": 635,
+      "line": 753,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/styles/pages.css|forbidden-clamp|749|clamp(",
+      "key": "src/styles/pages.css|forbidden-clamp|867|clamp(",
       "file": "src/styles/pages.css",
-      "line": 749,
+      "line": 867,
       "rule": "forbidden-clamp",
       "snippet": "clamp("
     },
     {
-      "key": "src/styles/pages.css|forbidden-clamp|909|clamp(",
+      "key": "src/styles/pages.css|forbidden-effect|387|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 909,
-      "rule": "forbidden-clamp",
-      "snippet": "clamp("
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-effect|383|box-shadow:",
-      "file": "src/styles/pages.css",
-      "line": 383,
+      "line": 387,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|587|box-shadow:",
+      "key": "src/styles/pages.css|forbidden-effect|452|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 587,
+      "line": 452,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|658|backdrop-filter:",
+      "key": "src/styles/pages.css|forbidden-effect|557|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 658,
+      "line": 557,
+      "rule": "forbidden-effect",
+      "snippet": "box-shadow:"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-effect|586|box-shadow:",
+      "file": "src/styles/pages.css",
+      "line": 586,
+      "rule": "forbidden-effect",
+      "snippet": "box-shadow:"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-effect|705|box-shadow:",
+      "file": "src/styles/pages.css",
+      "line": 705,
+      "rule": "forbidden-effect",
+      "snippet": "box-shadow:"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-effect|776|backdrop-filter:",
+      "file": "src/styles/pages.css",
+      "line": 776,
       "rule": "forbidden-effect",
       "snippet": "backdrop-filter:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|687|box-shadow:",
+      "key": "src/styles/pages.css|forbidden-effect|805|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 687,
+      "line": 805,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|724|backdrop-filter:",
+      "key": "src/styles/pages.css|forbidden-effect|842|backdrop-filter:",
       "file": "src/styles/pages.css",
-      "line": 724,
+      "line": 842,
       "rule": "forbidden-effect",
       "snippet": "backdrop-filter:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|771|box-shadow:",
+      "key": "src/styles/pages.css|forbidden-effect|889|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 771,
+      "line": 889,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|780|box-shadow:",
+      "key": "src/styles/pages.css|forbidden-effect|898|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 780,
+      "line": 898,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-effect|827|box-shadow:",
+      "key": "src/styles/pages.css|forbidden-effect|945|box-shadow:",
       "file": "src/styles/pages.css",
-      "line": 827,
+      "line": 945,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/pages.css|forbidden-hex-color|571|#F8F9FB",
+      "key": "src/styles/pages.css|forbidden-hex-color|1075|#1E2328",
       "file": "src/styles/pages.css",
-      "line": 571,
-      "rule": "forbidden-hex-color",
-      "snippet": "#F8F9FB"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-hex-color|957|#1E2328",
-      "file": "src/styles/pages.css",
-      "line": 957,
+      "line": 1075,
       "rule": "forbidden-hex-color",
       "snippet": "#1E2328"
     },
     {
-      "key": "src/styles/pages.css|forbidden-pill-radius|1036|border-radius: 999px",
+      "key": "src/styles/pages.css|forbidden-hex-color|403|#6B6B6B",
       "file": "src/styles/pages.css",
-      "line": 1036,
+      "line": 403,
+      "rule": "forbidden-hex-color",
+      "snippet": "#6B6B6B"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|456|#6B6B6B",
+      "file": "src/styles/pages.css",
+      "line": 456,
+      "rule": "forbidden-hex-color",
+      "snippet": "#6B6B6B"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|476|#D95A3C",
+      "file": "src/styles/pages.css",
+      "line": 476,
+      "rule": "forbidden-hex-color",
+      "snippet": "#D95A3C"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|535|#6B6B6B",
+      "file": "src/styles/pages.css",
+      "line": 535,
+      "rule": "forbidden-hex-color",
+      "snippet": "#6B6B6B"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|545|#D95A3C",
+      "file": "src/styles/pages.css",
+      "line": 545,
+      "rule": "forbidden-hex-color",
+      "snippet": "#D95A3C"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|555|#111111",
+      "file": "src/styles/pages.css",
+      "line": 555,
+      "rule": "forbidden-hex-color",
+      "snippet": "#111111"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|576|#1A1A1A",
+      "file": "src/styles/pages.css",
+      "line": 576,
+      "rule": "forbidden-hex-color",
+      "snippet": "#1A1A1A"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|595|#1A1A1A",
+      "file": "src/styles/pages.css",
+      "line": 595,
+      "rule": "forbidden-hex-color",
+      "snippet": "#1A1A1A"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-hex-color|689|#F8F9FB",
+      "file": "src/styles/pages.css",
+      "line": 689,
+      "rule": "forbidden-hex-color",
+      "snippet": "#F8F9FB"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-pill-radius|1043|border-radius: 999px",
+      "file": "src/styles/pages.css",
+      "line": 1043,
       "rule": "forbidden-pill-radius",
       "snippet": "border-radius: 999px"
     },
     {
-      "key": "src/styles/pages.css|forbidden-pill-radius|622|border-radius: 999px",
+      "key": "src/styles/pages.css|forbidden-pill-radius|1097|border-radius: 999px",
       "file": "src/styles/pages.css",
-      "line": 622,
+      "line": 1097,
       "rule": "forbidden-pill-radius",
       "snippet": "border-radius: 999px"
     },
     {
-      "key": "src/styles/pages.css|forbidden-pill-radius|925|border-radius: 999px",
+      "key": "src/styles/pages.css|forbidden-pill-radius|1154|border-radius: 999px",
       "file": "src/styles/pages.css",
-      "line": 925,
+      "line": 1154,
       "rule": "forbidden-pill-radius",
       "snippet": "border-radius: 999px"
     },
     {
-      "key": "src/styles/pages.css|forbidden-pill-radius|979|border-radius: 999px",
+      "key": "src/styles/pages.css|forbidden-pill-radius|740|border-radius: 999px",
       "file": "src/styles/pages.css",
-      "line": 979,
+      "line": 740,
       "rule": "forbidden-pill-radius",
       "snippet": "border-radius: 999px"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|1003|rgba(255, 247, 237, 0.96)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1000|rgba(0, 126, 176, 0.06)",
       "file": "src/styles/pages.css",
-      "line": 1003,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(255, 247, 237, 0.96)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|1003|rgba(255, 251, 244, 0.96)",
-      "file": "src/styles/pages.css",
-      "line": 1003,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(255, 251, 244, 0.96)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|1007|rgba(239, 246, 255, 0.96)",
-      "file": "src/styles/pages.css",
-      "line": 1007,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(239, 246, 255, 0.96)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|1007|rgba(246, 250, 255, 0.96)",
-      "file": "src/styles/pages.css",
-      "line": 1007,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(246, 250, 255, 0.96)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|1037|rgba(0, 126, 176, 0.08)",
-      "file": "src/styles/pages.css",
-      "line": 1037,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 126, 176, 0.08)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|398|rgba(239, 68, 68, 0.35)",
-      "file": "src/styles/pages.css",
-      "line": 398,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(239, 68, 68, 0.35)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|435|rgba(0, 126, 176, 0.15)",
-      "file": "src/styles/pages.css",
-      "line": 435,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 126, 176, 0.15)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|687|rgba(5, 24, 43, 0.14)",
-      "file": "src/styles/pages.css",
-      "line": 687,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(5, 24, 43, 0.14)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|728|rgba(16, 185, 129, 0.18)",
-      "file": "src/styles/pages.css",
-      "line": 728,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(16, 185, 129, 0.18)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|732|rgba(239, 68, 68, 0.18)",
-      "file": "src/styles/pages.css",
-      "line": 732,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(239, 68, 68, 0.18)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|736|rgba(90, 200, 250, 0.20)",
-      "file": "src/styles/pages.css",
-      "line": 736,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(90, 200, 250, 0.20)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|768|rgba(222, 230, 239, 0.94)",
-      "file": "src/styles/pages.css",
-      "line": 768,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(222, 230, 239, 0.94)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|771|rgba(10, 35, 61, 0.08)",
-      "file": "src/styles/pages.css",
-      "line": 771,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(10, 35, 61, 0.08)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|780|rgba(10, 35, 61, 0.12)",
-      "file": "src/styles/pages.css",
-      "line": 780,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(10, 35, 61, 0.12)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|787|rgba(0, 126, 176, 0.07)",
-      "file": "src/styles/pages.css",
-      "line": 787,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 126, 176, 0.07)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|795|rgba(0, 126, 176, 0.18)",
-      "file": "src/styles/pages.css",
-      "line": 795,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 126, 176, 0.18)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|795|rgba(0, 59, 115, 0.14)",
-      "file": "src/styles/pages.css",
-      "line": 795,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 59, 115, 0.14)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|824|rgba(222, 230, 239, 0.94)",
-      "file": "src/styles/pages.css",
-      "line": 824,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(222, 230, 239, 0.94)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|827|rgba(10, 35, 61, 0.08)",
-      "file": "src/styles/pages.css",
-      "line": 827,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(10, 35, 61, 0.08)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|850|rgba(0, 126, 176, 0.06)",
-      "file": "src/styles/pages.css",
-      "line": 850,
+      "line": 1000,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 126, 176, 0.06)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|870|rgba(16, 185, 129, 0.06)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1000|rgba(0, 126, 176, 0.18)",
       "file": "src/styles/pages.css",
-      "line": 870,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(16, 185, 129, 0.06)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|870|rgba(16, 185, 129, 0.16)",
-      "file": "src/styles/pages.css",
-      "line": 870,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(16, 185, 129, 0.16)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|874|rgba(239, 68, 68, 0.06)",
-      "file": "src/styles/pages.css",
-      "line": 874,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(239, 68, 68, 0.06)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|874|rgba(239, 68, 68, 0.14)",
-      "file": "src/styles/pages.css",
-      "line": 874,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(239, 68, 68, 0.14)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|878|rgba(245, 158, 11, 0.06)",
-      "file": "src/styles/pages.css",
-      "line": 878,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(245, 158, 11, 0.06)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|878|rgba(245, 158, 11, 0.16)",
-      "file": "src/styles/pages.css",
-      "line": 878,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(245, 158, 11, 0.16)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|882|rgba(0, 126, 176, 0.06)",
-      "file": "src/styles/pages.css",
-      "line": 882,
-      "rule": "forbidden-rgb-color",
-      "snippet": "rgba(0, 126, 176, 0.06)"
-    },
-    {
-      "key": "src/styles/pages.css|forbidden-rgb-color|882|rgba(0, 126, 176, 0.18)",
-      "file": "src/styles/pages.css",
-      "line": 882,
+      "line": 1000,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 126, 176, 0.18)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|886|rgba(17, 24, 39, 0.16)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1004|rgba(17, 24, 39, 0.16)",
       "file": "src/styles/pages.css",
-      "line": 886,
+      "line": 1004,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(17, 24, 39, 0.16)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|886|rgba(239, 68, 68, 0.08)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1004|rgba(239, 68, 68, 0.08)",
       "file": "src/styles/pages.css",
-      "line": 886,
+      "line": 1004,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(239, 68, 68, 0.08)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|933|rgba(16, 185, 129, 0.12)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1051|rgba(16, 185, 129, 0.12)",
       "file": "src/styles/pages.css",
-      "line": 933,
+      "line": 1051,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(16, 185, 129, 0.12)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|938|rgba(239, 68, 68, 0.10)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1056|rgba(239, 68, 68, 0.10)",
       "file": "src/styles/pages.css",
-      "line": 938,
+      "line": 1056,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(239, 68, 68, 0.10)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|968|rgba(226, 233, 241, 0.9)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1086|rgba(226, 233, 241, 0.9)",
       "file": "src/styles/pages.css",
-      "line": 968,
+      "line": 1086,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(226, 233, 241, 0.9)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|972|rgba(240, 247, 252, 0.72)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1090|rgba(240, 247, 252, 0.72)",
       "file": "src/styles/pages.css",
-      "line": 972,
+      "line": 1090,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(240, 247, 252, 0.72)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|980|rgba(0, 126, 176, 0.10)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1098|rgba(0, 126, 176, 0.10)",
       "file": "src/styles/pages.css",
-      "line": 980,
+      "line": 1098,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(0, 126, 176, 0.10)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|998|rgba(223, 229, 238, 0.95)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1116|rgba(223, 229, 238, 0.95)",
       "file": "src/styles/pages.css",
-      "line": 998,
+      "line": 1116,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(223, 229, 238, 0.95)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|999|rgba(244, 248, 252, 0.96)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1117|rgba(244, 248, 252, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 999,
+      "line": 1117,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(244, 248, 252, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|forbidden-rgb-color|999|rgba(249, 251, 254, 0.96)",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1117|rgba(249, 251, 254, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 999,
+      "line": 1117,
       "rule": "forbidden-rgb-color",
       "snippet": "rgba(249, 251, 254, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1048|padding: 20px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1121|rgba(255, 247, 237, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 1048,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 20px;"
+      "line": 1121,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(255, 247, 237, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1062|padding: 14px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1121|rgba(255, 251, 244, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 1062,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 14px;"
+      "line": 1121,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(255, 251, 244, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1073|padding: 22px 18px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1125|rgba(239, 246, 255, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 1073,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 22px 18px;"
+      "line": 1125,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(239, 246, 255, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1323|gap: 2px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1125|rgba(246, 250, 255, 0.96)",
       "file": "src/styles/pages.css",
-      "line": 1323,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 2px;"
+      "line": 1125,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(246, 250, 255, 0.96)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1356|gap: 2px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|1155|rgba(0, 126, 176, 0.08)",
       "file": "src/styles/pages.css",
-      "line": 1356,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 2px;"
+      "line": 1155,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(0, 126, 176, 0.08)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1388|margin-bottom: 2px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|805|rgba(5, 24, 43, 0.14)",
       "file": "src/styles/pages.css",
-      "line": 1388,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 2px;"
+      "line": 805,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(5, 24, 43, 0.14)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1440|padding: 3px 10px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|846|rgba(16, 185, 129, 0.18)",
       "file": "src/styles/pages.css",
-      "line": 1440,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 3px 10px;"
+      "line": 846,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(16, 185, 129, 0.18)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1488|gap: 2px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|850|rgba(239, 68, 68, 0.18)",
       "file": "src/styles/pages.css",
-      "line": 1488,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 2px;"
+      "line": 850,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(239, 68, 68, 0.18)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1524|padding: 2px var(--space-sm);",
+      "key": "src/styles/pages.css|forbidden-rgb-color|854|rgba(90, 200, 250, 0.20)",
       "file": "src/styles/pages.css",
-      "line": 1524,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 2px var(--space-sm);"
+      "line": 854,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(90, 200, 250, 0.20)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1558|padding: 2px 10px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|886|rgba(222, 230, 239, 0.94)",
       "file": "src/styles/pages.css",
-      "line": 1558,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 2px 10px;"
+      "line": 886,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(222, 230, 239, 0.94)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1697|margin-bottom: 2px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|889|rgba(10, 35, 61, 0.08)",
       "file": "src/styles/pages.css",
-      "line": 1697,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-bottom: 2px;"
+      "line": 889,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(10, 35, 61, 0.08)"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|1782|padding: 3px 0;",
-      "file": "src/styles/pages.css",
-      "line": 1782,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 3px 0;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|570|padding: 28px;",
-      "file": "src/styles/pages.css",
-      "line": 570,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 28px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|585|padding: 28px;",
-      "file": "src/styles/pages.css",
-      "line": 585,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 28px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|610|gap: 20px;",
-      "file": "src/styles/pages.css",
-      "line": 610,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 20px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|621|padding: 6px 12px;",
-      "file": "src/styles/pages.css",
-      "line": 621,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 6px 12px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|640|margin: 14px 0 0;",
-      "file": "src/styles/pages.css",
-      "line": 640,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 14px 0 0;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|654|padding: 6px;",
-      "file": "src/styles/pages.css",
-      "line": 654,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 6px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|672|padding: 10px 14px;",
-      "file": "src/styles/pages.css",
-      "line": 672,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 10px 14px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|695|padding: 10px 14px;",
-      "file": "src/styles/pages.css",
-      "line": 695,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 10px 14px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|711|gap: 14px;",
-      "file": "src/styles/pages.css",
-      "line": 711,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 14px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|712|margin-top: 22px;",
-      "file": "src/styles/pages.css",
-      "line": 712,
-      "rule": "off-grid-spacing",
-      "snippet": "margin-top: 22px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|720|padding: 18px 20px;",
-      "file": "src/styles/pages.css",
-      "line": 720,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 18px 20px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|756|gap: 18px;",
-      "file": "src/styles/pages.css",
-      "line": 756,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 18px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|766|gap: 14px;",
-      "file": "src/styles/pages.css",
-      "line": 766,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 14px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|800|margin: 0 0 6px;",
-      "file": "src/styles/pages.css",
-      "line": 800,
-      "rule": "off-grid-spacing",
-      "snippet": "margin: 0 0 6px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|835|gap: 18px;",
-      "file": "src/styles/pages.css",
-      "line": 835,
-      "rule": "off-grid-spacing",
-      "snippet": "gap: 18px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|843|padding: 22px;",
-      "file": "src/styles/pages.css",
-      "line": 843,
-      "rule": "off-grid-spacing",
-      "snippet": "padding: 22px;"
-    },
-    {
-      "key": "src/styles/pages.css|off-grid-spacing|898|margin: 0 0 14px;",
+      "key": "src/styles/pages.css|forbidden-rgb-color|898|rgba(10, 35, 61, 0.12)",
       "file": "src/styles/pages.css",
       "line": 898,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(10, 35, 61, 0.12)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|905|rgba(0, 126, 176, 0.07)",
+      "file": "src/styles/pages.css",
+      "line": 905,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(0, 126, 176, 0.07)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|913|rgba(0, 126, 176, 0.18)",
+      "file": "src/styles/pages.css",
+      "line": 913,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(0, 126, 176, 0.18)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|913|rgba(0, 59, 115, 0.14)",
+      "file": "src/styles/pages.css",
+      "line": 913,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(0, 59, 115, 0.14)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|942|rgba(222, 230, 239, 0.94)",
+      "file": "src/styles/pages.css",
+      "line": 942,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(222, 230, 239, 0.94)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|945|rgba(10, 35, 61, 0.08)",
+      "file": "src/styles/pages.css",
+      "line": 945,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(10, 35, 61, 0.08)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|968|rgba(0, 126, 176, 0.06)",
+      "file": "src/styles/pages.css",
+      "line": 968,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(0, 126, 176, 0.06)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|988|rgba(16, 185, 129, 0.06)",
+      "file": "src/styles/pages.css",
+      "line": 988,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(16, 185, 129, 0.06)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|988|rgba(16, 185, 129, 0.16)",
+      "file": "src/styles/pages.css",
+      "line": 988,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(16, 185, 129, 0.16)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|992|rgba(239, 68, 68, 0.06)",
+      "file": "src/styles/pages.css",
+      "line": 992,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(239, 68, 68, 0.06)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|992|rgba(239, 68, 68, 0.14)",
+      "file": "src/styles/pages.css",
+      "line": 992,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(239, 68, 68, 0.14)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|996|rgba(245, 158, 11, 0.06)",
+      "file": "src/styles/pages.css",
+      "line": 996,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(245, 158, 11, 0.06)"
+    },
+    {
+      "key": "src/styles/pages.css|forbidden-rgb-color|996|rgba(245, 158, 11, 0.16)",
+      "file": "src/styles/pages.css",
+      "line": 996,
+      "rule": "forbidden-rgb-color",
+      "snippet": "rgba(245, 158, 11, 0.16)"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1016|margin: 0 0 14px;",
+      "file": "src/styles/pages.css",
+      "line": 1016,
       "rule": "off-grid-spacing",
       "snippet": "margin: 0 0 14px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|907|margin: 0 0 10px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1025|margin: 0 0 10px;",
       "file": "src/styles/pages.css",
-      "line": 907,
+      "line": 1025,
       "rule": "off-grid-spacing",
       "snippet": "margin: 0 0 10px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|924|padding: 5px 10px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1042|padding: 5px 10px;",
       "file": "src/styles/pages.css",
-      "line": 924,
+      "line": 1042,
       "rule": "off-grid-spacing",
       "snippet": "padding: 5px 10px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|945|margin: 0 0 18px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1063|margin: 0 0 18px;",
       "file": "src/styles/pages.css",
-      "line": 945,
+      "line": 1063,
       "rule": "off-grid-spacing",
       "snippet": "margin: 0 0 18px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|956|padding: 14px 16px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1074|padding: 14px 16px;",
       "file": "src/styles/pages.css",
-      "line": 956,
+      "line": 1074,
       "rule": "off-grid-spacing",
       "snippet": "padding: 14px 16px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|967|padding: 14px 16px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1085|padding: 14px 16px;",
       "file": "src/styles/pages.css",
-      "line": 967,
+      "line": 1085,
       "rule": "off-grid-spacing",
       "snippet": "padding: 14px 16px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|978|padding: 6px 10px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1096|padding: 6px 10px;",
       "file": "src/styles/pages.css",
-      "line": 978,
+      "line": 1096,
       "rule": "off-grid-spacing",
       "snippet": "padding: 6px 10px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|992|gap: 14px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1110|gap: 14px;",
       "file": "src/styles/pages.css",
-      "line": 992,
+      "line": 1110,
       "rule": "off-grid-spacing",
       "snippet": "gap: 14px;"
     },
     {
-      "key": "src/styles/pages.css|off-grid-spacing|996|padding: 16px 18px;",
+      "key": "src/styles/pages.css|off-grid-spacing|1114|padding: 16px 18px;",
       "file": "src/styles/pages.css",
-      "line": 996,
+      "line": 1114,
       "rule": "off-grid-spacing",
       "snippet": "padding: 16px 18px;"
     },
     {
-      "key": "src/styles/public-site.css|forbidden-effect|234|box-shadow:",
+      "key": "src/styles/pages.css|off-grid-spacing|1166|padding: 20px;",
+      "file": "src/styles/pages.css",
+      "line": 1166,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 20px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1180|padding: 14px;",
+      "file": "src/styles/pages.css",
+      "line": 1180,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1191|padding: 22px 18px;",
+      "file": "src/styles/pages.css",
+      "line": 1191,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 22px 18px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1487|gap: 2px;",
+      "file": "src/styles/pages.css",
+      "line": 1487,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 2px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1520|gap: 2px;",
+      "file": "src/styles/pages.css",
+      "line": 1520,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 2px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1559|margin-bottom: 2px;",
+      "file": "src/styles/pages.css",
+      "line": 1559,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-bottom: 2px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1625|padding: 3px 10px;",
+      "file": "src/styles/pages.css",
+      "line": 1625,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 3px 10px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1684|gap: 2px;",
+      "file": "src/styles/pages.css",
+      "line": 1684,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 2px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1733|padding: 2px var(--space-sm);",
+      "file": "src/styles/pages.css",
+      "line": 1733,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 2px var(--space-sm);"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1776|padding: 2px 10px;",
+      "file": "src/styles/pages.css",
+      "line": 1776,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 2px 10px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|1922|margin-bottom: 2px;",
+      "file": "src/styles/pages.css",
+      "line": 1922,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-bottom: 2px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|2015|padding: 3px 0;",
+      "file": "src/styles/pages.css",
+      "line": 2015,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 3px 0;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|370|margin-bottom: 28px;",
+      "file": "src/styles/pages.css",
+      "line": 370,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-bottom: 28px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|391|margin: 0 0 6px;",
+      "file": "src/styles/pages.css",
+      "line": 391,
+      "rule": "off-grid-spacing",
+      "snippet": "margin: 0 0 6px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|410|padding: 10px 16px;",
+      "file": "src/styles/pages.css",
+      "line": 410,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 10px 16px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|422|margin-bottom: 6px;",
+      "file": "src/styles/pages.css",
+      "line": 422,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-bottom: 6px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|438|padding: 0 14px;",
+      "file": "src/styles/pages.css",
+      "line": 438,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 0 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|466|padding: 0 20px;",
+      "file": "src/styles/pages.css",
+      "line": 466,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 0 20px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|492|padding: 0 14px;",
+      "file": "src/styles/pages.css",
+      "line": 492,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 0 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|531|margin-top: 20px;",
+      "file": "src/styles/pages.css",
+      "line": 531,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-top: 20px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|688|padding: 28px;",
+      "file": "src/styles/pages.css",
+      "line": 688,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 28px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|703|padding: 28px;",
+      "file": "src/styles/pages.css",
+      "line": 703,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 28px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|728|gap: 20px;",
+      "file": "src/styles/pages.css",
+      "line": 728,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 20px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|739|padding: 6px 12px;",
+      "file": "src/styles/pages.css",
+      "line": 739,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 6px 12px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|758|margin: 14px 0 0;",
+      "file": "src/styles/pages.css",
+      "line": 758,
+      "rule": "off-grid-spacing",
+      "snippet": "margin: 14px 0 0;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|772|padding: 6px;",
+      "file": "src/styles/pages.css",
+      "line": 772,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 6px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|790|padding: 10px 14px;",
+      "file": "src/styles/pages.css",
+      "line": 790,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 10px 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|813|padding: 10px 14px;",
+      "file": "src/styles/pages.css",
+      "line": 813,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 10px 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|829|gap: 14px;",
+      "file": "src/styles/pages.css",
+      "line": 829,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|830|margin-top: 22px;",
+      "file": "src/styles/pages.css",
+      "line": 830,
+      "rule": "off-grid-spacing",
+      "snippet": "margin-top: 22px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|838|padding: 18px 20px;",
+      "file": "src/styles/pages.css",
+      "line": 838,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 18px 20px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|874|gap: 18px;",
+      "file": "src/styles/pages.css",
+      "line": 874,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 18px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|884|gap: 14px;",
+      "file": "src/styles/pages.css",
+      "line": 884,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 14px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|918|margin: 0 0 6px;",
+      "file": "src/styles/pages.css",
+      "line": 918,
+      "rule": "off-grid-spacing",
+      "snippet": "margin: 0 0 6px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|953|gap: 18px;",
+      "file": "src/styles/pages.css",
+      "line": 953,
+      "rule": "off-grid-spacing",
+      "snippet": "gap: 18px;"
+    },
+    {
+      "key": "src/styles/pages.css|off-grid-spacing|961|padding: 22px;",
+      "file": "src/styles/pages.css",
+      "line": 961,
+      "rule": "off-grid-spacing",
+      "snippet": "padding: 22px;"
+    },
+    {
+      "key": "src/styles/public-site.css|forbidden-effect|241|box-shadow:",
       "file": "src/styles/public-site.css",
-      "line": 234,
+      "line": 241,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/public-site.css|forbidden-effect|446|box-shadow:",
+      "key": "src/styles/public-site.css|forbidden-effect|527|box-shadow:",
       "file": "src/styles/public-site.css",
-      "line": 446,
+      "line": 527,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/public-site.css|forbidden-effect|447|backdrop-filter:",
+      "key": "src/styles/public-site.css|forbidden-effect|528|backdrop-filter:",
       "file": "src/styles/public-site.css",
-      "line": 447,
+      "line": 528,
       "rule": "forbidden-effect",
       "snippet": "backdrop-filter:"
     },
     {
-      "key": "src/styles/public-site.css|forbidden-effect|517|box-shadow:",
+      "key": "src/styles/public-site.css|forbidden-effect|596|box-shadow:",
       "file": "src/styles/public-site.css",
-      "line": 517,
+      "line": 596,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     },
     {
-      "key": "src/styles/public-site.css|forbidden-effect|552|box-shadow:",
+      "key": "src/styles/public-site.css|forbidden-effect|631|box-shadow:",
       "file": "src/styles/public-site.css",
-      "line": 552,
+      "line": 631,
       "rule": "forbidden-effect",
       "snippet": "box-shadow:"
     }
