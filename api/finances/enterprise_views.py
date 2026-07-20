@@ -24,6 +24,7 @@ from .models import (
     Organization, Entity, TeamMember, Role, Permission, TaxExposure, ROLE_ORG_OWNER, ROLE_CFO,
     ROLE_FINANCE_ANALYST, ROLE_VIEWER, ROLE_EXTERNAL_ADVISOR,
     TaxProfile, TaxRegimeRegistry, TaxCalculation, TaxFiling, TaxAuditLog, TaxRuleSetVersion, TaxRiskAlert, ComplianceDeadline, CashflowForecast, AuditLog, PlatformAuditEvent, PlatformTask, EntityDepartment,
+    GovernancePolicy, GovernanceAmendment, GovernanceVote,
     Budget, Scenario, Consolidation,
     EntityRole, EntityStaff, BankAccount, Wallet, ComplianceDocument,
     StaffPayrollProfile, PayrollComponent, StaffPayrollComponentAssignment,
@@ -51,13 +52,14 @@ from .models import (
     ClientInvoice, ClientInvoiceLineItem, ClientSubscription, WhiteLabelBranding,
     BankingIntegration, BankingTransaction, BankingConsentLog, BankingSyncRun,
     BankingCategorizationRule, BankingCategorizationDecision, EmbeddedPayment, AutomationWorkflow,
-    AutomationExecution, AutomationArtifact, FirmMetric, ClientMarketplaceIntegration
+    AutomationExecution, AutomationArtifact, FirmMetric, ClientMarketplaceIntegration, DeveloperModuleInstallation
 )
 from .serializers import (
     OrganizationSerializer, EntitySerializer, EntityDetailSerializer,
     TeamMemberSerializer, RoleSerializer, PermissionSerializer,
     TaxExposureSerializer, TaxProfileSerializer, ComplianceDeadlineSerializer,
-    CashflowForecastSerializer, AuditLogSerializer, PlatformAuditEventSerializer, OrgOverviewSerializer,
+    CashflowForecastSerializer, AuditLogSerializer, PlatformAuditEventSerializer, GovernancePolicySerializer,
+    GovernanceAmendmentSerializer, GovernanceVoteSerializer, OrgOverviewSerializer,
     EntityDepartmentSerializer, EntityRoleSerializer, EntityStaffSerializer,
     StaffPayrollProfileSerializer, PayrollComponentSerializer, StaffPayrollComponentAssignmentSerializer,
     LeaveTypeSerializer, LeaveBalanceSerializer, LeaveRequestSerializer, PayrollBankOriginatorProfileSerializer, PayrollRunSerializer,
@@ -90,7 +92,7 @@ from .serializers import (
     ClientInvoiceSerializer, ClientInvoiceLineItemSerializer, ClientSubscriptionSerializer,
     WhiteLabelBrandingSerializer, BankingIntegrationSerializer, BankingTransactionSerializer,
     EmbeddedPaymentSerializer, AutomationWorkflowSerializer, AutomationExecutionSerializer, AutomationArtifactSerializer,
-    FirmMetricSerializer, ClientMarketplaceIntegrationSerializer
+    FirmMetricSerializer, ClientMarketplaceIntegrationSerializer, DeveloperModuleInstallationSerializer
 )
 from .banking_services import (
     complete_oauth_consent,
@@ -119,6 +121,7 @@ from .accounting_object_controls import (
     submit_accounting_object,
 )
 from .intercompany_engine import post_intercompany_transaction
+from .platform_foundation import log_platform_audit_event
 from .payroll_bank_exports import list_bank_export_options
 from .tax_regimes import build_regime_rules, build_regime_payload, resolve_regime_code
 from .tax_engine import persist_tax_calculation, build_tax_filing, log_tax_audit
@@ -2133,6 +2136,68 @@ class PlatformAuditEventViewSet(viewsets.ReadOnlyModelViewSet):
                 | Q(search_text__icontains=search_query)
             )
         return queryset
+
+
+class GovernancePolicyViewSet(viewsets.ModelViewSet):
+    serializer_class = GovernancePolicySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return GovernancePolicy.objects.filter(
+            organization__in=_accessible_organizations_queryset(self.request.user)
+        ).select_related('organization', 'owner').prefetch_related('amendments')
+
+    def perform_create(self, serializer):
+        organization = serializer.validated_data['organization']
+        if not _accessible_organizations_queryset(self.request.user).filter(pk=organization.pk).exists():
+            raise PermissionDenied('You do not have access to this organization.')
+        serializer.save(owner=self.request.user)
+
+
+class GovernanceAmendmentViewSet(viewsets.ModelViewSet):
+    serializer_class = GovernanceAmendmentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return GovernanceAmendment.objects.filter(
+            policy__organization__in=_accessible_organizations_queryset(self.request.user)
+        ).select_related('policy', 'submitted_by').prefetch_related('votes')
+
+    def perform_create(self, serializer):
+        policy = serializer.validated_data['policy']
+        if not GovernancePolicy.objects.filter(
+            pk=policy.pk,
+            organization__in=_accessible_organizations_queryset(self.request.user),
+        ).exists():
+            raise PermissionDenied('You do not have access to this policy.')
+        serializer.save(submitted_by=self.request.user, submitted_at=timezone.now())
+
+
+class GovernanceVoteViewSet(viewsets.ModelViewSet):
+    serializer_class = GovernanceVoteSerializer
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'post', 'head', 'options']
+
+    def get_queryset(self):
+        return GovernanceVote.objects.filter(
+            amendment__policy__organization__in=_accessible_organizations_queryset(self.request.user)
+        ).select_related('amendment', 'voter')
+
+    def perform_create(self, serializer):
+        amendment = serializer.validated_data['amendment']
+        if not GovernanceAmendment.objects.filter(
+            pk=amendment.pk,
+            policy__organization__in=_accessible_organizations_queryset(self.request.user),
+        ).exists():
+            raise PermissionDenied('You do not have access to this amendment.')
+        now = timezone.now()
+        if amendment.status != 'voting':
+            raise ValidationError('Votes are only accepted while an amendment is in voting.')
+        if amendment.voting_opens_at and now < amendment.voting_opens_at:
+            raise ValidationError('The voting window has not opened.')
+        if amendment.voting_closes_at and now > amendment.voting_closes_at:
+            raise ValidationError('The voting window has closed.')
+        serializer.save(voter=self.request.user)
 
 
 # ============ Entity-Specific ViewSets ============
@@ -5694,3 +5759,43 @@ class ClientMarketplaceIntegrationViewSet(viewsets.ModelViewSet):
         if org_id:
             return ClientMarketplaceIntegration.objects.filter(organization__in=accessible_orgs, organization_id=org_id)
         return ClientMarketplaceIntegration.objects.filter(organization__in=accessible_orgs)
+
+
+class DeveloperModuleInstallationViewSet(viewsets.ModelViewSet):
+    """Deploy governed modules and retain each installation in the platform audit stream."""
+
+    serializer_class = DeveloperModuleInstallationSerializer
+    permission_classes = [IsAuthenticated]
+    TIER_ORDER = {'basic': 0, 'professional': 1, 'enterprise': 2, 'institutional': 3}
+
+    def get_queryset(self):
+        accessible_orgs = _accessible_organizations_queryset(self.request.user)
+        organization_id = self.request.query_params.get('organization')
+        queryset = DeveloperModuleInstallation.objects.filter(organization__in=accessible_orgs)
+        return queryset.filter(organization_id=organization_id) if organization_id else queryset
+
+    def _organization_tier(self, organization):
+        return (organization.settings or {}).get('subscription_tier', 'basic').lower()
+
+    def perform_create(self, serializer):
+        organization = serializer.validated_data['organization']
+        required_tier = serializer.validated_data.get('required_tier', 'basic')
+        current_tier = self._organization_tier(organization)
+        if self.TIER_ORDER.get(current_tier, 0) < self.TIER_ORDER[required_tier]:
+            raise ValidationError({'required_tier': f'{required_tier.title()} subscription required for this module.'})
+        installation = serializer.save(installed_by=self.request.user)
+        log_platform_audit_event(
+            domain='developer_marketplace', event_type='module.deployed', action='module.deployed',
+            resource_type='DeveloperModuleInstallation', resource_id=installation.id, resource_name=installation.module_name,
+            summary=f'Deployed {installation.module_name}', actor=self.request.user, organization=organization,
+            metadata={'module_key': installation.module_key, 'version': installation.version, 'required_tier': required_tier},
+        )
+
+    def perform_update(self, serializer):
+        installation = serializer.save()
+        log_platform_audit_event(
+            domain='developer_marketplace', event_type='module.updated', action='module.updated',
+            resource_type='DeveloperModuleInstallation', resource_id=installation.id, resource_name=installation.module_name,
+            summary=f'Updated {installation.module_name}', actor=self.request.user, organization=installation.organization,
+            metadata={'module_key': installation.module_key, 'version': installation.version, 'status': installation.status},
+        )

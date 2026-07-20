@@ -1455,6 +1455,96 @@ class PlatformAuditEvent(models.Model):
         return f"{self.domain}:{self.event_type} {self.resource_type}#{self.resource_id}"
 
 
+GOVERNANCE_POLICY_STATUS_CHOICES = [
+    ('draft', 'Draft'), ('active', 'Active'), ('superseded', 'Superseded'), ('archived', 'Archived'),
+]
+GOVERNANCE_AMENDMENT_TYPE_CHOICES = [
+    ('standard', 'Standard'), ('operational', 'Operational'), ('ethical_security', 'Ethical / Security'),
+    ('constitutional', 'Constitutional'), ('sovereignty', 'Sovereignty'), ('emergency', 'Emergency'),
+]
+GOVERNANCE_AMENDMENT_STATUS_CHOICES = [
+    ('draft', 'Draft'), ('internal_review', 'Internal Review'), ('council_review', 'Council Review'),
+    ('voting', 'Voting'), ('approved', 'Approved'), ('rejected', 'Rejected'), ('published', 'Published'),
+]
+GOVERNANCE_VOTE_CHOICES = [('approve', 'Approve'), ('reject', 'Reject'), ('abstain', 'Abstain')]
+
+
+class GovernancePolicy(models.Model):
+    """Versioned governance policy owned by an organization."""
+
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='governance_policies')
+    policy_code = models.CharField(max_length=50)
+    title = models.CharField(max_length=255)
+    edition = models.CharField(max_length=50, default='1.0')
+    status = models.CharField(max_length=20, choices=GOVERNANCE_POLICY_STATUS_CHOICES, default='draft')
+    summary = models.TextField(blank=True)
+    source_document = models.CharField(max_length=500, blank=True)
+    effective_date = models.DateField(null=True, blank=True)
+    next_review_date = models.DateField(null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='governance_policies_owned')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['policy_code', '-created_at']
+        constraints = [models.UniqueConstraint(fields=['organization', 'policy_code', 'edition'], name='unique_governance_policy_edition')]
+
+    def __str__(self):
+        return f"{self.policy_code} - {self.title} (Edition {self.edition})"
+
+
+class GovernanceAmendment(models.Model):
+    """Controlled amendment with the reviews required by the governance policy."""
+
+    policy = models.ForeignKey(GovernancePolicy, on_delete=models.CASCADE, related_name='amendments')
+    amendment_number = models.CharField(max_length=50)
+    title = models.CharField(max_length=255)
+    amendment_type = models.CharField(max_length=20, choices=GOVERNANCE_AMENDMENT_TYPE_CHOICES, default='standard')
+    status = models.CharField(max_length=20, choices=GOVERNANCE_AMENDMENT_STATUS_CHOICES, default='draft')
+    rationale = models.TextField()
+    impact_analysis = models.TextField(blank=True)
+    ethical_review = models.TextField(blank=True)
+    sovereignty_check = models.TextField(blank=True)
+    operational_feasibility = models.TextField(blank=True)
+    security_implications = models.TextField(blank=True)
+    implementation_timeline = models.CharField(max_length=255, blank=True)
+    submitted_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='governance_amendments_submitted')
+    submitted_at = models.DateTimeField(null=True, blank=True)
+    voting_opens_at = models.DateTimeField(null=True, blank=True)
+    voting_closes_at = models.DateTimeField(null=True, blank=True)
+    approved_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        constraints = [models.UniqueConstraint(fields=['policy', 'amendment_number'], name='unique_governance_amendment_number')]
+
+    @property
+    def required_approval_percent(self):
+        return {'standard': 60, 'operational': 70, 'ethical_security': 75, 'constitutional': 80, 'sovereignty': 90, 'emergency': 75}[self.amendment_type]
+
+    def __str__(self):
+        return f"{self.amendment_number} - {self.title}"
+
+
+class GovernanceVote(models.Model):
+    """One verified vote per member for a governance amendment."""
+
+    amendment = models.ForeignKey(GovernanceAmendment, on_delete=models.CASCADE, related_name='votes')
+    voter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='governance_votes')
+    decision = models.CharField(max_length=10, choices=GOVERNANCE_VOTE_CHOICES)
+    verified_at = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['-verified_at']
+        constraints = [models.UniqueConstraint(fields=['amendment', 'voter'], name='unique_governance_vote_per_member')]
+
+    def __str__(self):
+        return f"{self.amendment.amendment_number} - {self.voter} ({self.decision})"
+
+
 class PlatformTask(models.Model):
     """Unified task layer that can aggregate work across product domains."""
 
@@ -4812,6 +4902,38 @@ class ClientMarketplaceIntegration(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.client.name}"
+
+
+class DeveloperModuleInstallation(models.Model):
+    """Organization-scoped deployment record for AtonixCorp marketplace modules."""
+
+    TIER_CHOICES = [
+        ('basic', 'Basic'),
+        ('professional', 'Professional'),
+        ('enterprise', 'Enterprise'),
+        ('institutional', 'Institutional'),
+    ]
+
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='developer_module_installations')
+    module_key = models.SlugField(max_length=80)
+    module_name = models.CharField(max_length=255)
+    category = models.CharField(max_length=40)
+    version = models.CharField(max_length=40, default='1.0.0')
+    required_tier = models.CharField(max_length=20, choices=TIER_CHOICES, default='basic')
+    status = models.CharField(max_length=20, choices=[('active', 'Active'), ('disabled', 'Disabled')], default='active')
+    configuration = models.JSONField(default=dict, blank=True)
+    installed_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='developer_modules_installed')
+    installed_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['module_name']
+        constraints = [
+            models.UniqueConstraint(fields=['organization', 'module_key'], name='unique_developer_module_installation'),
+        ]
+
+    def __str__(self):
+        return f"{self.module_name} - {self.organization.name}"
 
 
 # ============================================================================

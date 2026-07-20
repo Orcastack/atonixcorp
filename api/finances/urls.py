@@ -12,7 +12,8 @@ from .views import list_countries, get_country
 from .enterprise_views import (
     OrganizationViewSet, EntityViewSet, TeamMemberViewSet,
     TaxExposureViewSet, TaxProfileViewSet, TaxRegimeRegistryViewSet, TaxCalculationHistoryViewSet, TaxFilingViewSet, TaxAuditLogViewSet, ComplianceDeadlineViewSet, CashflowForecastViewSet,
-    TaxRuleSetVersionViewSet, TaxRiskAlertViewSet,
+    TaxRuleSetVersionViewSet, TaxRiskAlertViewSet, GovernancePolicyViewSet,
+    GovernanceAmendmentViewSet, GovernanceVoteViewSet,
     RoleViewSet, PermissionViewSet, AuditLogViewSet, PlatformAuditEventViewSet,
     EntityDepartmentViewSet, EntityRoleViewSet, EntityStaffViewSet,
     StaffPayrollProfileViewSet, PayrollComponentViewSet, StaffPayrollComponentAssignmentViewSet,
@@ -46,7 +47,7 @@ from .enterprise_views import (
     ClientInvoiceViewSet, ClientInvoiceLineItemViewSet, ClientSubscriptionViewSet,
     WhiteLabelBrandingViewSet, BankingIntegrationViewSet, BankingTransactionViewSet,
     EmbeddedPaymentViewSet, AutomationWorkflowViewSet, AutomationExecutionViewSet, AutomationArtifactViewSet,
-    FirmMetricViewSet, ClientMarketplaceIntegrationViewSet
+    FirmMetricViewSet, ClientMarketplaceIntegrationViewSet, DeveloperModuleInstallationViewSet
 )
 from .tax_api_views import (
     CompanyTaxProfileAPIView,
@@ -85,6 +86,9 @@ router.register(r'roles', RoleViewSet, basename='role')
 router.register(r'permissions', PermissionViewSet, basename='permission')
 router.register(r'audit-logs', AuditLogViewSet, basename='audit-log')
 router.register(r'platform-audit-events', PlatformAuditEventViewSet, basename='platform-audit-event')
+router.register(r'governance-policies', GovernancePolicyViewSet, basename='governance-policy')
+router.register(r'governance-amendments', GovernanceAmendmentViewSet, basename='governance-amendment')
+router.register(r'governance-votes', GovernanceVoteViewSet, basename='governance-vote')
 
 # Entity-specific endpoints
 router.register(r'entity-departments', EntityDepartmentViewSet, basename='entity-department')
@@ -233,6 +237,7 @@ router.register(r'automation-artifacts', AutomationArtifactViewSet, basename='au
 # NEW: Firm Dashboard
 router.register(r'firm-metrics', FirmMetricViewSet, basename='firm-metric')
 router.register(r'client-marketplace-integrations', ClientMarketplaceIntegrationViewSet, basename='client-marketplace-integration')
+router.register(r'developer-module-installations', DeveloperModuleInstallationViewSet, basename='developer-module-installation')
 
 urlpatterns = [
     path('', include(router.urls)),

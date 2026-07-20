@@ -19,12 +19,32 @@
 
 /* Hero */
 .features-hero {
-  background: var(--color-primary);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-primary);
+  background-image:
+    repeating-linear-gradient(135deg, transparent 0, transparent 27px, rgba(255, 255, 255, 0.055) 28px, rgba(255, 255, 255, 0.055) 29px),
+    linear-gradient(90deg, rgba(40, 120, 189, 0.18), transparent 58%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   padding: 88px 0 72px;
 }
 
+.features-hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -170px;
+  right: 9%;
+  width: 390px;
+  height: 390px;
+  border: 1px solid rgba(179, 220, 248, 0.2);
+  transform: rotate(45deg);
+}
+
 .features-hero .hero-content {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;

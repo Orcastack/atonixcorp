@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-  <!-- Square brand mark: #EE6C4D background + white shield -->
-  <rect width="64" height="64" rx="12" fill="#EE6C4D"/>
-  <path d="M32 12 L50 19 L50 34 C50 44 42 52 32 56 C22 52 14 44 14 34 L14 19 Z" fill="#FFFFFF"/>
-  <path d="M32 17 L46 23 L46 34 C46 42 40 49 32 53 C24 49 18 42 18 34 L18 23 Z" fill="none" stroke="#EE6C4D" stroke-width="1.5"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+      <defs>
+            <linearGradient id="atonixcorp-icon-background" x1="128" y1="128" x2="896" y2="896" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#081A33"/>
+                  <stop offset="1" stop-color="#123B66"/>
+            </linearGradient>
+            <linearGradient id="atonixcorp-icon-shield" x1="320" y1="256" x2="704" y2="832" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFFFFF"/>
+                  <stop offset="1" stop-color="#D9E8F5"/>
+            </linearGradient>
+      </defs>
+      <rect width="1024" height="1024" rx="224" fill="url(#atonixcorp-icon-background)"/>
+      <path d="M512 192 L800 304 L800 544 C800 704 680 824 512 884 C344 824 224 704 224 544 L224 304 Z" fill="url(#atonixcorp-icon-shield)"/>
+      <path d="M512 272 L736 360 L736 544 C736 672 640 772 512 820 C384 772 288 672 288 544 L288 360 Z" fill="none" stroke="#7DD3FC" stroke-width="20"/>
 </svg>

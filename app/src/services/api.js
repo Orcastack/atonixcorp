@@ -103,6 +103,24 @@ export const budgetsAPI = {
   getSummary: () => api.get('/budgets/summary/'),
 };
 
+export const governancePoliciesAPI = {
+  getAll: () => api.get('/governance-policies/'),
+  getById: (id) => api.get(`/governance-policies/${id}/`),
+  create: (data) => api.post('/governance-policies/', data),
+  update: (id, data) => api.put(`/governance-policies/${id}/`, data),
+};
+
+export const governanceAmendmentsAPI = {
+  getAll: () => api.get('/governance-amendments/'),
+  create: (data) => api.post('/governance-amendments/', data),
+  update: (id, data) => api.put(`/governance-amendments/${id}/`, data),
+};
+
+export const governanceVotesAPI = {
+  getAll: () => api.get('/governance-votes/'),
+  create: (data) => api.post('/governance-votes/', data),
+};
+
 // Tax countries API
 export const taxAPI = {
   list: () => api.get('/tax/countries/'),
@@ -893,6 +911,12 @@ export const clientMarketplaceIntegrationsAPI = {
   create: (data) => api.post('/client-marketplace-integrations/', data),
   update: (id, data) => api.put(`/client-marketplace-integrations/${id}/`, data),
   delete: (id) => api.delete(`/client-marketplace-integrations/${id}/`),
+};
+
+export const developerModuleInstallationsAPI = {
+  getAll: (params) => api.get('/developer-module-installations/', { params }),
+  deploy: (data) => api.post('/developer-module-installations/', data),
+  update: (id, data) => api.patch(`/developer-module-installations/${id}/`, data),
 };
 
 // ============ ENTITY HR APIs ============

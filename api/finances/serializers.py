@@ -1,9 +1,11 @@
 from django.utils.text import slugify
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from django.db.models import Count
 from .models import (
     Expense, Income, Budget, UserProfile, Organization, Entity, Role, Permission,
     TeamMember, TaxExposure, TaxRegimeRegistry, TaxProfile, ComplianceDeadline, CashflowForecast, AuditLog, PlatformAuditEvent, PlatformTask,
+    GovernancePolicy, GovernanceAmendment, GovernanceVote,
     ModelTemplate, FinancialModel, Scenario, SensitivityAnalysis, AIInsight,
     CustomKPI, KPICalculation, Report, Consolidation, ConsolidationEntity,
     IntercompanyTransaction, IntercompanyEliminationEntry,
@@ -38,7 +40,7 @@ from .models import (
     # NEW MODELS
     Client, ClientPortal, ClientMessage, ClientDocument, DocumentRequest, ApprovalRequest,
     DocumentTemplate, Loan, LoanPayment, KYCProfile, AMLTransaction, FirmService,
-    ClientInvoice, ClientInvoiceLineItem, ClientSubscription, WhiteLabelBranding,
+    ClientInvoice, ClientInvoiceLineItem, ClientSubscription, WhiteLabelBranding, DeveloperModuleInstallation,
     BankingIntegration, BankingTransaction, EmbeddedPayment, AutomationWorkflow,
     AutomationExecution, AutomationArtifact, FirmMetric, ClientMarketplaceIntegration
 )
@@ -304,6 +306,74 @@ class PlatformAuditEventSerializer(serializers.ModelSerializer):
 
     def get_actor_id(self, obj):
         return obj.actor_identifier or str(obj.actor_id or '')
+
+
+class GovernancePolicySerializer(serializers.ModelSerializer):
+    owner_name = serializers.SerializerMethodField()
+    amendment_count = serializers.IntegerField(source='amendments.count', read_only=True)
+
+    class Meta:
+        model = GovernancePolicy
+        fields = [
+            'id', 'organization', 'policy_code', 'title', 'edition', 'status', 'summary', 'source_document',
+            'effective_date', 'next_review_date', 'owner', 'owner_name', 'amendment_count', 'created_at', 'updated_at',
+        ]
+        read_only_fields = ['owner', 'created_at', 'updated_at']
+
+    def get_owner_name(self, obj):
+        return obj.owner.get_full_name() if obj.owner else ''
+
+
+class GovernanceAmendmentSerializer(serializers.ModelSerializer):
+    submitted_by_name = serializers.SerializerMethodField()
+    required_approval_percent = serializers.ReadOnlyField()
+    vote_summary = serializers.SerializerMethodField()
+
+    class Meta:
+        model = GovernanceAmendment
+        fields = [
+            'id', 'policy', 'amendment_number', 'title', 'amendment_type', 'status', 'rationale', 'impact_analysis',
+            'ethical_review', 'sovereignty_check', 'operational_feasibility', 'security_implications', 'implementation_timeline',
+            'submitted_by', 'submitted_by_name', 'submitted_at', 'voting_opens_at', 'voting_closes_at', 'approved_at',
+            'required_approval_percent', 'vote_summary', 'created_at', 'updated_at',
+        ]
+        read_only_fields = ['submitted_by', 'submitted_at', 'approved_at', 'created_at', 'updated_at']
+
+    def get_submitted_by_name(self, obj):
+        return obj.submitted_by.get_full_name() if obj.submitted_by else ''
+
+    def get_vote_summary(self, obj):
+        if not obj.pk:
+            return {
+                'approve': 0,
+                'reject': 0,
+                'abstain': 0,
+                'approval_percent': 0,
+                'meets_threshold': False,
+            }
+        votes = obj.votes.values('decision').annotate(total=Count('id'))
+        summary = {item['decision']: item['total'] for item in votes}
+        cast_votes = summary.get('approve', 0) + summary.get('reject', 0)
+        approval_percent = round((summary.get('approve', 0) / cast_votes) * 100, 2) if cast_votes else 0
+        return {
+            'approve': summary.get('approve', 0),
+            'reject': summary.get('reject', 0),
+            'abstain': summary.get('abstain', 0),
+            'approval_percent': approval_percent,
+            'meets_threshold': approval_percent >= obj.required_approval_percent,
+        }
+
+
+class GovernanceVoteSerializer(serializers.ModelSerializer):
+    voter_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = GovernanceVote
+        fields = ['id', 'amendment', 'voter', 'voter_name', 'decision', 'comment', 'verified_at']
+        read_only_fields = ['voter', 'verified_at']
+
+    def get_voter_name(self, obj):
+        return obj.voter.get_full_name() or obj.voter.username
 
 
 # ============ Dashboard Summary Serializers ============
@@ -1789,3 +1859,18 @@ class ClientMarketplaceIntegrationSerializer(serializers.ModelSerializer):
         model = ClientMarketplaceIntegration
         fields = ['id', 'organization', 'client', 'name', 'category', 'provider', 'description', 'icon_url', 'is_active', 'created_at', 'updated_at']
         read_only_fields = ['created_at', 'updated_at', 'api_key']
+
+
+class DeveloperModuleInstallationSerializer(serializers.ModelSerializer):
+    installed_by_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = DeveloperModuleInstallation
+        fields = [
+            'id', 'organization', 'module_key', 'module_name', 'category', 'version', 'required_tier',
+            'status', 'configuration', 'installed_by', 'installed_by_name', 'installed_at', 'updated_at',
+        ]
+        read_only_fields = ['installed_by', 'installed_at', 'updated_at']
+
+    def get_installed_by_name(self, obj):
+        return obj.installed_by.get_full_name() if obj.installed_by else ''

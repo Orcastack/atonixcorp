@@ -8,6 +8,8 @@ import './Header.css';
 const UTILITY_ITEMS = [
   { label: 'Contact', to: '/contact' },
   { label: 'Support', to: '/support' },
+  { label: 'Developers', to: '/developers' },
+  //{ label: 'Governance', to: '/governance' },
   { label: 'Security', to: '/security-center' },
   { label: 'Login', to: '/login' },
 ];
@@ -16,8 +18,10 @@ const NAV_ITEMS = [
   { label: 'Home',       to: '/' },
   { label: 'Services',   to: '/product' },
   { label: 'Features',   to: '/features' },
+  { label: 'Governance', to: '/governance' },
+  //{ label: 'Developers', to: '/developers' },
   { label: 'Global Tax', to: '/global-tax' },
-  { label: 'Pricing',    to: '/pricing' },
+  //{ label: 'Pricing',    to: '/pricing' },
   { label: 'About',      to: '/about' },
  // { label: 'Contact',    to: '/contact' },
 ];

@@ -166,6 +166,7 @@ const Landing = () => {
               <div className="landing-actions">
                 <Link to="/register" className="landing-button landing-button--primary">Open Account</Link>
                 <Link to="/features" className="landing-button landing-button--secondary">Review Modules</Link>
+                <Link to="/developers" className="landing-button landing-button--secondary">Developer Portal</Link>
               </div>
 
               <div className="landing-downloads" aria-label="AtonixCorp downloads">

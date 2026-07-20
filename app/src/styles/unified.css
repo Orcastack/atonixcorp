@@ -151,12 +151,88 @@ textarea:focus {
 
 .landing-page .landing-hero,
 .pricing-page .pricing-hero {
-  background: var(--color-navy-950);
+  background-color: var(--color-navy-950);
   color: var(--color-white);
 }
 
 .landing-page .landing-hero h1,
 .pricing-page .pricing-hero h1 {
+  color: var(--color-white);
+}
+
+/* Public hero backgrounds: the final shared layer intentionally wins over public-site.css. */
+.landing-page .landing-hero {
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Product marketing heroes intentionally override the light public-site shell. */
+.product-page .product-hero {
+  background-color: var(--color-primary);
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.features-page .features-hero {
+  background-color: var(--color-primary);
+  background-image:
+    repeating-linear-gradient(135deg, transparent 0, transparent 27px, rgba(255, 255, 255, 0.055) 28px, rgba(255, 255, 255, 0.055) 29px),
+    linear-gradient(90deg, rgba(40, 120, 189, 0.18), transparent 58%);
+}
+
+.about-page .about-hero {
+  background-color: var(--color-navy-950);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0, transparent 47px, rgba(255, 255, 255, 0.045) 48px, rgba(255, 255, 255, 0.045) 49px),
+    linear-gradient(135deg, rgba(40, 120, 189, 0.22), transparent 62%);
+  color: var(--color-white);
+}
+
+.global-tax-page .tax-hero {
+  background-color: var(--color-navy-900);
+  background-image:
+    linear-gradient(30deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05)),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05));
+  background-size: 54px 94px;
+  color: var(--color-white);
+}
+
+.governance-page .governance-hero {
+  background-color: var(--color-navy-950);
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.product-page .product-hero h1,
+.features-page .features-hero h1,
+.about-page .about-hero-inner h1,
+.global-tax-page .tax-hero-title,
+.governance-page .governance-hero h1 {
+  color: var(--color-white);
+}
+
+.product-page .product-hero p,
+.features-page .features-hero p,
+.about-page .about-hero-sub,
+.global-tax-page .tax-hero-subtitle,
+.global-tax-page .tax-hero-description,
+.governance-page .governance-lead {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.about-page .about-hero .about-eyebrow,
+.global-tax-page .tax-hero .overview-label,
+.global-tax-page .tax-hero .section-title {
+  color: #c7e1f7;
+}
+
+.global-tax-page .tax-hero .tax-overview-card strong {
   color: var(--color-white);
 }
 

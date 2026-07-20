@@ -114,6 +114,10 @@ import HelpCenter from './pages/HelpCenter/HelpCenter';
 import Contact from './pages/Contact/Contact';
 import Privacy from './pages/Privacy/Privacy';
 import CLIDocs from './pages/CLIDocs/CLIDocs';
+import Governance from './pages/Governance/Governance';
+import GovernanceCenter from './pages/Governance/GovernanceCenter';
+import DeveloperPortal from './pages/Developer/DeveloperPortal';
+import ModuleMarketplace from './pages/Developer/ModuleMarketplace';
 import GlobalErrorCenter from './components/GlobalErrorCenter';
 import Dashboard from './pages/Dashboard/Dashboard';
 import GlobalConsole from './pages/GlobalConsole/GlobalConsole';
@@ -199,6 +203,8 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/global-tax" element={<GlobalTax />} />
+              <Route path="/governance" element={<Governance />} />
+              <Route path="/developers" element={<DeveloperPortal />} />
               <Route path="/v1/docs" element={<CLIDocs />} />
 
               {/* Legacy financial dashboard shell */}
@@ -208,6 +214,8 @@ function App() {
               {renderStandalonePageRoutes('/security-center', AppSecurity, 'manage_org_settings')}
               {renderStandalonePageRoutes('/support-center', AppHelpCenter, 'view_org_overview')}
               {renderStandalonePageRoutes('/support-tickets', AppSupportTickets, 'view_org_overview')}
+              {renderModulePageRoutes('/app/governance', GovernanceCenter, 'manage_org_settings')}
+              {renderModulePageRoutes('/app/marketplace', ModuleMarketplace, 'manage_org_settings')}
 
               {/* Global Console — no sidebar */}
               <Route path="/app/console" element={<ProtectedRoute><GlobalConsoleRoute><GlobalConsole /></GlobalConsoleRoute></ProtectedRoute>} />

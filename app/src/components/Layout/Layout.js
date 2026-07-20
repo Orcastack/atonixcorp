@@ -51,6 +51,7 @@ const Layout = ({ children }) => {
     { to: '/app/enterprise/team',            label: 'Team & Permissions' },
     { to: '/app/enterprise/reports',         label: 'Reports' },
     { to: '/app/enterprise/audit-explorer',  label: 'Platform Audit' },
+    { to: '/app/governance',                 label: 'Governance Center' },
     { to: '/app/enterprise/tax-compliance',  label: 'Tax Compliance' },
     { to: '/app/settings/branding',          label: 'Branding' },
   ];
@@ -124,6 +125,7 @@ const Layout = ({ children }) => {
   ];
 
   const integrationsNav = [
+    { to: '/app/marketplace', label: 'Module Marketplace' },
     { to: '/app/integrations/api-keys', label: 'API Keys' },
     { to: '/app/integrations/list',     label: 'Connected Apps' },
   ];
