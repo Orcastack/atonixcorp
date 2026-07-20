@@ -1,5 +1,5 @@
 from collections import defaultdict
-from datetime import timedelta
+from datetime import timedelta, timezone as datetime_timezone
 from decimal import Decimal
 from io import BytesIO
 import json
@@ -765,7 +765,7 @@ def _next_run_at(trigger_config, *, now=None):
     else:
         local_next = local_current + relativedelta(months=1)
 
-    return local_next.astimezone(timezone.utc)
+    return local_next.astimezone(datetime_timezone.utc)
 
 
 def _due_for_execution(workflow, *, now=None):
