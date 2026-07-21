@@ -8,8 +8,8 @@ from django.conf import settings
 from django.db import transaction
 from django.db.models import Q
 
-from finances.platform_foundation import log_platform_audit_event
-from finances.models import TaxProfile
+from atonixcorp.platform_foundation import log_platform_audit_event
+from atonixcorp.models import TaxProfile
 from workspaces.models import Workspace
 from workspaces.services import LogService
 

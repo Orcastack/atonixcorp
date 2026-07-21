@@ -5,8 +5,8 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils import timezone
 
-from finances.banking_services import complete_oauth_consent, prepare_oauth_consent, sync_banking_integration
-from finances.models import BankingIntegration, Budget, Entity, Expense, Income, Organization
+from atonixcorp.banking_services import complete_oauth_consent, prepare_oauth_consent, sync_banking_integration
+from atonixcorp.models import BankingIntegration, Budget, Entity, Expense, Income, Organization
 
 
 class Command(BaseCommand):

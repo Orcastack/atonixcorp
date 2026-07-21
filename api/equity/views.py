@@ -10,8 +10,8 @@ from django.http import FileResponse
 from django.shortcuts import get_object_or_404
 from django.utils.dateparse import parse_date
 
-from finances.models import Entity
-from finances.enterprise_views import _accessible_entities_queryset
+from atonixcorp.models import Entity
+from atonixcorp.enterprise_views import _accessible_entities_queryset
 
 from .models import (
     EquityDeliveryLog,

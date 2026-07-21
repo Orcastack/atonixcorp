@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'atonixcorp_api.settings')
 django.setup()
 
 from django.contrib.auth.models import User
-from finances.models import Organization
+from atonixcorp.models import Organization
 
 # Create a test user if it doesn't exist
 user, created = User.objects.get_or_create(

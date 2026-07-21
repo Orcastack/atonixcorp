@@ -3,7 +3,7 @@ import uuid
 from django.conf import settings
 from django.db import models
 
-from finances.models import ChartOfAccounts, Entity, EntityStaff, JournalEntry, TaxCalculation
+from atonixcorp.models import ChartOfAccounts, Entity, EntityStaff, JournalEntry, TaxCalculation
 
 
 class EquityWorkspaceType(models.TextChoices):

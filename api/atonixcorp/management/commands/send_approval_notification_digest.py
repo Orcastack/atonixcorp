@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from finances.accounting_notification_delivery import send_approval_digest
+from atonixcorp.accounting_notification_delivery import send_approval_digest
 
 
 class Command(BaseCommand):

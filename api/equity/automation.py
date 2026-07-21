@@ -13,7 +13,7 @@ from django.core.mail import send_mail
 from django.utils.dateparse import parse_date
 from django.utils import timezone
 
-from finances.models import Notification, NotificationPreference
+from atonixcorp.models import Notification, NotificationPreference
 
 from .documents import build_scenario_report_pdf, ensure_certificate_pdf, ensure_grant_package_pdf
 from .models import (

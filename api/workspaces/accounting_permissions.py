@@ -3,7 +3,7 @@ from __future__ import annotations
 from django.contrib.auth.models import User
 from django.db.models import Prefetch
 
-from finances.models import (
+from atonixcorp.models import (
     Permission,
     TeamMember,
     EntityStaff,

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
-from finances.models import Organization, Role, TeamMember
+from atonixcorp.models import Organization, Role, TeamMember
 
 
 class Command(BaseCommand):

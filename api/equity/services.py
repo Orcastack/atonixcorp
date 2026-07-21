@@ -11,7 +11,7 @@ from django.db.models import Sum
 from django.utils.dateparse import parse_date
 from django.utils import timezone
 
-from finances.models import ChartOfAccounts, JournalEntry, TaxCalculation, UserProfile, GeneralLedger
+from atonixcorp.models import ChartOfAccounts, JournalEntry, TaxCalculation, UserProfile, GeneralLedger
 
 from .automation import (
     notify_certificate_released,

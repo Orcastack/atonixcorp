@@ -7,7 +7,7 @@ from django.db import transaction
 from django.db.models import Q
 from django.utils import timezone
 
-from finances.platform_foundation import log_platform_audit_event, sync_equity_scenario_approval_task
+from atonixcorp.platform_foundation import log_platform_audit_event, sync_equity_scenario_approval_task
 
 from .automation import (
     notify_scenario_escalated,

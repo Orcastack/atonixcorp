@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from finances.models import Entity, Organization, PlatformAuditEvent, TaxProfile
+from atonixcorp.models import Entity, Organization, PlatformAuditEvent, TaxProfile
 from workspaces.services import WorkspaceService
 
 from .models import AIInteraction, WorkspaceAIPrecedent, WorkspaceAIProfile

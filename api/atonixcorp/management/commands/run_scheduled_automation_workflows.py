@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from finances.enterprise_reporting import run_due_automation_workflows
+from atonixcorp.enterprise_reporting import run_due_automation_workflows
 
 
 class Command(BaseCommand):

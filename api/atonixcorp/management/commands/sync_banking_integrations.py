@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
-from finances.banking_services import sync_banking_integration
-from finances.models import BankingIntegration
+from atonixcorp.banking_services import sync_banking_integration
+from atonixcorp.models import BankingIntegration
 
 
 class Command(BaseCommand):

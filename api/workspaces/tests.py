@@ -7,7 +7,7 @@ from django.utils import timezone
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from finances.models import Entity, Organization
+from atonixcorp.models import Entity, Organization
 
 from .models import WorkspaceFile, WorkspaceGroup, WorkspaceMember
 from .services import FINANCE_DEPARTMENT_TEMPLATES, WorkspaceService

@@ -2130,7 +2130,7 @@ class CompanyIdentityAPITests(TestCase):
 
 class GovernanceCloudExportAPITests(TestCase):
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
-    @patch('finances.governance_cloud_exports.urlopen')
+    @patch('atonixcorp.governance_cloud_exports.urlopen')
     def test_owner_can_export_to_s3_presigned_url_and_audit_delivery(self, mocked_urlopen):
         owner = User.objects.create_user(username='cloud-export-owner', password='pass')
         organization = Organization.objects.create(
@@ -2169,7 +2169,7 @@ class GovernanceCloudExportAPITests(TestCase):
         self.assertEqual(client.get(f'/api/organizations/{organization.id}/governance_cloud_exports/').status_code, 200)
 
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
-    @patch('finances.governance_cloud_exports._json_request')
+    @patch('atonixcorp.governance_cloud_exports._json_request')
     def test_google_drive_export_rejects_existing_file_without_overwrite(self, mocked_json_request):
         owner = User.objects.create_user(username='cloud-overwrite-owner', password='pass')
         organization = Organization.objects.create(
@@ -2435,7 +2435,7 @@ class EntityViewSetTests(TestCase):
             resource_id=str(entity.id),
         ).exists())
 
-        from finances.governance_configurations import build_governance_document
+        from atonixcorp.governance_configurations import build_governance_document
 
         document = build_governance_document(self.organization)
         export_entity = next(item for item in document['entities'] if item['id'] == entity.id)

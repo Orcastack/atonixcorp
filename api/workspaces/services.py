@@ -33,7 +33,7 @@ from .models import (
 )
 from .accounting_permissions import AccountingPermissionService
 from .type_registry import get_workspace_type_definition
-from finances.crypto_foundation import decrypt_aes_gcm, encrypt_aes_gcm
+from atonixcorp.crypto_foundation import decrypt_aes_gcm, encrypt_aes_gcm
 
 
 FINANCE_DEPARTMENT_TEMPLATES = [
@@ -194,7 +194,7 @@ class LogService:
             action=action,
             metadata=metadata,
         )
-        from finances.platform_foundation import log_workspace_activity_as_platform_event
+        from atonixcorp.platform_foundation import log_workspace_activity_as_platform_event
 
         log_workspace_activity_as_platform_event(
             workspace_id=workspace_id,
