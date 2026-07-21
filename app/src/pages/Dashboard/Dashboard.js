@@ -137,7 +137,7 @@ const Dashboard = () => {
         ? [...expenses].sort((left, right) => new Date(right.date) - new Date(left.date)).slice(0, 5)
         : [],
     };
-  }, [balance, budgets, expenses, financialSummary, monthlySummary, selectedMonth, totalExpenses, totalIncome, viewMode]);
+  }, [balance, budgets, expenses, financialSummary, monthlySummary, totalExpenses, totalIncome, viewMode]);
 
   const budgetAlertDetails = Array.isArray(validationResults?.warningDetails)
     ? validationResults.warningDetails

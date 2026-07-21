@@ -12,18 +12,6 @@ import './GlobalConsole.css';
    Shows: My Entities · Global Notifications · Global Tasks · Quick Actions
 ───────────────────────────────────────────────────────────────────────────── */
 
-const formatDate = (value) => {
-  if (!value) return '—';
-  try {
-    return new Date(value).toLocaleDateString([], { year: 'numeric', month: 'short', day: 'numeric' });
-  } catch {
-    return '—';
-  }
-};
-
-const PALETTE = ['ws-indigo', 'ws-teal', 'ws-violet', 'ws-rose', 'ws-amber', 'ws-sky'];
-const palette = (idx) => PALETTE[idx % PALETTE.length];
-
 const openStandalonePath = (path) => {
   window.open(`${process.env.PUBLIC_URL || ''}${path}`, '_blank', 'noopener,noreferrer');
 };
@@ -34,41 +22,11 @@ const normalizeCollection = (payload) => {
   return [];
 };
 
-const toTaskPriority = (task) => {
-  if (task.state === 'blocked') return 'overdue';
-  if (task.priority === 'high' || task.priority === 'urgent') return 'high';
-  return 'medium';
-};
-
-const formatRelativeTime = (value) => {
-  if (!value) return 'Just now';
-  const deltaMs = new Date(value).getTime() - Date.now();
-  const deltaDays = Math.round(deltaMs / 86400000);
-  if (deltaDays === 0) return 'Today';
-  if (deltaDays > 0) return `In ${deltaDays}d`;
-  return `${Math.abs(deltaDays)}d ago`;
-};
-
 const auditSeverity = (event) => {
   if (['approval_rejected', 'workflow_run_failed', 'deadline_deleted'].includes(event.action)) return 'critical';
   if (['approval_requested', 'approval_progressed', 'workflow_run_started'].includes(event.action)) return 'high';
   return 'medium';
 };
-
-const EmptyWorkspaceIllustration = () => (
-  <div className="gc-empty-illustration" aria-hidden="true">
-    <div className="gc-empty-illustration-frame">
-      <div className="gc-empty-illustration-dot" />
-      <div className="gc-empty-illustration-line gc-empty-illustration-line-short" />
-      <div className="gc-empty-illustration-grid">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-    </div>
-  </div>
-);
 
 const emitAnalyticsEvent = (eventName, payload = {}) => {
   if (typeof window === 'undefined') return;
@@ -103,15 +61,9 @@ const GlobalConsole = () => {
     hasPermission,
   } = useEnterprise();
 
-  const [search, setSearch] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
   const [profileOpen, setProfileOpen] = useState(false);
-  const [taskFilter, setTaskFilter] = useState('open');
-  const [departmentFilter, setDepartmentFilter] = useState('all');
-  const [costCenterFilter, setCostCenterFilter] = useState('all');
   const [tasks, setTasks] = useState([]);
   const [auditEvents, setAuditEvents] = useState([]);
-  const [taskActionPendingId, setTaskActionPendingId] = useState(null);
   const [currentTime, setCurrentTime] = useState(() => new Date());
   const [inviteModalOpen, setInviteModalOpen] = useState(false);
   const [inviteSaving, setInviteSaving] = useState(false);
@@ -151,9 +103,7 @@ const GlobalConsole = () => {
         const [taskResponse, auditResponse] = await Promise.all([
           platformTasksAPI.getAll({
             assignee_id: user?.id,
-            state: taskFilter === 'all' ? undefined : taskFilter,
-            department_name: departmentFilter === 'all' ? undefined : departmentFilter,
-            cost_center: costCenterFilter === 'all' ? undefined : costCenterFilter,
+            state: 'open',
           }),
           platformAuditEventsAPI.getAll({ actor_id: user?.id }),
         ]);
@@ -174,7 +124,7 @@ const GlobalConsole = () => {
     return () => {
       active = false;
     };
-  }, [costCenterFilter, departmentFilter, taskFilter, user?.id]);
+  }, [user?.id]);
 
   const entityCount = entities.length;
   const showOrganizationOnboarding = !loading && organizations.length === 0;
@@ -248,37 +198,7 @@ const GlobalConsole = () => {
           };
         });
 
-  const handleTaskAction = async (task, action) => {
-    setTaskActionPendingId(task.id);
-    try {
-      if (action === 'start') {
-        await platformTasksAPI.start(task.id);
-      } else if (action === 'complete') {
-        await platformTasksAPI.complete(task.id, {});
-      } else if (action === 'assign') {
-        await platformTasksAPI.update(task.id, { assignee_type: 'user', assignee_id: user.id });
-      }
-
-      const [taskResponse, auditResponse] = await Promise.all([
-        platformTasksAPI.getAll({
-          assignee_id: user?.id,
-          state: taskFilter === 'all' ? undefined : taskFilter,
-          department_name: departmentFilter === 'all' ? undefined : departmentFilter,
-          cost_center: costCenterFilter === 'all' ? undefined : costCenterFilter,
-        }),
-        platformAuditEventsAPI.getAll({ actor_id: user?.id }),
-      ]);
-      setTasks(normalizeCollection(taskResponse.data).slice(0, 8));
-      setAuditEvents(normalizeCollection(auditResponse.data).slice(0, 8));
-    } finally {
-      setTaskActionPendingId(null);
-    }
-  };
-
-  const firstName = (user?.name || user?.email || 'User').split(' ')[0];
   const userInitial = (user?.name || user?.email || 'U').charAt(0).toUpperCase();
-  const departmentOptions = Array.from(new Set(tasks.map((task) => task.department_name).filter(Boolean))).sort();
-  const costCenterOptions = Array.from(new Set(tasks.map((task) => task.cost_center).filter(Boolean))).sort();
 
   const trackWorkspaceLandingEvent = useCallback((eventName, payload = {}) => {
     emitAnalyticsEvent(eventName, {

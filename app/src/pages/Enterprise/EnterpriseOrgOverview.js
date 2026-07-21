@@ -190,9 +190,6 @@ const EnterpriseOrgOverview = () => {
   const regionCount = Object.keys(regionData).length;
   const profitMargin = totalRevenue ? (totalProfit / totalRevenue) * 100 : 0;
   const attentionCount = pending_tax_returns + missing_data_entities;
-  const overviewNarrative = active_entities > 0
-    ? `This organization currently spans ${active_entities} active entities across ${active_jurisdictions} jurisdictions and ${regionCount} regions. Net position stands at ${formatCurrency(net_position, { maximumFractionDigits: 2 })}, supported by ${formatCompactCurrency(totalRevenue)} in consolidated revenue and a ${profitMargin.toFixed(1)}% margin. Tax exposure is ${formatCurrency(total_tax_exposure)} with ${attentionCount} items still needing review.`
-    : 'This organization overview is ready to summarize your consolidated position once entities, jurisdictions, and accounting activity are added. Use it to track assets, liabilities, tax exposure, and open compliance items in one place.';
 
   return (
     <div className="enterprise-overview enterprise-dashboard org-overview-container ed-page org-dashboard-page">
