@@ -647,7 +647,14 @@ export const EnterpriseProvider = ({ children }) => {
         return newOrg;
       } else {
         const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.detail || errorData?.slug?.[0] || errorData?.name?.[0] || 'Failed to create organization');
+        throw new Error(
+          errorData?.detail
+          || errorData?.email?.[0]
+          || errorData?.website?.[0]
+          || errorData?.slug?.[0]
+          || errorData?.name?.[0]
+          || 'Failed to create organization'
+        );
       }
     } catch (err) {
       setError(err.message);

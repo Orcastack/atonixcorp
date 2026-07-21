@@ -24,6 +24,8 @@ from rest_framework.views import APIView
 
 from .enterprise_views import _accessible_organizations_queryset
 from .company_identity import normalize_registration_number
+from .platform_foundation import log_platform_audit_event
+from .services.domain_verification import verify_organization_domains
 from .models import (
     AuditLog,
     BankAccount,
@@ -1434,13 +1436,39 @@ class OrganizationsView(V1BaseAPIView):
         name = (payload.get('name') or '').strip()
         if not name:
             return Response({'detail': 'name is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        verification_result = verify_organization_domains(payload.get('email'), payload.get('website'))
+        log_platform_audit_event(
+            domain='identity',
+            event_type='organization.domain_verification',
+            action='organization_domain_verification',
+            actor=request.user,
+            resource_type='OrganizationDomainVerification',
+            resource_name=verification_result.get('website', {}).get('domain', ''),
+            summary='Organization domain verification passed.' if verification_result['status'] == 'success' else 'Organization domain verification failed.',
+            metadata={
+                'status': verification_result['status'],
+                'reason': verification_result['reason'],
+                'email_domain': verification_result.get('email', {}).get('domain', ''),
+                'website_domain': verification_result.get('website', {}).get('domain', ''),
+            },
+        )
+        if verification_result['status'] != 'success':
+            errors = {}
+            if verification_result['email']['status'] != 'success':
+                errors['email'] = [verification_result['email']['reason']]
+            if verification_result['website']['status'] != 'success':
+                errors['website'] = [verification_result['website']['reason']]
+            if verification_result['match']['status'] != 'success' and not errors:
+                errors['website'] = [verification_result['match']['reason']]
+            return Response(errors or {'detail': verification_result['reason']}, status=status.HTTP_400_BAD_REQUEST)
+        raw_registration_number = str(payload.get('registration_number') or '').strip()
         try:
-            registration_number = normalize_registration_number(payload.get('registration_number'))
+            registration_number = normalize_registration_number(raw_registration_number) if raw_registration_number else None
         except Exception as error:
             return Response({'registration_number': [str(error)]}, status=status.HTTP_400_BAD_REQUEST)
         if Organization.objects.filter(name__iexact=name).exists():
             return Response({'name': ['A company with this name already exists.']}, status=status.HTTP_400_BAD_REQUEST)
-        if Organization.objects.filter(registration_number=registration_number).exists():
+        if registration_number and Organization.objects.filter(registration_number=registration_number).exists():
             return Response({'registration_number': ['This company registration number is already in use.']}, status=status.HTTP_400_BAD_REQUEST)
 
         slug_base = slugify(name) or f'org-{request.user.pk}'
@@ -1458,10 +1486,12 @@ class OrganizationsView(V1BaseAPIView):
             industry=(payload.get('industry') or '').strip(),
             primary_country=(payload.get('country') or 'US').strip(),
             primary_currency=(payload.get('currency') or 'USD').strip(),
+            website=(payload.get('website') or '').strip(),
             settings={
                 'legal_name': (payload.get('legal_name') or name).strip(),
                 'timezone': (payload.get('timezone') or 'UTC').strip(),
                 'api_version': 'v1',
+                'email': (payload.get('email') or '').strip(),
             },
         )
         _default_entity_for_org(organization)

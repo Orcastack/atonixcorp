@@ -12,12 +12,13 @@ from django.core import mail
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.management import call_command
-from django.test import TestCase
+from django.test import SimpleTestCase, TestCase
 from django.test import override_settings
 from django.utils import timezone
 from rest_framework.test import APIClient
 from decimal import Decimal
 from .enterprise_reporting import _next_run_at
+from .services.domain_verification import match_domain_email_website, verify_email_domain
 from .platform_tasks import create_task as create_platform_task_record
 from .models import (
     APIKey,
@@ -2144,6 +2145,18 @@ class OrganizationDirectoryAPITests(TestCase):
 
 @override_settings(MEDIA_ROOT=tempfile.gettempdir())
 class CompanyIdentityAPITests(TestCase):
+    def setUp(self):
+        self.domain_verifier = patch('atonixcorp.enterprise_views.verify_organization_domains')
+        self.mock_domain_verifier = self.domain_verifier.start()
+        self.addCleanup(self.domain_verifier.stop)
+        self.mock_domain_verifier.return_value = {
+            'status': 'success',
+            'reason': 'Organization domains verified.',
+            'email': {'status': 'success', 'reason': 'Corporate email domain verified.', 'domain': 'example.com'},
+            'website': {'status': 'success', 'reason': 'Website domain verified.', 'domain': 'example.com'},
+            'match': {'status': 'success', 'reason': 'Email and website domains match.', 'domain': 'example.com'},
+        }
+
     def test_unverified_account_can_create_an_organization(self):
         creator = User.objects.create_user(
             username='unverified-creator',
@@ -2159,12 +2172,43 @@ class CompanyIdentityAPITests(TestCase):
             'registration_number': 'US-2026-100001',
             'primary_country': 'US',
             'primary_currency': 'USD',
+            'website': 'https://example.com',
+            'settings': {'email': 'founder@example.com'},
         }, format='json')
 
         self.assertEqual(response.status_code, 201)
         self.assertTrue(Organization.objects.filter(name='Unverified Creator Organization').exists())
 
-    def test_company_identity_is_required_normalized_unique_and_audited(self):
+    def test_failed_domain_verification_blocks_creation_and_is_audited(self):
+        creator = User.objects.create_user(username='domain-check-owner', email='owner@example.com', password='pass')
+        self.mock_domain_verifier.return_value = {
+            'status': 'fail',
+            'reason': 'Email must use a corporate domain, not a public email provider.',
+            'email': {'status': 'fail', 'reason': 'Email must use a corporate domain, not a public email provider.', 'domain': 'gmail.com'},
+            'website': {'status': 'success', 'reason': 'Website domain verified.', 'domain': 'example.com'},
+            'match': {'status': 'fail', 'reason': 'Website domain does not match email domain.'},
+        }
+        client = APIClient()
+        client.force_authenticate(creator)
+
+        response = client.post('/api/organizations/', {
+            'name': 'Blocked Domain Organization',
+            'registration_number': 'US-2026-100002',
+            'primary_country': 'US',
+            'primary_currency': 'USD',
+            'website': 'https://example.com',
+            'settings': {'email': 'owner@gmail.com'},
+        }, format='json')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('email', response.data)
+        self.assertFalse(Organization.objects.filter(name='Blocked Domain Organization').exists())
+        self.assertTrue(PlatformAuditEvent.objects.filter(
+            event_type='organization.domain_verification',
+            metadata__status='fail',
+        ).exists())
+
+    def test_company_identity_is_optional_normalized_unique_and_audited_when_provided(self):
         founder = User.objects.create_user(
             username='company-founder',
             email='founder@example.com',
@@ -2175,13 +2219,15 @@ class CompanyIdentityAPITests(TestCase):
         client = APIClient()
         client.force_authenticate(founder)
 
-        missing_identity_response = client.post('/api/organizations/', {
-            'name': 'Missing Identity Company',
+        optional_identity_response = client.post('/api/organizations/', {
+            'name': 'Optional Identity Company',
             'primary_country': 'ZA',
             'primary_currency': 'ZAR',
+            'website': 'https://example.com',
+            'settings': {'email': 'founder@example.com'},
         }, format='json')
-        self.assertEqual(missing_identity_response.status_code, 400)
-        self.assertIn('registration_number', missing_identity_response.data)
+        self.assertEqual(optional_identity_response.status_code, 201)
+        self.assertIsNone(optional_identity_response.data['registration_number'])
 
         create_response = client.post('/api/organizations/', {
             'name': 'Atonix Governance Holdings',
@@ -2233,6 +2279,33 @@ class CompanyIdentityAPITests(TestCase):
         self.assertFalse(verification_response.data['name_available'])
         self.assertFalse(verification_response.data['available'])
         self.assertFalse(verification_response.data['external_registry_verified'])
+
+        optional_verification_response = client.post('/api/organizations/verify_registration_number/', {
+            'name': 'Another Optional Identity Company',
+            'registration_number': '',
+        }, format='json')
+        self.assertEqual(optional_verification_response.status_code, 200)
+        self.assertEqual(optional_verification_response.data['verification_source'], 'not_provided')
+        self.assertTrue(optional_verification_response.data['available'])
+
+
+class OrganizationDomainVerificationServiceTests(SimpleTestCase):
+    def test_public_email_domains_are_rejected_without_dns_lookup(self):
+        result = verify_email_domain('founder@gmail.com')
+
+        self.assertEqual(result['status'], 'fail')
+        self.assertIn('corporate domain', result['reason'])
+
+    def test_matching_website_and_email_domains_are_accepted(self):
+        result = match_domain_email_website('company.com', 'www.company.com')
+
+        self.assertEqual(result['status'], 'success')
+
+    def test_mismatched_website_and_email_domains_are_rejected(self):
+        result = match_domain_email_website('company.com', 'another-company.com')
+
+        self.assertEqual(result['status'], 'fail')
+        self.assertIn('does not match', result['reason'])
 
 
 class GovernanceCloudExportAPITests(TestCase):

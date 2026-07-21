@@ -282,11 +282,12 @@ const CreateWorkspace = () => {
 
   const canGoNext = () => {
     if (step === 1) {
+      const hasRegistrationNumber = form.registrationNumber.trim().length > 0;
       return form.name.trim().length >= 2
-        && (!isOrgCreate || form.registrationNumber.trim().length >= 4)
-        && (!isOrgCreate || (identityStatus?.available && identityStatus?.name_available));
+        && (!isOrgCreate || form.email.trim().length > 0)
+        && (!isOrgCreate || !hasRegistrationNumber || (identityStatus?.available && identityStatus?.name_available));
     }
-    if (step === 2) return !!form.country && !!form.currency;
+    if (step === 2) return !!form.country && !!form.currency && (!isOrgCreate || form.website.trim().length > 0);
     if (step === 4) return !!form.workspaceMode && !!form.subscriptionTier && (form.enabledModules.length > 0 || form.workspaceMode === 'standalone');
     return true;
   };
@@ -294,8 +295,9 @@ const CreateWorkspace = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name.trim()) { setError('Company name is required'); return; }
-    if (isOrgCreate && !form.registrationNumber.trim()) { setError('Company registration number is required'); return; }
+    if (isOrgCreate && !form.email.trim()) { setError('Organization email is required.'); return; }
     if (!form.country)     { setError('Country is required'); return; }
+    if (isOrgCreate && !form.website.trim()) { setError('Organization website is required.'); return; }
     if (!form.workspaceMode) { setError('Select an organization package before launch.'); return; }
     if (!isOrgCreate && !currentOrganization?.id) { setError('No active organization is selected for this account.'); return; }
 
@@ -307,7 +309,7 @@ const CreateWorkspace = () => {
         // Creating a top-level organization — no currentOrganization required
         const newOrg = await createOrganization({
           name: form.name.trim(),
-          registration_number: form.registrationNumber.trim(),
+          registration_number: form.registrationNumber.trim() || undefined,
           primary_country: form.country,
           primary_currency: form.currency,
           industry: form.industry.trim() || form.businessType,
@@ -381,7 +383,7 @@ const CreateWorkspace = () => {
           onChange={(e) => update('name', e.target.value)}
           autoFocus
         />
-        {isOrgCreate && (
+        {isOrgCreate && form.registrationNumber.trim() && (
           <div className={`cw-identity-status${identityStatus?.available && identityStatus?.name_available ? ' is-verified' : ''}`}>
             <span>{identityStatus?.available && identityStatus?.name_available ? 'Identity available and normalized' : 'Verify identity before continuing'}</span>
             <button type="button" className="cw-verify-btn" onClick={verifyIdentity} disabled={verifyingIdentity}>
@@ -392,14 +394,13 @@ const CreateWorkspace = () => {
         <span className="cw-hint">This will be displayed as the organization name throughout AtonixCorp.</span>
       </div>
       <div className="cw-field">
-        <label className="cw-label">Company Registration Number {isOrgCreate && <span className="cw-required">*</span>}</label>
+        <label className="cw-label">Company Registration Number <span className="cw-optional">(optional)</span></label>
         <input
           className="cw-input"
           type="text"
           placeholder="e.g. 12345678"
           value={form.registrationNumber}
           onChange={(e) => update('registrationNumber', e.target.value)}
-          required={isOrgCreate}
         />
       </div>
       <div className="cw-field">
@@ -427,13 +428,14 @@ const CreateWorkspace = () => {
         />
       </div>
       <div className="cw-field">
-        <label className="cw-label">Organization Email <span className="cw-optional">(optional)</span></label>
+        <label className="cw-label">Organization Email <span className="cw-required">*</span></label>
         <input
           className="cw-input"
           type="email"
           placeholder="e.g. finance@company.com"
           value={form.email}
           onChange={(e) => update('email', e.target.value)}
+          required={isOrgCreate}
         />
       </div>
       <div className="cw-field cw-field-wide">
@@ -466,13 +468,14 @@ const CreateWorkspace = () => {
         </select>
       </div>
       <div className="cw-field cw-field-wide">
-        <label className="cw-label">Website <span className="cw-optional">(optional)</span></label>
+        <label className="cw-label">Website <span className="cw-required">*</span></label>
         <input
           className="cw-input"
           type="url"
           placeholder="https://company.com"
           value={form.website}
           onChange={(e) => update('website', e.target.value)}
+          required={isOrgCreate}
         />
       </div>
     </div>
@@ -811,7 +814,7 @@ const CreateWorkspace = () => {
                 type="button"
                 className="cw-btn cw-btn-primary"
                 onClick={async () => {
-                  if (step === 1 && isOrgCreate && !(await verifyIdentity())) return;
+                  if (step === 1 && isOrgCreate && form.registrationNumber.trim() && !(await verifyIdentity())) return;
                   setStep(step + 1);
                 }}
                 disabled={!canGoNext()}

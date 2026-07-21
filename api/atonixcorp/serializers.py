@@ -108,8 +108,6 @@ class OrganizationSerializer(serializers.ModelSerializer):
             existing_names = existing_names.exclude(pk=self.instance.pk)
         if existing_names.exists():
             raise serializers.ValidationError({'name': 'A company with this name already exists.'})
-        if self.instance is None and not attrs.get('registration_number'):
-            raise serializers.ValidationError({'registration_number': 'Company registration number is required.'})
         registration_number = attrs.get('registration_number')
         if registration_number:
             existing_registration_numbers = Organization.objects.filter(registration_number=registration_number)

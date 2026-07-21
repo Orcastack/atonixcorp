@@ -25,6 +25,7 @@ from .governance_cloud_exports import export_governance_yaml
 from .company_identity import normalize_registration_number
 from .department_provisioning import provision_selected_departments, validate_department_selections
 from .organization_email_service import provision_email_account, send_campaign, set_subscription_tier, subscription_summary
+from .services.domain_verification import verify_organization_domains
 
 from .models import (
     Organization, OrganizationDirectoryEntry, GovernanceCloudExport, OrganizationEmailAccount, OrganizationEmailCampaign, OrganizationEmailDelivery, Entity, TeamMember, Role, Permission, TaxExposure, ROLE_ORG_OWNER, ROLE_CFO,
@@ -279,6 +280,41 @@ def _request_ip(request):
     return request.META.get('REMOTE_ADDR')
 
 
+def _verify_organization_domains_for_request(request):
+    payload = request.data or {}
+    settings_data = payload.get('settings') if isinstance(payload.get('settings'), dict) else {}
+    email = payload.get('email') or settings_data.get('email')
+    website = payload.get('website')
+    result = verify_organization_domains(email, website)
+    log_platform_audit_event(
+        domain='identity',
+        event_type='organization.domain_verification',
+        action='organization_domain_verification',
+        actor=request.user,
+        resource_type='OrganizationDomainVerification',
+        resource_id='',
+        resource_name=result.get('website', {}).get('domain', ''),
+        summary='Organization domain verification passed.' if result['status'] == 'success' else 'Organization domain verification failed.',
+        metadata={
+            'status': result['status'],
+            'reason': result['reason'],
+            'email_domain': result.get('email', {}).get('domain', ''),
+            'website_domain': result.get('website', {}).get('domain', ''),
+        },
+    )
+    if result['status'] == 'success':
+        return
+
+    errors = {}
+    if result['email']['status'] != 'success':
+        errors['email'] = [result['email']['reason']]
+    if result['website']['status'] != 'success':
+        errors['website'] = [result['website']['reason']]
+    if result['match']['status'] != 'success' and result['email']['status'] == 'success' and result['website']['status'] == 'success':
+        errors['website'] = [result['match']['reason']]
+    raise ValidationError(errors or {'detail': result['reason']})
+
+
 class OrganizationViewSet(viewsets.ModelViewSet):
     """ViewSet for managing organizations"""
     serializer_class = OrganizationSerializer
@@ -308,6 +344,10 @@ class OrganizationViewSet(viewsets.ModelViewSet):
         """Return organizations the user can access"""
         return _accessible_organizations_queryset(self.request.user)
 
+    def create(self, request, *args, **kwargs):
+        _verify_organization_domains_for_request(request)
+        return super().create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         """Create an organization for the authenticated user as its owner."""
         organization = serializer.save(owner=self.request.user)
@@ -333,14 +373,25 @@ class OrganizationViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def verify_registration_number(self, request):
-        """Validate the canonical company identity before a registration attempt."""
+        """Validate an optional canonical company identity when one is supplied."""
+        raw_registration_number = str(request.data.get('registration_number') or '').strip()
         try:
-            registration_number = normalize_registration_number(request.data.get('registration_number'))
+            registration_number = normalize_registration_number(raw_registration_number) if raw_registration_number else ''
         except Exception as error:
             raise ValidationError({'registration_number': str(error)})
         company_name = str(request.data.get('name') or '').strip()
         if not company_name:
             raise ValidationError({'name': 'Company name is required for identity verification.'})
+        if not registration_number:
+            return Response({
+                'name': company_name,
+                'name_available': not Organization.objects.filter(name__iexact=company_name).exists(),
+                'registration_number': '',
+                'valid': True,
+                'available': True,
+                'verification_source': 'not_provided',
+                'external_registry_verified': False,
+            })
         return Response({
             'name': company_name,
             'name_available': not Organization.objects.filter(name__iexact=company_name).exists(),
