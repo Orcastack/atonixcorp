@@ -939,12 +939,13 @@ class DeveloperPortalViewTests(TestCase):
             'This username is already in use.',
         )
 
-    def test_register_directs_existing_email_to_sign_in(self):
-        User.objects.create_user(
+    def test_register_routes_existing_unverified_email_to_verification(self):
+        existing_user = User.objects.create_user(
             username='existing-user',
             email='existing@example.com',
             password='strong-pass-123',
         )
+        UserProfile.objects.create(user=existing_user)
 
         response = self.client.post(
             '/api/auth/register/',
@@ -957,10 +958,11 @@ class DeveloperPortalViewTests(TestCase):
             format='json',
         )
 
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 409)
+        self.assertTrue(response.data['error']['details']['verification_required'])
         self.assertEqual(
             response.data['error']['details']['email'],
-            'An account with this email already exists. Sign in with your email, username, or employee ID.',
+            'An account with this email already exists and needs verification.',
         )
 
     def test_expired_email_verification_token_is_rejected(self):

@@ -171,7 +171,11 @@ export const AuthProvider = ({ children }) => {
 
       if (!response.ok) {
         const details = await parseApiError(response, 'Registration failed');
-        return { success: false, error: details };
+        return {
+          success: false,
+          error: details,
+          verificationRequired: response.status === 409,
+        };
       }
 
       const data = await response.json();
@@ -202,6 +206,23 @@ export const AuthProvider = ({ children }) => {
     }
   }, [apiUrl, normalizeUser, parseApiError]);
 
+  const resendEmailVerification = useCallback(async (email) => {
+    try {
+      const response = await fetch(apiUrl('/api/auth/resend-verification/'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) {
+        return { success: false, error: await parseApiError(response, 'Unable to request a verification email.') };
+      }
+      return { success: true };
+    } catch (error) {
+      console.error('Resend verification error:', error);
+      return { success: false, error: 'Unable to request a verification email.' };
+    }
+  }, [apiUrl, parseApiError]);
+
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
@@ -217,6 +238,7 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     completeEmailVerification,
+    resendEmailVerification,
     logout
   };
 

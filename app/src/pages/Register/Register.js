@@ -76,6 +76,8 @@ const Register = () => {
     const result = await register(username.trim(), email, password, country, phone, 'enterprise');
     if (result.success) {
       navigate('/verify-email', { state: { email } });
+    } else if (result.verificationRequired) {
+      navigate('/verify-email', { state: { email, existingAccount: true }, replace: true });
     } else {
       setError(result.error || 'Registration failed. Please try again.');
     }

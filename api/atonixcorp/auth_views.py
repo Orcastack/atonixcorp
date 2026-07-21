@@ -63,14 +63,7 @@ class SecureUserIdTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         profile = getattr(self.user, 'profile', None)
         if not profile or not profile.email_verified:
-            try:
-                send_verification_email(self.user)
-            except Exception:
-                logger.exception('Unable to resend verification email for user %s', self.user.pk)
-                raise AuthenticationFailed(
-                    'Please verify your email first. We could not send a new verification link; try again later or contact support.'
-                )
-            raise AuthenticationFailed('Please verify your email first. A new verification link has been sent.')
+            raise AuthenticationFailed('Please verify your email first. Request a new verification link to continue.')
         data['user'] = _user_payload(self.user)
         return data
 
@@ -99,7 +92,17 @@ class RegisterView(DeveloperFacingAPIView):
             return Response({"username": "Username must be 150 characters or fewer."}, status=status.HTTP_400_BAD_REQUEST)
         if not password:
             return Response({"password": "This field is required."}, status=status.HTTP_400_BAD_REQUEST)
-        if User.objects.filter(email__iexact=email).exists():
+        existing_user = User.objects.filter(email__iexact=email).first()
+        if existing_user:
+            existing_profile = getattr(existing_user, 'profile', None)
+            if existing_profile and not existing_profile.email_verified:
+                return Response(
+                    {
+                        'email': 'An account with this email already exists and needs verification.',
+                        'verification_required': True,
+                    },
+                    status=status.HTTP_409_CONFLICT,
+                )
             return Response(
                 {"email": "An account with this email already exists. Sign in with your email, username, or employee ID."},
                 status=status.HTTP_400_BAD_REQUEST,
@@ -220,8 +223,12 @@ class ResendEmailVerificationView(DeveloperFacingAPIView):
     def post(self, request):
         email = str((request.data or {}).get('email') or '').strip().lower()
         user = User.objects.filter(email__iexact=email).first()
-        if user and not getattr(user.profile, 'email_verified', False):
-            send_verification_email(user)
+        profile = getattr(user, 'profile', None) if user else None
+        if user and profile and not profile.email_verified:
+            try:
+                send_verification_email(user)
+            except Exception:
+                logger.exception('Unable to resend verification email for user %s', user.pk)
         return Response({'detail': 'If this account requires verification, a new link has been sent.'})
 
 
