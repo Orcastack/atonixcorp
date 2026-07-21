@@ -64,6 +64,22 @@ uppercase metadata; values are 25px bold figures with no decorative gradients.
 Keep dashboard grids at four metrics on wide screens, two on tablet, and one on
 mobile. Tabs use a blue bottom border for the active state and a gray hover fill.
 
+### Organization Overview Console
+
+`EnterpriseOrgOverview` uses the shared enterprise tokens through its
+`.org-dashboard-page` scope. Its header is always a white surface with a silver
+bottom separator; orange or red header treatments are not permitted. Keep metric
+labels, values, and supporting text in the existing three-row card layout so
+financial zero values remain legible and aligned. The card's colored left rule is
+the visual indicator: blue is neutral, green is positive performance, and amber
+is reserved for tax attention.
+
+Quick-action cards remain neutral surfaces. The Reports action alone may use the
+`#4f46e5` to `#818cf8` horizontal gradient as a 3px top rail, never as a page
+background, card fill, or header treatment. On small screens, organization tabs
+scroll horizontally and metric grids reduce from four columns to two and then one
+without changing the card hierarchy.
+
 ## Layout and components
 
 Use the 12-column grid patterns already established by page shells. The standard rhythm is 16px for controls and local spacing, 24px for grouped content, and 32px for section separation. Cards use an 8px maximum radius, a 1px silver border, and the shared shadow tokens.

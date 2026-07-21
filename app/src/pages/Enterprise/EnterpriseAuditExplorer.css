@@ -141,18 +141,18 @@
 }
 
 .severity-critical {
-  background: rgba(40, 120, 189, 0.12);
+  background: #4f46e5;
   color: #2878BD;
 }
 
 .severity-high {
-  background: rgba(30, 35, 40, 0.1);
-  color: #1E2328;
+  background: #4f46e5;
+  color: #2878BD;
 }
 
 .severity-medium {
-  background: rgba(95, 107, 122, 0.12);
-  color: #5F6B7A;
+  background: #4f46e5;
+  color: #2878BD
 }
 
 .audit-detail-stack {

@@ -1039,6 +1039,12 @@
   display: none;
 }
 
+.org-dashboard-page .action-button.reports::before {
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  display: block;
+  height: 3px;
+}
+
 .org-dashboard-page .action-button .action-icon {
   background: var(--org-blue-soft) !important;
   border-radius: 2px;
@@ -1106,7 +1112,12 @@
   }
 
   .org-dashboard-page .ed-tabs {
+    overflow-x: auto;
     padding: 0 20px;
+  }
+
+  .org-dashboard-page .ed-tab-btn {
+    flex: 0 0 auto;
   }
 
   .org-dashboard-page .org-dashboard-actions {
