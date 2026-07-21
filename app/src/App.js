@@ -14,6 +14,8 @@ import EntityLayout from './components/EntityLayout/EntityLayout';
 import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import EmailVerification from './pages/Verification/EmailVerification';
+import IdentityVerification from './pages/Verification/IdentityVerification';
 import GlobalTax from './pages/GlobalTax/GlobalTax';
 import EnterpriseOrgOverview from './pages/Enterprise/EnterpriseOrgOverview';
 import EnterpriseEntities from './pages/Enterprise/EnterpriseEntities';
@@ -197,6 +199,8 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/verify-email" element={<EmailVerification />} />
+              <Route path="/app/verification" element={<ProtectedRoute><IdentityVerification /></ProtectedRoute>} />
 
               {/* Website Pages */}
               <Route path="/product" element={<Product />} />

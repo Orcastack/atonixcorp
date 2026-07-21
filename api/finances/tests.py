@@ -5,6 +5,7 @@ import tempfile
 from datetime import timedelta
 from types import SimpleNamespace
 from unittest.mock import patch
+from urllib.parse import parse_qs, urlparse
 
 from django.contrib.auth.models import User
 from django.core import mail
@@ -97,6 +98,8 @@ from .models import (
     AccountingApprovalRecord,
     AccountingApprovalMatrix,
     AccountingApprovalDelegation,
+    EmailVerificationToken,
+    IdentityVerification,
 )
 from .tax_regimes import build_regime_rules, resolve_regime_code
 from .tax_engine import calculate_liability
@@ -793,7 +796,7 @@ class DeveloperPortalViewTests(TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.data['error']['code'], 'UNAUTHORIZED')
 
-    def test_register_generates_secure_user_id_and_allows_token_login_with_it(self):
+    def test_register_requires_email_verification_before_issuing_tokens(self):
         register_response = self.client.post(
             '/api/auth/register/',
             {
@@ -811,6 +814,12 @@ class DeveloperPortalViewTests(TestCase):
         secure_user_id = register_response.data['user']['secure_user_id']
         self.assertEqual(len(secure_user_id), 10)
         self.assertTrue(secure_user_id.isdigit())
+        self.assertTrue(register_response.data['verification_required'])
+        self.assertNotIn('access', register_response.data)
+        verification_messages = [message for message in mail.outbox if message.subject == 'Verify Your Account']
+        self.assertEqual(len(verification_messages), 1)
+        self.assertNotIn('<html', verification_messages[-1].body.lower())
+        self.assertIn('/verify-email?token=', verification_messages[-1].body)
 
         token_response = self.client.post(
             '/api/auth/token/',
@@ -821,9 +830,83 @@ class DeveloperPortalViewTests(TestCase):
             format='json',
         )
 
-        self.assertEqual(token_response.status_code, 200)
-        self.assertEqual(token_response.data['user']['secure_user_id'], secure_user_id)
-        self.assertIn('access', token_response.data)
+        self.assertEqual(token_response.status_code, 401)
+        self.assertIn('Please verify your email first.', str(token_response.data))
+        verification_messages = [message for message in mail.outbox if message.subject == 'Verify Your Account']
+        self.assertEqual(len(verification_messages), 2)
+
+        verification_url = next(line for line in verification_messages[-1].body.splitlines() if '/verify-email?token=' in line)
+        verification_token = parse_qs(urlparse(verification_url).query)['token'][0]
+        verify_response = self.client.get(f'/api/auth/verify-email/?token={verification_token}')
+
+        self.assertEqual(verify_response.status_code, 200)
+        self.assertEqual(verify_response.data['next_path'], '/app/verification')
+        self.assertIn('access', verify_response.data)
+        self.assertTrue(UserProfile.objects.get(user__email='secure-id@example.com').email_verified)
+        self.assertIsNotNone(EmailVerificationToken.objects.get(user__email='secure-id@example.com').used_at)
+
+        reused_response = self.client.get(f'/api/auth/verify-email/?token={verification_token}')
+        self.assertEqual(reused_response.status_code, 400)
+
+        verified_login_response = self.client.post(
+            '/api/auth/token/',
+            {'username': secure_user_id, 'password': 'strong-pass-123'},
+            format='json',
+        )
+        self.assertEqual(verified_login_response.status_code, 200)
+        self.assertTrue(verified_login_response.data['user']['email_verified'])
+        self.assertIn('access', verified_login_response.data)
+
+    def test_expired_email_verification_token_is_rejected(self):
+        self.client.post(
+            '/api/auth/register/',
+            {
+                'email': 'expired-link@example.com',
+                'password': 'strong-pass-123',
+                'username': 'expired-link@example.com',
+            },
+            format='json',
+        )
+        verification_message = next(message for message in mail.outbox if message.subject == 'Verify Your Account')
+        verification_url = next(line for line in verification_message.body.splitlines() if '/verify-email?token=' in line)
+        verification_token = parse_qs(urlparse(verification_url).query)['token'][0]
+        token_record = EmailVerificationToken.objects.get(user__email='expired-link@example.com')
+        token_record.expires_at = timezone.now() - timedelta(seconds=1)
+        token_record.save(update_fields=['expires_at'])
+
+        response = self.client.get(f'/api/auth/verify-email/?token={verification_token}')
+
+        self.assertEqual(response.status_code, 400)
+        self.assertFalse(UserProfile.objects.get(user__email='expired-link@example.com').email_verified)
+
+    def test_identity_upload_requires_verified_email(self):
+        user = User.objects.create_user(username='identity-user', email='identity@example.com', password='strong-pass-123')
+        profile = UserProfile.objects.create(user=user)
+        self.client.force_authenticate(user)
+
+        blocked_response = self.client.post(
+            '/api/auth/identity-verification/',
+            {
+                'id_document': SimpleUploadedFile('identity.png', b'id-image', content_type='image/png'),
+                'selfie': SimpleUploadedFile('selfie.png', b'selfie-image', content_type='image/png'),
+            },
+            format='multipart',
+        )
+        self.assertEqual(blocked_response.status_code, 403)
+        self.assertEqual(blocked_response.data['error']['message'], 'Please verify your email first.')
+
+        profile.email_verified = True
+        profile.save(update_fields=['email_verified'])
+        accepted_response = self.client.post(
+            '/api/auth/identity-verification/',
+            {
+                'id_document': SimpleUploadedFile('identity.png', b'id-image', content_type='image/png'),
+                'selfie': SimpleUploadedFile('selfie.png', b'selfie-image', content_type='image/png'),
+            },
+            format='multipart',
+        )
+        self.assertEqual(accepted_response.status_code, 200)
+        self.assertEqual(accepted_response.data['status'], IdentityVerification.STATUS_SUBMITTED)
 
 
 @override_settings(ATONIXCORP_API_ENVIRONMENT='sandbox')

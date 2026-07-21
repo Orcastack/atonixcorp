@@ -65,6 +65,7 @@ export const AuthProvider = ({ children }) => {
     account_type: source?.account_type || 'enterprise',
     country: source?.country || '',
     phone: source?.phone || '',
+    email_verified: Boolean(source?.email_verified),
   }), []);
 
   useEffect(() => {
@@ -171,25 +172,30 @@ export const AuthProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.access);
-      localStorage.setItem('refreshToken', data.refresh);
-
-      const derivedUser = normalizeUser({
-        ...data.user,
-        username: data.user?.username || name || email,
-        email: data.user?.email || email,
-        account_type: data.user?.account_type || account_type || 'enterprise',
-        country: data.user?.country || country,
-        phone: data.user?.phone || phone,
-      });
-
-      setUser(derivedUser);
-      setIsAuthenticated(true);
-      localStorage.setItem('user', JSON.stringify(derivedUser));
-      return { success: true, user: derivedUser };
+      return { success: true, verificationRequired: Boolean(data.verification_required), user: data.user };
     } catch (error) {
       console.error('Register error:', error);
       return { success: false, error: 'Registration failed' };
+    }
+  }, [apiUrl, parseApiError]);
+
+  const completeEmailVerification = useCallback(async (token) => {
+    try {
+      const response = await fetch(apiUrl(`/api/auth/verify-email/?token=${encodeURIComponent(token)}`));
+      if (!response.ok) {
+        return { success: false, error: await parseApiError(response, 'Unable to verify this email link.') };
+      }
+      const data = await response.json();
+      localStorage.setItem('token', data.access);
+      localStorage.setItem('refreshToken', data.refresh);
+      const verifiedUser = normalizeUser(data.user);
+      setUser(verifiedUser);
+      setIsAuthenticated(true);
+      localStorage.setItem('user', JSON.stringify(verifiedUser));
+      return { success: true, nextPath: data.next_path || '/app/verification' };
+    } catch (error) {
+      console.error('Email verification error:', error);
+      return { success: false, error: 'Unable to verify this email link.' };
     }
   }, [apiUrl, normalizeUser, parseApiError]);
 
@@ -207,6 +213,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     login,
     register,
+    completeEmailVerification,
     logout
   };
 

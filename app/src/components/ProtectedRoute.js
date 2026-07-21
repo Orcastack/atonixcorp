@@ -10,7 +10,7 @@ import { useEnterprise } from '../context/EnterpriseContext';
  * If roles haven't loaded yet (null), access is allowed (fail-open during load).
  */
 const ProtectedRoute = ({ children, requiredRoles, requiredPermission }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const { currentUserRole, hasPermission } = useEnterprise();
 
   if (loading) {
@@ -32,6 +32,10 @@ const ProtectedRoute = ({ children, requiredRoles, requiredPermission }) => {
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
+  }
+
+  if (!user?.email_verified) {
+    return <Navigate to="/verify-email" replace />;
   }
 
   // Role guard — only enforce when requiredRoles provided AND role is resolved

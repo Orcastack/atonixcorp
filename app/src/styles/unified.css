@@ -58,7 +58,7 @@ button,
 .btn,
 .landing-button,
 .plan-card button {
-  min-height: 40px;
+  min-height: 44px;
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
@@ -79,6 +79,39 @@ textarea {
   border-radius: var(--radius-md);
   color: var(--color-heading);
   background: var(--color-white);
+}
+
+input:not([type='checkbox']):not([type='radio']):not([type='range']),
+select,
+textarea {
+  min-height: 44px;
+}
+
+input[type='file'] {
+  min-height: 44px;
+  padding: var(--space-sm);
+}
+
+.btn-primary,
+.btn.btn-primary {
+  background: var(--color-blue-700);
+  border-color: var(--color-blue-700);
+  color: var(--color-white);
+}
+
+.btn-primary:hover,
+.btn.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn.btn-primary:focus-visible {
+  background: var(--color-navy-800);
+  border-color: var(--color-navy-800);
+  color: var(--color-white);
+}
+
+.btn-primary:active,
+.btn.btn-primary:active {
+  background: var(--color-navy-950);
+  border-color: var(--color-navy-950);
 }
 
 select,
@@ -143,6 +176,7 @@ textarea:focus {
 
 .table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ui-table th {
@@ -158,9 +192,39 @@ textarea:focus {
 }
 
 @media (max-width: 767px) {
-  select {
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
     font-size: 16px;
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  select {
     min-height: 48px;
+  }
+
+  .page-header,
+  .card-header,
+  .card-footer,
+  .modal-footer,
+  .ui-actions,
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .page-actions,
+  .modal-footer,
+  .ui-actions,
+  .form-actions {
+    width: 100%;
+  }
+
+  .page-actions > *,
+  .modal-footer > *,
+  .ui-actions > *,
+  .form-actions > * {
+    width: 100%;
   }
 }
 
@@ -367,6 +431,7 @@ textarea:focus {
 .auth-form select,
 .phone-input,
 .country-select {
+  min-height: 44px;
   border-color: var(--color-silver-300);
   border-radius: var(--radius-md);
   background: var(--color-white);
@@ -388,6 +453,7 @@ textarea:focus {
 
 .auth-form .btn-primary,
 .auth-form .btn-full {
+  min-height: 44px;
   border: 1px solid var(--color-blue-700);
   border-radius: var(--radius-md);
   background: var(--color-blue-700);
@@ -403,6 +469,7 @@ textarea:focus {
 
 .auth-page .password-toggle,
 .auth-page .btn-link {
+  min-height: 44px;
   border-color: var(--color-silver-300);
   border-radius: var(--radius-md);
   background: var(--color-white);

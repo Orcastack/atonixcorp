@@ -1,18 +1,39 @@
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from django.utils.text import slugify
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import AuthenticationFailed, PermissionDenied, ValidationError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .developer_portal_common import DeveloperFacingAPIView
-from .models import Organization, UserProfile, ACCOUNT_TYPE_ENTERPRISE, ACCOUNT_TYPE_PERSONAL
+from .email_verification import send_verification_email, verify_email_token
+from .models import IdentityVerification, Organization, UserProfile, ACCOUNT_TYPE_ENTERPRISE, ACCOUNT_TYPE_PERSONAL
 from .organization_email_service import send_system_notification
 
 
 User = get_user_model()
+
+
+def _user_payload(user):
+    profile = getattr(user, 'profile', None)
+    return {
+        'id': user.id,
+        'username': user.username,
+        'email': user.email,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'account_type': getattr(profile, 'account_type', ACCOUNT_TYPE_PERSONAL),
+        'country': getattr(profile, 'country', ''),
+        'phone': getattr(profile, 'phone', ''),
+        'tax_type': getattr(profile, 'tax_type', UserProfile.TAX_TYPE_CORPORATE),
+        'tax_rate': float(getattr(profile, 'tax_rate', 0) or 0),
+        'secure_user_id': getattr(profile, 'secure_user_id', ''),
+        'email_verified': bool(getattr(profile, 'email_verified', False)),
+    }
 
 
 class SecureUserIdTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -39,19 +60,10 @@ class SecureUserIdTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
 
         profile = getattr(self.user, 'profile', None)
-        data['user'] = {
-            'id': self.user.id,
-            'username': self.user.username,
-            'email': self.user.email,
-            'first_name': self.user.first_name,
-            'last_name': self.user.last_name,
-            'account_type': getattr(profile, 'account_type', ACCOUNT_TYPE_PERSONAL),
-            'country': getattr(profile, 'country', ''),
-            'phone': getattr(profile, 'phone', ''),
-            'tax_type': getattr(profile, 'tax_type', UserProfile.TAX_TYPE_CORPORATE),
-            'tax_rate': float(getattr(profile, 'tax_rate', 0) or 0),
-            'secure_user_id': getattr(profile, 'secure_user_id', ''),
-        }
+        if not profile or not profile.email_verified:
+            send_verification_email(self.user)
+            raise AuthenticationFailed('Please verify your email first. A new verification link has been sent.')
+        data['user'] = _user_payload(self.user)
         return data
 
 
@@ -126,25 +138,11 @@ class RegisterView(DeveloperFacingAPIView):
                 primary_country=country or "Unknown",
             )
 
-        refresh = RefreshToken.for_user(user)
-        profile = getattr(user, 'profile', None)
+        send_verification_email(user)
         return Response(
             {
-                "user": {
-                    "id": user.id,
-                    "username": user.username,
-                    "email": user.email,
-                    "first_name": user.first_name,
-                    "last_name": user.last_name,
-                    "account_type": getattr(profile, 'account_type', ACCOUNT_TYPE_PERSONAL),
-                    "country": getattr(profile, 'country', ''),
-                    "phone": getattr(profile, 'phone', ''),
-                    "tax_type": getattr(profile, 'tax_type', UserProfile.TAX_TYPE_CORPORATE),
-                    "tax_rate": float(getattr(profile, 'tax_rate', 0) or 0),
-                    "secure_user_id": getattr(profile, 'secure_user_id', ''),
-                },
-                "access": str(refresh.access_token),
-                "refresh": str(refresh),
+                "user": _user_payload(user),
+                "verification_required": True,
             },
             status=status.HTTP_201_CREATED,
         )
@@ -156,21 +154,9 @@ class MeView(DeveloperFacingAPIView):
     def get(self, request):
         user = request.user
         profile = getattr(user, 'profile', None)
-        return Response(
-            {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "account_type": getattr(profile, 'account_type', ACCOUNT_TYPE_PERSONAL),
-                "country": getattr(profile, 'country', ''),
-                "phone": getattr(profile, 'phone', ''),
-                "tax_type": getattr(profile, 'tax_type', UserProfile.TAX_TYPE_CORPORATE),
-                "tax_rate": float(getattr(profile, 'tax_rate', 0) or 0),
-                "secure_user_id": getattr(profile, 'secure_user_id', ''),
-            }
-        )
+        if not profile or not profile.email_verified:
+            raise PermissionDenied('Please verify your email first.')
+        return Response(_user_payload(user))
 
     def patch(self, request):
         user = request.user
@@ -202,4 +188,67 @@ class MeView(DeveloperFacingAPIView):
                 return Response({"tax_rate": "Must be a number."}, status=status.HTTP_400_BAD_REQUEST)
 
         profile.save()
+        return self.get(request)
+
+
+class VerifyEmailView(DeveloperFacingAPIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        token = request.query_params.get('token', '')
+        if not token:
+            raise ValidationError({'token': 'A verification token is required.'})
+        user = verify_email_token(token)
+        refresh = RefreshToken.for_user(user)
+        identity = getattr(user, 'identity_verification', None)
+        next_path = '/app/console' if identity and identity.status == IdentityVerification.STATUS_VERIFIED else '/app/verification'
+        return Response({
+            'user': _user_payload(user),
+            'access': str(refresh.access_token),
+            'refresh': str(refresh),
+            'next_path': next_path,
+        })
+
+
+class ResendEmailVerificationView(DeveloperFacingAPIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        email = str((request.data or {}).get('email') or '').strip().lower()
+        user = User.objects.filter(email__iexact=email).first()
+        if user and not getattr(user.profile, 'email_verified', False):
+            send_verification_email(user)
+        return Response({'detail': 'If this account requires verification, a new link has been sent.'})
+
+
+class IdentityVerificationView(DeveloperFacingAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def _verification(self, user):
+        return IdentityVerification.objects.get_or_create(user=user)[0]
+
+    def get(self, request):
+        verification = self._verification(request.user)
+        return Response({
+            'status': verification.status,
+            'id_document_uploaded': bool(verification.id_document),
+            'selfie_uploaded': bool(verification.selfie),
+            'rejection_reason': verification.rejection_reason,
+        })
+
+    def post(self, request):
+        profile = getattr(request.user, 'profile', None)
+        if not profile or not profile.email_verified:
+            raise PermissionDenied('Please verify your email first.')
+        id_document = request.FILES.get('id_document')
+        selfie = request.FILES.get('selfie')
+        if not id_document or not selfie:
+            raise ValidationError({'detail': 'Upload both an ID document and a selfie.'})
+        verification = self._verification(request.user)
+        verification.id_document = id_document
+        verification.selfie = selfie
+        verification.status = IdentityVerification.STATUS_SUBMITTED
+        verification.submitted_at = timezone.now()
+        verification.rejection_reason = ''
+        verification.save()
         return self.get(request)

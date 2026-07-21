@@ -62,6 +62,8 @@ class UserProfile(models.Model):
     )
     country = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=20, blank=True)
+    email_verified = models.BooleanField(default=False)
+    email_verified_at = models.DateTimeField(null=True, blank=True)
 
     TAX_TYPE_CORPORATE = 'corporate'
     TAX_TYPE_PERSONAL = 'personal'
@@ -92,6 +94,44 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.email} ({self.get_account_type_display()})"
+
+
+class EmailVerificationToken(models.Model):
+    """Single-use, hashed email-verification token; plaintext is never persisted."""
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='email_verification_tokens')
+    token_hash = models.CharField(max_length=64, unique=True)
+    expires_at = models.DateTimeField()
+    used_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [models.Index(fields=['user', 'expires_at'], name='finances_em_user_id_4eb519_idx')]
+
+
+class IdentityVerification(models.Model):
+    """User-provided ID and selfie evidence submitted after email verification."""
+
+    STATUS_PENDING = 'pending'
+    STATUS_SUBMITTED = 'submitted'
+    STATUS_VERIFIED = 'verified'
+    STATUS_REJECTED = 'rejected'
+    STATUS_CHOICES = [
+        (STATUS_PENDING, 'Pending'),
+        (STATUS_SUBMITTED, 'Submitted'),
+        (STATUS_VERIFIED, 'Verified'),
+        (STATUS_REJECTED, 'Rejected'),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='identity_verification')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_PENDING)
+    id_document = models.FileField(upload_to='identity_verification/id_documents/', blank=True)
+    selfie = models.FileField(upload_to='identity_verification/selfies/', blank=True)
+    submitted_at = models.DateTimeField(null=True, blank=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    rejection_reason = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Organization(models.Model):

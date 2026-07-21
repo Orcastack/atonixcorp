@@ -101,7 +101,7 @@ input[type='number'],
 input[type='date'],
 input[type='time'],
 input[type='search'] {
-  height: 40px;
+  min-height: 44px;
   padding: 0 12px;
 }
 
@@ -112,7 +112,7 @@ textarea {
 }
 
 select {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 12px;
 }
 

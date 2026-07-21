@@ -5790,6 +5790,19 @@ class KYCProfileViewSet(viewsets.ModelViewSet):
             return KYCProfile.objects.filter(organization__in=accessible_orgs, organization_id=org_id)
         return KYCProfile.objects.filter(organization__in=accessible_orgs)
 
+    def _require_verified_email_for_document_upload(self):
+        document_fields = {'id_document_url', 'proof_of_address_url', 'business_registration_url'}
+        if document_fields.intersection(self.request.data) and not getattr(getattr(self.request.user, 'profile', None), 'email_verified', False):
+            raise PermissionDenied('Please verify your email first.')
+
+    def perform_create(self, serializer):
+        self._require_verified_email_for_document_upload()
+        serializer.save()
+
+    def perform_update(self, serializer):
+        self._require_verified_email_for_document_upload()
+        serializer.save()
+
 
 class AMLTransactionViewSet(viewsets.ModelViewSet):
     """ViewSet for AML transactions"""

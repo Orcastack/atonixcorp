@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useEnterprise } from '../context/EnterpriseContext';
 
 const GlobalConsoleRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const { getDefaultDashboardPath, hasPermission, loading: enterpriseLoading } = useEnterprise();
   const location = useLocation();
 
@@ -27,6 +27,10 @@ const GlobalConsoleRoute = ({ children }) => {
 
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  if (!user?.email_verified) {
+    return <Navigate to="/verify-email" replace />;
   }
 
   if (!hasPermission('view_org_overview')) {

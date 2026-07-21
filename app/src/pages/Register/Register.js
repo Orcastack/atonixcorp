@@ -71,7 +71,7 @@ const Register = () => {
 
     const result = await register(name, email, password, country, phone, 'enterprise', orgName);
     if (result.success) {
-      navigate('/app/console');
+      navigate('/verify-email', { state: { email } });
     } else {
       setError(result.error || 'Registration failed. Please try again.');
     }
