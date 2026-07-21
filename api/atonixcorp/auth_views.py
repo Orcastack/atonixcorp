@@ -95,7 +95,7 @@ class RegisterView(DeveloperFacingAPIView):
         existing_user = User.objects.filter(email__iexact=email).first()
         if existing_user:
             existing_profile = getattr(existing_user, 'profile', None)
-            if existing_profile and not existing_profile.email_verified:
+            if not existing_profile or not existing_profile.email_verified:
                 return Response(
                     {
                         'email': 'An account with this email already exists and needs verification.',

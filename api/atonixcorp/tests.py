@@ -833,9 +833,9 @@ class DeveloperPortalViewTests(TestCase):
         self.assertEqual(token_response.status_code, 401)
         self.assertIn('Please verify your email first.', str(token_response.data))
         verification_messages = [message for message in mail.outbox if message.subject == 'Verify Your Account']
-        self.assertEqual(len(verification_messages), 2)
+        self.assertEqual(len(verification_messages), 1)
 
-        verification_url = next(line for line in verification_messages[-1].body.splitlines() if '/verify-email?token=' in line)
+        verification_url = next(line for line in verification_messages[0].body.splitlines() if '/verify-email?token=' in line)
         verification_token = parse_qs(urlparse(verification_url).query)['token'][0]
         verify_response = self.client.get(f'/api/auth/verify-email/?token={verification_token}')
 
@@ -857,8 +857,8 @@ class DeveloperPortalViewTests(TestCase):
         self.assertTrue(verified_login_response.data['user']['email_verified'])
         self.assertIn('access', verified_login_response.data)
 
-    @patch('atonixcorp.auth_views.send_verification_email', side_effect=RuntimeError('SMTP unavailable'))
-    def test_unverified_login_reports_delivery_failure_without_server_error(self, _send_verification_email):
+    @patch('atonixcorp.auth_views.send_verification_email')
+    def test_unverified_login_requires_explicit_verification_request(self, send_verification_email):
         user = User.objects.create_user(
             username='unverified-user',
             email='unverified@example.com',
@@ -874,7 +874,26 @@ class DeveloperPortalViewTests(TestCase):
 
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.data['error']['code'], 'UNAUTHORIZED')
-        self.assertIn('could not send a new verification link', response.data['error']['message'])
+        self.assertIn('Request a new verification link', response.data['error']['message'])
+        send_verification_email.assert_not_called()
+
+    @patch('atonixcorp.auth_views.send_verification_email', side_effect=RuntimeError('SMTP unavailable'))
+    def test_resend_verification_hides_delivery_failures(self, _send_verification_email):
+        user = User.objects.create_user(
+            username='resend-user',
+            email='resend@example.com',
+            password='strong-pass-123',
+        )
+        UserProfile.objects.create(user=user)
+
+        response = self.client.post(
+            '/api/auth/resend-verification/',
+            {'email': user.email},
+            format='json',
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['detail'], 'If this account requires verification, a new link has been sent.')
 
     def test_register_requires_username_distinct_from_email(self):
         response = self.client.post(
