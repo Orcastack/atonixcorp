@@ -377,6 +377,12 @@ class WorkspaceService:
 
         WorkspaceService._seed_default_departments(ws)
 
+        WorkspaceSetting.objects.create(
+            workspace=ws,
+            key='profile_name',
+            value=f'{ws.name} Settings',
+        )
+
         LogService.log(ws.id, user, 'workspace.created', {'name': ws.name})
         return ws
 

@@ -927,6 +927,13 @@ export const platformTasksAPI = {
   cancel: (id) => api.post(`/platform-tasks/${id}/cancel/`),
 };
 
+export const securityApiKeysAPI = {
+  list: (organizationId) => api.get('/v1/api-keys', { headers: { 'X-Organization-Id': organizationId } }),
+  create: (organizationId, data) => api.post('/v1/api-keys', data, { headers: { 'X-Organization-Id': organizationId } }),
+  rotate: (organizationId, keyId) => api.post(`/v1/api-keys/${keyId}/rotate`, {}, { headers: { 'X-Organization-Id': organizationId } }),
+  revoke: (organizationId, keyId) => api.post(`/v1/api-keys/${keyId}/revoke`, {}, { headers: { 'X-Organization-Id': organizationId } }),
+};
+
 // ============ FIRM DASHBOARD & BUSINESS INTELLIGENCE APIs ============
 
 // Firm Metrics API

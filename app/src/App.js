@@ -37,6 +37,7 @@ import EnterpriseReports from './pages/Enterprise/EnterpriseReports';
 import EnterpriseAuditExplorer from './pages/Enterprise/EnterpriseAuditExplorer';
 import EnterpriseTeam from './pages/Enterprise/EnterpriseTeam';
 import SettingsConsole from './pages/SettingsConsole/SettingsConsole';
+import SecurityConsole from './pages/SettingsConsole/SecurityConsole';
 import FirmDashboard from './pages/Firm/FirmDashboard';
 import WhiteLabel from './pages/Firm/WhiteLabel';
 import Marketplace from './pages/Firm/Marketplace';
@@ -216,7 +217,7 @@ function App() {
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
               {/* Standalone authenticated surfaces — no dashboard shell */}
-              <Route path="/security-center" element={<Navigate to="/app/console/settings" replace />} />
+              <Route path="/security-center" element={<Navigate to="/app/console/settings/security" replace />} />
               <Route path="/support-center" element={<Navigate to="/app/console/settings/support-center" replace />} />
               {renderStandalonePageRoutes('/support-tickets', AppSupportTickets, 'view_org_overview')}
               {renderModulePageRoutes('/app/governance', GovernanceCenter, 'manage_org_settings')}
@@ -225,6 +226,7 @@ function App() {
               {/* Global Console — no sidebar */}
               <Route path="/app/console" element={<ProtectedRoute><GlobalConsoleRoute><GlobalConsole /></GlobalConsoleRoute></ProtectedRoute>} />
               <Route path="/app/console/settings" element={<StandaloneModuleShell title="Settings Console" eyebrow="Console" backTo="/app/console" backLabel="Back to Console"><SettingsConsole /></StandaloneModuleShell>} />
+              <Route path="/app/console/settings/security" element={<StandaloneModuleShell title="Security Settings" eyebrow="Settings Console" backTo="/app/console/settings" backLabel="Back to Settings"><SecurityConsole /></StandaloneModuleShell>} />
               <Route path="/app/console/settings/support-center" element={<StandaloneModuleShell title="Support Center" eyebrow="Settings Console" backTo="/app/console/settings" backLabel="Back to Settings"><AppHelpCenter /></StandaloneModuleShell>} />
               <Route path="/app/organizations/select" element={<ProtectedRoute><WorkspaceSelector /></ProtectedRoute>} />
               <Route path="/app/workspaces/create" element={<ProtectedRoute><CreateWorkspace /></ProtectedRoute>} />
@@ -510,7 +512,7 @@ function App() {
               <Route path="/app/settings" element={<Navigate to="/app/console/settings" replace />} />
               <Route path="/app/settings/firm" element={<Navigate to="/app/console/settings" replace />} />
               <Route path="/app/settings/team" element={<Navigate to="/app/console/settings" replace />} />
-              <Route path="/app/settings/security" element={<Navigate to="/app/console/settings" replace />} />
+              <Route path="/app/settings/security" element={<Navigate to="/app/console/settings/security" replace />} />
               <Route path="/app/settings/security/list" element={<Navigate to="/app/console/settings" replace />} />
               <Route path="/app/settings/entities" element={<Navigate to="/app/console/settings" replace />} />
               <Route path="/app/settings/branding" element={<Navigate to="/app/console/settings" replace />} />

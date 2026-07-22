@@ -34,7 +34,7 @@ export const footerLinks = {
     links: [
       { label: 'Resources', to: '/help-center' },
       { label: 'Deployment', to: '/deployment' },
-      { label: 'Security Center', to: '/app/console/settings' },
+      { label: 'Security Center', to: '/app/console/settings/security' },
       { label: 'Documentation', to: '/help-center' },
       { label: 'API Reference', to: '/v1/docs' },
       { label: 'Developer Guides', to: '/v1/docs' },
@@ -57,7 +57,7 @@ export const footerLinks = {
       { label: 'Audit Logs', to: '/app/compliance/audit-trail' },
       { label: 'Data Retention', to: '/privacy#data-retention' },
       { label: 'Access Control', to: '/app/console/settings' },
-      { label: 'Security Overview', to: '/app/console/settings' },
+      { label: 'Security Overview', to: '/app/console/settings/security' },
     ],
   },
   operations: {

@@ -10,7 +10,7 @@ const UTILITY_ITEMS = [
   { label: 'Support', to: '/support' },
   { label: 'Developers', to: '/developers' },
   //{ label: 'Governance', to: '/governance' },
-  { label: 'Security', to: '/app/console/settings' },
+  { label: 'Security', to: '/app/console/settings/security' },
   { label: 'Login', to: '/login' },
 ];
 
