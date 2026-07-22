@@ -3,7 +3,7 @@
   --compliance-line: #E0E2E5;
   --compliance-shadow: 0 18px 40px rgba(30, 35, 40, 0.08);
   --compliance-muted: #6B7280;
-  --compliance-ink: #1E2328;
+  --compliance-ink: #1f5f9b;
   --compliance-soft: #F8F9FB;
 }
 
@@ -28,7 +28,7 @@
   background: #F2F3F4;
   border: 1px solid transparent;
   border-radius: 999px;
-  color: #1E2328;
+  color: #1f5f9b;
   cursor: pointer;
   font-size: 13px;
   font-weight: 700;
@@ -43,7 +43,7 @@
 .enterprise-tax-compliance .action-btn:hover,
 .enterprise-tax-compliance .suggestion-btn:hover,
 .enterprise-tax-compliance .question-btn:hover {
-  background: #1E2328;
+  background: #1f5f9b;
   color: #f8fafc;
 }
 
@@ -53,7 +53,7 @@
 .enterprise-tax-compliance .nav-btn {
   background: #F8F9FB;
   border-color: var(--compliance-line);
-  color: #1E2328;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .nav-btn.active,
@@ -61,7 +61,7 @@
 .enterprise-tax-compliance .filter-btn.active,
 .enterprise-tax-compliance .quick-action-btn:hover,
 .enterprise-tax-compliance .quick-action-btn.secondary:hover {
-  border-color: #1E2328;
+  border-color: #1f5f9b;
   transform: translateY(-1px);
 }
 
@@ -372,7 +372,7 @@
   align-items: center;
   background: linear-gradient(135deg, #dbeafe, #eff6ff);
   border-radius: 14px;
-  color: #1d4ed8;
+  color: #1f5f9b;
   display: inline-flex;
   font-weight: 800;
   height: 42px;
@@ -381,7 +381,7 @@
 }
 
 .enterprise-tax-compliance .score-circle {
-  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
   border-radius: 50%;
   color: #ffffff;
   flex-direction: column;
@@ -492,7 +492,7 @@
 }
 
 .enterprise-tax-compliance .step.active {
-  border-color: #1d4ed8;
+  border-color: #1f5f9b;
   box-shadow: 0 18px 36px rgba(29, 78, 216, 0.1);
 }
 
@@ -701,7 +701,7 @@
 .enterprise-tax-compliance .rule-card:hover,
 .enterprise-tax-compliance .report-card:hover,
 .enterprise-tax-compliance .assistance-card:hover {
-  border-color: #1d4ed8;
+  border-color: #1f5f9b;
   box-shadow: 0 18px 36px rgba(29, 78, 216, 0.1);
   transform: translateY(-1px);
 }
@@ -827,7 +827,7 @@
 
 .enterprise-tax-compliance .calc-type-badge {
   background: rgba(29, 78, 216, 0.12);
-  color: #1d4ed8;
+  color: #1f5f9b;
   padding: 7px 10px;
   border-radius: 999px;
   font-size: 11px;
@@ -858,7 +858,7 @@
 .enterprise-tax-compliance .result-stat .amount {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .calc-breakdown {
@@ -895,7 +895,7 @@
   border-top: 2px solid var(--compliance-line);
   padding-top: 10px;
   font-weight: 800;
-  color: #0f172a;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .effective-rate {
@@ -1492,7 +1492,7 @@
 }
 
 .enterprise-tax-compliance .assistance-card:hover {
-  border-color: #1d4ed8;
+  border-color: #1f5f9b;
   box-shadow: 0 18px 36px rgba(29, 78, 216, 0.1);
 }
 
@@ -1562,7 +1562,7 @@
 
 .enterprise-tax-compliance .close-btn:hover {
   background: #e2e8f0;
-  color: #0f172a;
+  color: #1f5f9b;
 }
 
 .filing-assistant-page .filing-section {
@@ -1576,7 +1576,7 @@
 }
 
 .filing-assistant-page .filing-assistant-hero {
-  background: #1E2328;
+  background: #1f5f9b;
   border-radius: 28px;
   color: #ffffff;
   display: grid;
@@ -1861,7 +1861,7 @@
 }
 
 .tax-monitoring-page .monitoring-hero-card {
-  background: #1E2328;
+  background: #1f5f9b;
   border-radius: 28px;
   color: #ffffff;
   display: grid;
@@ -2141,7 +2141,7 @@
 
 .tax-monitoring-page .monitoring-check-index {
   align-items: center;
-  background: #0f172a;
+  background: #1f5f9b;
   border-radius: 12px;
   color: #f8fafc;
   display: inline-flex;
@@ -2242,7 +2242,7 @@
 
 /* 1. Page-specific hero gradient */
 .enterprise-tax-compliance {
-  --overview-hero-bg: #1E2328;
+  --overview-hero-bg: #1f5f9b;
 }
 
 /* 2. Sticky section navigation with glass-morphism */
@@ -2258,7 +2258,7 @@
 
 /* 3. Section nav active state with indigo accent */
 .enterprise-tax-compliance .nav-btn.active {
-  background: linear-gradient(135deg, #0f172a, #1e40af);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
   border-color: transparent;
   box-shadow: 0 4px 14px rgba(30, 64, 175, 0.3);
   color: #f8fafc;
@@ -2294,7 +2294,7 @@
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(1)::before {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(2)::before {
@@ -2306,7 +2306,7 @@
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(1) .action-page-stat-value {
-  color: #1d4ed8;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(2) .action-page-stat-value {
@@ -2342,7 +2342,7 @@
 }
 
 .enterprise-tax-compliance .stat-card-blue::before {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
 }
 
 .enterprise-tax-compliance .stat-card-green::before {
@@ -2367,7 +2367,7 @@
 
 .enterprise-tax-compliance .stat-card-blue .stat-icon {
   background: linear-gradient(135deg, #dbeafe, #eff6ff);
-  color: #1d4ed8;
+  color: #1f5f9b;
   font-size: 18px;
   line-height: 1;
 }
@@ -2448,7 +2448,7 @@
 
 /* 7. Quick actions bar — styled left accent */
 .enterprise-tax-compliance .quick-actions {
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid #1f5f9b;
   border-radius: 22px;
   display: flex;
   flex-wrap: wrap;
@@ -2469,7 +2469,7 @@
 }
 
 .enterprise-tax-compliance .score-circle {
-  background: linear-gradient(135deg, #0f172a, #1e40af);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
   flex-shrink: 0;
 }
 
@@ -2537,7 +2537,7 @@
 }
 
 .enterprise-tax-compliance .activity-item:has(.activity-icon.info) {
-  border-left-color: #3b82f6;
+  border-left-color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .activity-item:has(.activity-icon.success) {
@@ -2550,7 +2550,7 @@
 
 .enterprise-tax-compliance .activity-icon.info {
   background: linear-gradient(135deg, #dbeafe, #eff6ff);
-  color: #1d4ed8;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .activity-icon.success {
@@ -2676,7 +2676,7 @@
 /* 13. Profile card — country code badge */
 .enterprise-tax-compliance .country-code-badge {
   align-items: center;
-  background: linear-gradient(135deg, #0f172a, #1e40af);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
   border-radius: 12px;
   color: #ffffff;
   display: inline-flex;
@@ -2781,7 +2781,7 @@
   align-items: center;
   background: linear-gradient(135deg, #dbeafe, #eff6ff);
   border-radius: 12px;
-  color: #1d4ed8;
+  color: #1f5f9b;
   display: inline-flex;
   font-size: 16px;
   height: 40px;
@@ -2833,7 +2833,7 @@
 
 /* 18. Calculator — result card polish */
 .enterprise-tax-compliance .calculation-result {
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid #1f5f9b;
 }
 
 .enterprise-tax-compliance .result-stat {
@@ -2874,7 +2874,7 @@
 
 /* Brand enforcement overrides */
 .enterprise-tax-compliance {
-  --overview-hero-bg: #1E2328;
+  --overview-hero-bg: #1f5f9b;
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(1)::before,
@@ -2897,7 +2897,7 @@
 .enterprise-tax-compliance .score-status.good,
 .enterprise-tax-compliance .activity-icon.info,
 .enterprise-tax-compliance .doc-icon {
-  color: #1E2328;
+  color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .action-page-stat:nth-child(2) .action-page-stat-value,
@@ -2940,7 +2940,7 @@
 
 .enterprise-tax-compliance .score-circle,
 .enterprise-tax-compliance .country-code-badge {
-  background: #1E2328;
+  background: #1f5f9b;
 }
 
 .enterprise-tax-compliance .activity-item:has(.activity-icon.info),
@@ -2948,7 +2948,7 @@
 .enterprise-tax-compliance .activity-item:has(.activity-icon.warning),
 .enterprise-tax-compliance .deadline-item.normal,
 .enterprise-tax-compliance .alert-item.severity-low {
-  border-left-color: #1E2328;
+  border-left-color: #1f5f9b;
 }
 
 .enterprise-tax-compliance .deadline-item.urgent,

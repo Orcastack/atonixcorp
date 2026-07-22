@@ -217,12 +217,12 @@ const EnterpriseEntities = () => {
   };
 
   const statusColors = {
-    active:    { bg: 'rgba(23, 105, 224, 0.12)', color: '#1458bd', dot: '#1769e0' },
+    active:    { bg: 'rgba(40, 120, 189, 0.12)', color: '#1f5f9b', dot: '#2878BD' },
     dormant:   { bg: 'rgba(71, 85, 105, 0.10)', color: '#475569', dot: '#64748b' },
     wind_down: { bg: 'rgba(161, 98, 7, 0.12)', color: '#92400e', dot: '#b45309' },
   };
 
-  const getStatusStyle = (status) => statusColors[status] || { bg: 'rgba(0, 0, 0, 0.06)', color: '#000000', dot: '#000000' };
+  const getStatusStyle = (status) => statusColors[status] || { bg: 'rgba(31, 95, 155, 0.08)', color: '#1f5f9b', dot: '#1f5f9b' };
 
   const openWorkspace = (entityId) => {
     const workspace = workspaceByEntityId[String(entityId)];
@@ -254,10 +254,10 @@ const EnterpriseEntities = () => {
   };
 
   const kpis = [
-    { label: 'Total Business Suites', value: entities.length, accent: '#000000' },
-    { label: 'Active', value: entities.filter(e => e.status === 'active').length, accent: '#1769e0' },
-    { label: 'Countries', value: new Set(entities.map(e => e.country)).size, accent: '#000000' },
-    { label: 'Currencies', value: new Set(entities.map(e => e.local_currency)).size, accent: '#1769e0' },
+    { label: 'Total Business Suites', value: entities.length, accent: '#1f5f9b' },
+    { label: 'Active', value: entities.filter(e => e.status === 'active').length, accent: '#1f5f9b' },
+    { label: 'Countries', value: new Set(entities.map(e => e.country)).size, accent: '#1f5f9b' },
+    { label: 'Currencies', value: new Set(entities.map(e => e.local_currency)).size, accent: '#1f5f9b' },
   ];
 
   const creationActions = [
@@ -298,7 +298,7 @@ const EnterpriseEntities = () => {
                 <button
                   key={action.key}
                   onClick={() => navigate(action.path)}
-                  style={{ background: '#ffffff', color: '#000000', border: 'none', borderRadius: 999, padding: '10px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}
+                  style={{ background: '#ffffff', color: '#1f5f9b', border: 'none', borderRadius: 999, padding: '10px 18px', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}
                 >
                   {action.title}
                 </button>
@@ -435,7 +435,7 @@ const EnterpriseEntities = () => {
                     >
                       <td>
                         <div style={{ fontWeight: 600 }}>{entity.name}</div>
-                        {entity.registration_number && <div style={{ fontSize: 11, color: 'rgba(0, 0, 0, 0.48)' }}>{entity.registration_number}</div>}
+                        {entity.registration_number && <div style={{ fontSize: 11, color: 'rgba(31, 95, 155, 0.68)' }}>{entity.registration_number}</div>}
                       </td>
                       <td className="table-row-muted">{entity.country}</td>
                       <td className="table-row-muted" style={{ textTransform: 'capitalize' }}>{entity.entity_type?.replace(/_/g, ' ')}</td>

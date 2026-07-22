@@ -3,7 +3,7 @@
 }
 
 .audit-hero {
-  --overview-hero-bg: #1E2328;
+  --overview-hero-bg: #1f5f9b;
 }
 
 .audit-toolbar {
@@ -106,7 +106,7 @@
 .audit-event-row:hover,
 .audit-event-row.selected {
   border-color: rgba(40, 120, 189, 0.35);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 14px 28px rgba(31, 95, 155, 0.06);
   transform: translateY(-1px);
 }
 
@@ -141,17 +141,17 @@
 }
 
 .severity-critical {
-  background: #4f46e5;
+  background: #1f5f9b;
   color: #2878BD;
 }
 
 .severity-high {
-  background: #4f46e5;
+  background: #1f5f9b;
   color: #2878BD;
 }
 
 .severity-medium {
-  background: #4f46e5;
+  background: #1f5f9b;
   color: #2878BD
 }
 

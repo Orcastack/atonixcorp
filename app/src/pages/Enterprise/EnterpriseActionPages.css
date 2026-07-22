@@ -156,7 +156,7 @@
 
 .business-suite-create-card:hover {
   border-color: rgba(40, 120, 189, 0.35);
-  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 26px 54px rgba(31, 95, 155, 0.12);
   transform: translateY(-2px);
 }
 
@@ -344,7 +344,7 @@
 /* Entity directory uses the platform console palette rather than the public-site accent theme. */
 .entities-page {
   --overview-hero-bg: #102a43;
-  --overview-accent: #1769e0;
+  --overview-accent: #1f5f9b;
 }
 
 .entities-page .action-page-hero {
@@ -400,7 +400,7 @@
   background: #eef5ff;
   border-color: rgba(23, 105, 224, 0.22);
   border-radius: 6px;
-  color: #1458bd;
+  color: #1f5f9b;
 }
 
 .entities-page .entity-table-header {
@@ -454,7 +454,7 @@
 }
 
 .team-container .matrix-row:nth-child(even) {
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(31, 95, 155, 0.04);
 }
 
 .team-container .col-permission,
@@ -486,7 +486,7 @@
 }
 
 .team-container .matrix-row .col-role::before {
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(31, 95, 155, 0.18);
   border-radius: 999px;
   content: '';
   height: 10px;
@@ -513,7 +513,7 @@
   background: #ffffff;
   border: 1px solid var(--overview-line);
   border-radius: 20px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 14px 30px rgba(31, 95, 155, 0.05);
 }
 
 .team-container .team-card,
@@ -535,7 +535,7 @@
 
 .team-container .member-avatar {
   align-items: center;
-  background: linear-gradient(135deg, #2878BD, #000000);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
   border-radius: 14px;
   color: #ffffff;
   display: inline-flex;
@@ -710,9 +710,9 @@
 }
 
 .btn-icon:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: #000000;
-  color: #000000;
+  background: rgba(31, 95, 155, 0.08);
+  border-color: #1f5f9b;
+  color: #1f5f9b;
 }
 
 .btn-icon.delete:hover {
@@ -750,8 +750,8 @@
 }
 
 .status-badge.inactive {
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.72);
+  background: rgba(31, 95, 155, 0.08);
+  color: rgba(31, 95, 155, 0.82);
 }
 
 /* Role badge */
@@ -767,7 +767,7 @@
   background: rgba(40, 120, 189, 0.08);
   border: 1px solid #2878BD;
   border-radius: 12px;
-  color: #000000;
+  color: #1f5f9b;
   font-size: 13px;
   padding: 12px 16px;
 }
@@ -792,7 +792,7 @@
 }
 
 .member-name {
-  color: #000000;
+  color: #1f5f9b;
   font-size: 14px;
   font-weight: 700;
 }
@@ -838,7 +838,7 @@
 }
 
 .team-container .matrix-row .col-role:not(.has-permission)::before {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(31, 95, 155, 0.25);
   border-radius: 999px;
   content: '';
   display: block;
@@ -850,7 +850,7 @@
 .modal-card {
   background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 40px 80px rgba(31, 95, 155, 0.18);
   max-width: 480px;
   padding: 28px 30px;
   width: 100%;
@@ -907,10 +907,10 @@
 
 /* Format buttons */
 .reports-container .format-btn {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(31, 95, 155, 0.06);
   border: 1px solid var(--overview-line);
   border-radius: 12px;
-  color: #000000;
+  color: #1f5f9b;
   cursor: pointer;
   font-size: 13px;
   font-weight: 700;
@@ -920,8 +920,8 @@
 
 .reports-container .format-btn.selected,
 .reports-container .format-btn:hover {
-  background: #000000;
-  border-color: #000000;
+  background: #1f5f9b;
+  border-color: #1f5f9b;
   color: #ffffff;
 }
 
@@ -941,7 +941,7 @@
 }
 
 .preview-value {
-  color: #000000;
+  color: #1f5f9b;
   font-size: 14px;
   font-weight: 600;
 }
@@ -970,9 +970,9 @@
 }
 
 .report-sections li {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(31, 95, 155, 0.07);
   border-radius: 999px;
-  color: #000000;
+  color: #1f5f9b;
   font-size: 12px;
   font-weight: 600;
   padding: 4px 12px;
@@ -980,7 +980,7 @@
 
 /* Recent report card internals */
 .report-name {
-  color: #000000;
+  color: #1f5f9b;
   font-size: 14px;
   font-weight: 700;
 }
@@ -1025,6 +1025,6 @@
 }
 
 .action-page-hero .entity-selector option {
-  background: #000000;
+  background: #1f5f9b;
   color: #ffffff;
 }

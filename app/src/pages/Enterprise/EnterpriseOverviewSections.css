@@ -36,7 +36,7 @@
 }
 
 .enterprise-dashboard .overview-view-button.active {
-  background: #0f172a;
+  background: #1f5f9b;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
   color: #f8fafc;
 }
@@ -46,7 +46,7 @@
   background: #ffffff;
   border: 1px solid var(--overview-line);
   border-radius: 999px;
-  color: #0f172a;
+  color: #1f5f9b;
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
@@ -91,7 +91,7 @@
   align-items: center;
   background: linear-gradient(135deg, #e2e8f0, #f8fafc);
   border-radius: 14px;
-  color: #0f172a;
+  color: #1f5f9b;
   display: inline-flex;
   font-size: 12px;
   font-weight: 800;
@@ -139,7 +139,7 @@
 .enterprise-dashboard .btn-alert-action {
   background: transparent;
   border: none;
-  color: #0f172a;
+  color: #1f5f9b;
   cursor: pointer;
   font-size: 12px;
   font-weight: 800;

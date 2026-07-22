@@ -787,7 +787,7 @@ const EnterpriseTaxCompliance = () => {
               </div>
               <div className="result-stat">
                 <span className="label">Tax Due</span>
-                <span className="amount" style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>${calcResult.calculatedTax.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span>
+                <span className="amount" style={{ fontSize: '1.4rem', fontWeight: 800, color: '#1f5f9b' }}>${calcResult.calculatedTax.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span>
               </div>
             </div>
             <div className="calc-breakdown">

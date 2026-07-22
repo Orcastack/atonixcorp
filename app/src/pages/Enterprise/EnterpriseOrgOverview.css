@@ -69,7 +69,7 @@
   align-items: center;
   background: linear-gradient(135deg, #e2e8f0, #f8fafc);
   border-radius: 14px;
-  color: #0f172a;
+  color: #1f5f9b;
   display: inline-flex;
   font-size: 12px;
   font-weight: 800;
@@ -178,11 +178,11 @@
 }
 
 .action-button.team::before {
-  background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
 }
 
 .action-button.reports::before {
-  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
 }
 
 .action-button.entities .action-icon {
@@ -194,11 +194,11 @@
 }
 
 .action-button.team .action-icon {
-  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
 }
 
 .action-button.reports .action-icon {
-  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  background: linear-gradient(135deg, #1f5f9b, #2878BD);
 }
 
 .action-eyebrow {
@@ -219,12 +219,12 @@
 
 .action-button.team .action-eyebrow {
   background: rgba(59, 130, 246, 0.12);
-  color: #1d4ed8;
+  color: #1f5f9b;
 }
 
 .action-button.reports .action-eyebrow {
-  background: rgba(129, 140, 248, 0.14);
-  color: #4f46e5;
+  background: rgba(40, 120, 189, 0.14);
+  color: #1f5f9b;
 }
 
 .action-button.compliance .action-eyebrow {
@@ -287,7 +287,7 @@
 .org-dashboard-header::before {
   background:
     radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom left, rgba(0, 0, 0, 0.12) 0%, transparent 55%);
+    radial-gradient(ellipse at bottom left, rgba(31, 95, 155, 0.12) 0%, transparent 55%);
   content: '';
   inset: 0;
   pointer-events: none;
@@ -695,7 +695,7 @@
 
 .org-resource-card {
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(31, 95, 155, 0.16);
   border-radius: 10px;
   padding: 18px 20px;
   display: flex;
@@ -705,7 +705,7 @@
 }
 
 .org-resource-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 16px rgba(31, 95, 155, 0.07);
 }
 
 .orc-top {
@@ -720,7 +720,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(0, 0, 0, 0.44);
+  color: rgba(31, 95, 155, 0.68);
 }
 
 .orc-status {
@@ -740,8 +740,8 @@
 
 .orc-status--inactive,
 .orc-status--disabled {
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.5);
+  background: rgba(31, 95, 155, 0.08);
+  color: rgba(31, 95, 155, 0.72);
 }
 
 .orc-name {
@@ -752,7 +752,7 @@
 
 .orc-meta {
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.48);
+  color: rgba(31, 95, 155, 0.68);
   line-height: 1.4;
 }
 
@@ -761,13 +761,13 @@
   gap: 8px;
   margin-top: 10px;
   padding-top: 12px;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 1px solid rgba(31, 95, 155, 0.12);
 }
 
 .orc-btn {
   flex: 1;
   background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(31, 95, 155, 0.18);
   color: #333;
   font-size: 12px;
   font-weight: 600;
@@ -778,8 +778,8 @@
 }
 
 .orc-btn:hover {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.24);
+  background: rgba(31, 95, 155, 0.06);
+  border-color: rgba(31, 95, 155, 0.24);
 }
 
 /* ─── Organization Console: Neutral Enterprise Surface ─────────────────── */
@@ -1144,7 +1144,7 @@
 }
 
 .org-dashboard-page .action-button.reports::before {
-  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
   display: block;
   height: 3px;
 }

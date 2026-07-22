@@ -1,10 +1,10 @@
 .enterprise-overview {
-  --overview-ink: #000000;
-  --overview-muted: rgba(0, 0, 0, 0.64);
+  --overview-ink: #1f5f9b;
+  --overview-muted: rgba(31, 95, 155, 0.72);
   --overview-surface: #ffffff;
-  --overview-line: rgba(0, 0, 0, 0.12);
-  --overview-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
-  --overview-hero-bg: #1E2328;
+  --overview-line: rgba(31, 95, 155, 0.16);
+  --overview-shadow: 0 22px 50px rgba(31, 95, 155, 0.08);
+  --overview-hero-bg: #1f5f9b;
   --overview-accent: #2878BD;
   color: var(--overview-ink);
   display: grid;
@@ -14,7 +14,7 @@
 .overview-hero {
   align-items: end;
   background: var(--overview-hero-bg);
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(31, 95, 155, 0.16);
   border-radius: 28px;
   box-shadow: var(--overview-shadow);
   color: #f8fafc;
@@ -29,7 +29,7 @@
 .overview-hero::after {
   background:
     radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom left, rgba(0, 0, 0, 0.12) 0%, transparent 55%);
+    radial-gradient(ellipse at bottom left, rgba(31, 95, 155, 0.12) 0%, transparent 55%);
   content: '';
   inset: 0;
   pointer-events: none;
@@ -133,7 +133,7 @@
 .metric-card.warning::before,
 .metric-card.info::before,
 .metric-card.success::before {
-  background: linear-gradient(90deg, #2878BD, #000000);
+  background: linear-gradient(90deg, #1f5f9b, #2878BD);
 }
 
 .metric-header.stacked {
@@ -187,8 +187,8 @@
 }
 
 .metric-details .liability {
-  background: rgba(0, 0, 0, 0.08);
-  color: #000000;
+  background: rgba(31, 95, 155, 0.08);
+  color: #1f5f9b;
 }
 
 .metric-badge {
