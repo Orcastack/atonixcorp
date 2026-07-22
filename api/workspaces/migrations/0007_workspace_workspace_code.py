@@ -17,7 +17,7 @@ def backfill_workspace_codes(apps, schema_editor):
         )
         sequence.last_value += 1
         sequence.save(update_fields=['last_value'])
-        return f'WSP-{year}-{sequence.last_value:04d}'
+        return f'AC-WSP-{year}-{sequence.last_value:04d}'
 
     for workspace in Workspace.objects.filter(workspace_code__isnull=True).order_by('pk'):
         workspace.workspace_code = next_code()

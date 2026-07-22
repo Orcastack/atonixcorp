@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEnterprise } from '../../context/EnterpriseContext';
 import { organizationsAPI } from '../../services/api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { buildBalancedMetricOrder } from '../../utils/dashboardMetrics';
+import '../../styles/premiumDashboards.css';
 import '../../styles/EntityPages.css';
 
 const EntityDashboard = () => {
@@ -215,24 +217,43 @@ const EntityDashboard = () => {
   });
 
   const COLORS = ['var(--color-error)', 'var(--color-cyan)', 'var(--color-cyan-dark)', 'var(--color-warning)', 'var(--color-success)'];
+  const liveMetrics = buildBalancedMetricOrder([
+    { label: 'Total Income', value: totalIncome.toFixed(2), note: 'Confirmed period income' },
+    { label: 'Total Expenses', value: totalExpenses.toFixed(2), note: 'Tracked operational spend' },
+    { label: 'Net Income', value: netIncome.toFixed(2), note: 'Compliance-ready margin' },
+    { label: 'Departments', value: departments.length, note: 'Scoped operating units' },
+  ], entity?.id || resolvedEntityId || 0);
 
   return (
-    <div className="ed-page">
+    <div className="ed-page premium-dashboard-shell">
 
       {/* Page Header */}
-      <div className="ed-header">
-        <div>
-          <div className="ed-tab-subtitle" style={{ marginBottom: 6 }}>Entity Dashboard</div>
-          <h1 className="ed-entity-name">{entity.name}</h1>
-          <div className="ed-meta-row">
-            {entity.country && <span className="ed-meta-item">{entity.country}</span>}
-            {entity.entity_type && <><span className="ed-meta-sep">·</span><span className="ed-meta-item ed-meta-type">{entity.entity_type.replace(/_/g, ' ')}</span></>}
-            <span className={`badge ${entity.status === 'active' ? 'active' : entity.status === 'dormant' ? 'dormant' : 'pending'}`}>
-              {entity.status}
-            </span>
+      <section className="premium-shell-body">
+        <div className="premium-hero premium-glow-on-update">
+          <div className="premium-hero-copy">
+            <div className="premium-hero-kicker">Entity compliance dashboard</div>
+            <h1 className="premium-hero-title">{entity.name}</h1>
+            <p className="premium-hero-text">
+              A premium compliance and legal identity workspace with one palette, one metric system, and a balanced
+              analytical wall for filings, operations, and financial tracking.
+            </p>
+            <div className="premium-hero-tags">
+              {entity.country && <span className="premium-hero-tag">{entity.country}</span>}
+              {entity.entity_type && <span className="premium-hero-tag">{entity.entity_type.replace(/_/g, ' ')}</span>}
+              <span className="premium-hero-tag">{entity.status}</span>
+            </div>
+          </div>
+          <div className="premium-hero-meta">
+            {liveMetrics.map((metric) => (
+              <article key={metric.label} className="premium-metric-card">
+                <span className="premium-metric-label">{metric.label}</span>
+                <strong className="premium-metric-value premium-countup">{metric.value}</strong>
+                <span className="premium-metric-note">{metric.note}</span>
+              </article>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Tab Navigation */}
       <div className="ed-tabs">

@@ -11,8 +11,8 @@
 
 .entity-sidebar {
   width: 260px;
-  background: #fff;
-  border-right: 1px solid #E0E2E5;
+  background: linear-gradient(180deg, #0f2747 0%, #101b2d 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   position: fixed;
   height: 100vh;
   left: 0;
@@ -34,10 +34,10 @@
    -------------------------------------------------------------------------- */
 
 .entity-sidebar-header {
-  background: #1E2328;
+  background: #0f2747;
   padding: 0;
   flex-shrink: 0;
-  border-bottom: 2px solid #2878BD;
+  border-bottom: 2px solid #c7a24b;
   min-height: 64px;
   display: flex;
   align-items: center;
@@ -69,10 +69,10 @@
 .entity-sidebar-accent {
   width: 6px;
   height: 6px;
-  background: #2878BD;
+  background: #c7a24b;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(40, 120, 189, 0.35);
+  box-shadow: 0 0 6px rgba(199, 162, 75, 0.35);
 }
 
 .entity-sidebar-name {
@@ -98,8 +98,8 @@
 
 .entity-back-nav {
   padding: 8px 10px;
-  border-bottom: 1px solid #F3F4F6;
-  background: #FAFAFA;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
   flex-shrink: 0;
 }
 
@@ -111,7 +111,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #6B7280;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -122,20 +122,20 @@
 }
 
 .entity-back-btn:hover {
-  background: #F0F9FF;
-  color: #0B0C10;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .entity-back-arrow {
   font-size: 14px;
   line-height: 1;
-  color: #9CA3AF;
+  color: rgba(255, 255, 255, 0.56);
   transition: color 0.15s, transform 0.15s;
   flex-shrink: 0;
 }
 
 .entity-back-btn:hover .entity-back-arrow {
-  color: #00B5E2;
+  color: #c7a24b;
   transform: translateX(-2px);
 }
 
@@ -166,16 +166,16 @@
   min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #D1D5DB transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
 }
 
 .entity-nav-menu::-webkit-scrollbar { width: 5px; }
 .entity-nav-menu::-webkit-scrollbar-track { background: transparent; }
 .entity-nav-menu::-webkit-scrollbar-thumb {
-  background: #D1D5DB;
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 999px;
 }
-.entity-nav-menu::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+.entity-nav-menu::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.28); }
 
 .entity-nav-section-label {
   padding: 12px 18px 4px;
@@ -183,14 +183,14 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #9CA3AF;
+  color: rgba(255, 255, 255, 0.48);
   list-style: none;
   user-select: none;
 }
 
 .entity-nav-divider {
   height: 1px;
-  background: #F3F4F6;
+  background: rgba(255, 255, 255, 0.08);
   margin: 4px 16px 8px;
   list-style: none;
 }
@@ -203,7 +203,7 @@
   margin: 1px 8px;
   min-height: 40px;
   border-radius: 8px;
-  color: #374151;
+  color: rgba(255, 255, 255, 0.76);
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 500;
@@ -217,13 +217,13 @@
 }
 
 .entity-nav-link:hover {
-  background: #F0F9FF;
-  color: #0B0C10;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .entity-nav-link.active {
-  background: #EFF8FF;
-  color: #00B5E2;
+  background: rgba(199, 162, 75, 0.16);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -235,7 +235,7 @@
   bottom: 6px;
   width: 3px;
   border-radius: 0 3px 3px 0;
-  background: #00B5E2;
+  background: #c7a24b;
 }
 
 /* Submenu toggle button */
@@ -249,7 +249,7 @@
 .entity-submenu-chevron {
   margin-left: auto;
   font-size: 10px;
-  color: #9CA3AF;
+  color: rgba(255, 255, 255, 0.56);
   flex-shrink: 0;
   transition: transform 0.18s ease;
   line-height: 1;
@@ -271,17 +271,17 @@
   min-height: 36px;
   font-size: 12.5px;
   margin: 1px 8px;
-  color: #6B7280;
+  color: rgba(255, 255, 255, 0.66);
 }
 
 .entity-submenu .entity-nav-link:hover {
-  background: #F0F9FF;
-  color: #0B0C10;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .entity-submenu .entity-nav-link.active {
-  color: #00B5E2;
-  background: #EFF8FF;
+  color: #ffffff;
+  background: rgba(199, 162, 75, 0.16);
 }
 
 /* Minimized sidebar tooltip-labels */
@@ -297,7 +297,7 @@
    -------------------------------------------------------------------------- */
 
 .entity-sidebar-footer {
-  border-top: 1px solid #F3F4F6;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 10px;
   flex-shrink: 0;
 }
@@ -309,9 +309,9 @@
   width: 100%;
   padding: 9px;
   background: none;
-  border: 1px solid #E5E7EB;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
-  color: #6B7280;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
@@ -320,9 +320,9 @@
 }
 
 .entity-collapse-btn:hover {
-  background: #F0F9FF;
-  border-color: #00B5E2;
-  color: #0B0C10;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(199, 162, 75, 0.36);
+  color: #ffffff;
 }
 
 .entity-collapse-icon {
@@ -345,7 +345,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #F4F6FA;
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%);
   overflow-x: hidden;
   transition: margin-left 0.22s ease;
 }
@@ -360,8 +360,8 @@
 
 .entity-topbar {
   height: 60px;
-  background: #fff;
-  border-bottom: 1px solid #E5E7EB;
+  background: rgba(255, 255, 255, 0.74);
+  border-bottom: 1px solid rgba(15, 39, 71, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -371,6 +371,7 @@
   z-index: 40;
   flex-shrink: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  backdrop-filter: blur(18px);
 }
 
 .entity-topbar-left {
@@ -383,7 +384,7 @@
 .entity-topbar-title {
   font-size: 15px;
   font-weight: 700;
-  color: #0B0C10;
+  color: #0f2747;
   margin: 0;
   letter-spacing: -0.2px;
   white-space: nowrap;
@@ -395,8 +396,8 @@
 .entity-topbar-meta {
   font-size: 11.5px;
   font-weight: 500;
-  color: #9CA3AF;
-  border-left: 1px solid #E5E7EB;
+  color: rgba(15, 39, 71, 0.66);
+  border-left: 1px solid rgba(15, 39, 71, 0.12);
   padding-left: 12px;
   white-space: nowrap;
   overflow: hidden;

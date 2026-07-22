@@ -68,7 +68,7 @@ class IdentityCodeSequence(models.Model):
 
 
 def generate_identity_code(code_type):
-    """Generate a monotonic public code such as USR-2026-0001."""
+    """Generate a monotonic public code such as AC-USR-2026-001."""
     year = timezone.now().year
     with transaction.atomic():
         sequence, _ = IdentityCodeSequence.objects.select_for_update().get_or_create(
@@ -77,7 +77,7 @@ def generate_identity_code(code_type):
         )
         sequence.last_value += 1
         sequence.save(update_fields=['last_value'])
-        return f'{code_type}-{year}-{sequence.last_value:03d}'
+        return f'AC-{code_type}-{year}-{sequence.last_value:03d}'
 
 
 def generate_user_identity_code(first_name, last_name):
@@ -92,7 +92,7 @@ def generate_user_identity_code(first_name, last_name):
         )
         sequence.last_value += 1
         sequence.save(update_fields=['last_value'])
-        return f'{initials}-{date_value:%d%m%y}-{date_value.year}-{sequence.last_value:03d}'
+        return f'AC-{initials}-{date_value:%d%m%y}-{date_value.year}-{sequence.last_value:03d}'
 
 
 class UserProfile(models.Model):

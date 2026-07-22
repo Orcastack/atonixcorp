@@ -19,7 +19,7 @@ def backfill_public_identity_codes(apps, schema_editor):
         )
         sequence.last_value += 1
         sequence.save(update_fields=['last_value'])
-        return f'{code_type}-{year}-{sequence.last_value:03d}'
+        return f'AC-{code_type}-{year}-{sequence.last_value:03d}'
 
     for profile in UserProfile.objects.filter(identity_code__isnull=True).order_by('pk'):
         profile.identity_code = next_code('USR')

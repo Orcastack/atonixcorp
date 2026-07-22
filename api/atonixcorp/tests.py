@@ -1295,7 +1295,7 @@ class PublicIdentityCodeTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 201)
-        self.assertRegex(response.data['user']['public_user_id'], r'^SAMJOH-\d{6}-\d{4}-001$')
+        self.assertRegex(response.data['user']['public_user_id'], r'^AC-SAMJOH-\d{6}-\d{4}-001$')
         self.assertEqual(response.data['user']['platform_role'], UserProfile.PLATFORM_ROLE_SUPER_USER)
 
         profile = UserProfile.objects.get(user__email='identity-admin@example.com')
@@ -1363,9 +1363,9 @@ class PublicIdentityCodeTests(TestCase):
         department = EntityDepartment.objects.create(entity=entity, name='Finance', code='ID-FIN')
         workspace = WorkspaceService.create_workspace(owner, {'name': 'Identity Code Workspace', 'linked_entity_id': entity.id})
 
-        self.assertRegex(organization.enterprise_code, r'^ENT-\d{4}-\d{3,}$')
-        self.assertRegex(department.department_code, r'^DEP-\d{4}-\d{3,}$')
-        self.assertRegex(workspace.workspace_code, r'^WSP-\d{4}-\d{3,}$')
+        self.assertRegex(organization.enterprise_code, r'^AC-ENT-\d{4}-\d{3,}$')
+        self.assertRegex(department.department_code, r'^AC-DEP-\d{4}-\d{3,}$')
+        self.assertRegex(workspace.workspace_code, r'^AC-WSP-\d{4}-\d{3,}$')
 
 
 @override_settings(ATONIXCORP_API_ENVIRONMENT='sandbox')

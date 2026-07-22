@@ -5,7 +5,7 @@ import re
 from django.db import migrations
 
 
-CODE_PATTERN = re.compile(r'^(ENT|DEP|WSP)-(\d{4})-(\d+)$')
+CODE_PATTERN = re.compile(r'^(?:AC-)?(ENT|DEP|WSP)-(\d{4})-(\d+)$')
 
 
 def normalize_public_code_sequences(apps, schema_editor):
@@ -19,7 +19,7 @@ def normalize_public_code_sequences(apps, schema_editor):
         match = CODE_PATTERN.match(organization.enterprise_code or '')
         if not match:
             continue
-        normalized_code = f'{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
+        normalized_code = f'AC-{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
         if normalized_code != organization.enterprise_code:
             enterprise_codes[organization.enterprise_code] = normalized_code
             organization.enterprise_code = normalized_code
@@ -28,13 +28,13 @@ def normalize_public_code_sequences(apps, schema_editor):
     for department in EntityDepartment.objects.exclude(department_code='').order_by('pk'):
         match = CODE_PATTERN.match(department.department_code or '')
         if match:
-            department.department_code = f'{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
+            department.department_code = f'AC-{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
             department.save(update_fields=['department_code'])
 
     for workspace in Workspace.objects.exclude(workspace_code='').order_by('pk'):
         match = CODE_PATTERN.match(workspace.workspace_code or '')
         if match:
-            workspace.workspace_code = f'{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
+            workspace.workspace_code = f'AC-{match.group(1)}-{match.group(2)}-{int(match.group(3)):03d}'
             workspace.save(update_fields=['workspace_code'])
 
     for member in TeamMember.objects.exclude(invitation_reference='').order_by('pk'):

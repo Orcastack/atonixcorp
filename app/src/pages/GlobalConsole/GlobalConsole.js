@@ -4,6 +4,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useEnterprise } from '../../context/EnterpriseContext';
 import AtonixCorpLogo from '../../components/branding/AtonixCorpLogo';
 import { globalInviteAPI, organizationsAPI, platformAuditEventsAPI, platformTasksAPI } from '../../services/api';
+import { buildBalancedMetricOrder, useAnimatedNumber } from '../../utils/dashboardMetrics';
+import '../../styles/premiumDashboards.css';
 import './GlobalConsole.css';
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -70,7 +72,6 @@ const GlobalConsole = () => {
   const [inviteSuccess, setInviteSuccess] = useState('');
   const [inviteForm, setInviteForm] = useState({ invitee: '', workspaceId: '' });
   const [lobbyItems, setLobbyItems] = useState([]);
-  const [lobbyRole, setLobbyRole] = useState('MEMBER');
   const [lobbyLoading, setLobbyLoading] = useState(true);
   const [lobbyError, setLobbyError] = useState('');
   const profileRef = useRef(null);
@@ -105,7 +106,6 @@ const GlobalConsole = () => {
       const response = await organizationsAPI.getLobby();
       const payload = response.data || {};
       setLobbyItems(Array.isArray(payload.items) ? payload.items : []);
-      setLobbyRole(payload.role || 'MEMBER');
     } catch (error) {
       setLobbyItems([]);
       setLobbyError(error?.response?.data?.detail || 'Failed to load console items.');
@@ -341,6 +341,18 @@ const GlobalConsole = () => {
   const activeOrganizationCount = organizations.length;
   const complianceAlertCount = notifs.filter((item) => item.severity === 'critical' || item.severity === 'high').length;
   const pendingCapitalTasks = tasks.length;
+  const visibleAuditCount = auditEvents.length;
+  const visibleLobbyCount = lobbyItems.length;
+  const liveMetricCards = buildBalancedMetricOrder([
+    { label: 'Active Organizations', value: activeOrganizationCount, note: 'Available through the premium console' },
+    { label: 'Open Tasks', value: pendingCapitalTasks, note: 'Action items awaiting review' },
+    { label: 'Compliance Alerts', value: complianceAlertCount, note: 'High-priority items requiring attention' },
+    { label: 'Audit Events', value: visibleAuditCount, note: 'Recent governance activity' },
+  ], user?.id || activeOrganizationCount);
+  const animatedOrganizationCount = useAnimatedNumber(activeOrganizationCount, 700);
+  const animatedTaskCount = useAnimatedNumber(pendingCapitalTasks, 700);
+  const animatedAlertCount = useAnimatedNumber(complianceAlertCount, 700);
+  const animatedAuditCount = useAnimatedNumber(visibleAuditCount, 700);
   const marketPulse = [
     { label: 'Equity Market Index', value: 'No data connected', tone: 'muted' },
     { label: 'Volatility Index', value: 'Stable', tone: 'positive' },
@@ -361,7 +373,7 @@ const GlobalConsole = () => {
   ];
 
   return (
-    <div className="global-console-page">
+    <div className="global-console-page premium-dashboard-shell">
 
       {/* ── TOP NAVBAR ──────────────────────────────────────────────── */}
       <header className="gc-topnav">
@@ -411,6 +423,98 @@ const GlobalConsole = () => {
           )}
         </div>
       </header>
+
+      <section className="premium-shell-body">
+        <div className="premium-hero premium-glow-on-update">
+          <div className="premium-hero-copy">
+            <div className="premium-hero-kicker">Workspace command center</div>
+            <h1 className="premium-hero-title">Operational clarity for tasks, projects, and collaboration.</h1>
+            <p className="premium-hero-text">
+              The console now uses the unified premium dashboard language: deep navy structure, platinum surfaces,
+              gold accents, and balanced metric cards with subtle motion.
+            </p>
+            <div className="premium-hero-tags">
+              <span className="premium-hero-tag">{Math.round(animatedOrganizationCount)} active organizations</span>
+              <span className="premium-hero-tag">{Math.round(animatedTaskCount)} open tasks</span>
+              <span className="premium-hero-tag">{Math.round(animatedAlertCount)} compliance alerts</span>
+              <span className="premium-hero-tag">{Math.round(animatedAuditCount)} audit events</span>
+            </div>
+          </div>
+          <div className="premium-hero-meta">
+            {liveMetricCards.map((card) => (
+              <article key={card.label} className={`premium-metric-card ${card.metricClassName || ''}`}>
+                <span className="premium-metric-label">{card.label}</span>
+                <strong className="premium-metric-value premium-countup">{card.value}</strong>
+                <span className="premium-metric-note">{card.note}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="premium-dashboard-grid premium-grid-3">
+          <section className="premium-panel premium-section">
+            <div className="premium-section-header">
+              <div>
+                <div className="premium-section-kicker">Team activity</div>
+                <h2 className="premium-section-title">Collaboration and task flow</h2>
+                <p className="premium-section-subtitle">Live operational work, grouped into a calm premium card layout.</p>
+              </div>
+            </div>
+            <div className="gc-center-checks">
+              {tasks.slice(0, 4).map((task) => (
+                <div key={task.id}>
+                  <span>{task.title || task.summary || 'Task'}</span>
+                  <strong>{task.state || task.status || 'open'}</strong>
+                </div>
+              ))}
+              {tasks.length === 0 && (
+                <div>
+                  <span>No open tasks</span>
+                  <strong>Everything is currently clear</strong>
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section className="premium-panel premium-section">
+            <div className="premium-section-header">
+              <div>
+                <div className="premium-section-kicker">Compliance feed</div>
+                <h2 className="premium-section-title">Alerts and audit trail</h2>
+                <p className="premium-section-subtitle">Compliance status remains visible in the same visual language across the console.</p>
+              </div>
+            </div>
+            <div className="premium-compliance-feed">
+              {notifs.slice(0, 4).map((item) => (
+                <div key={item.id} className="premium-compliance-item">
+                  <strong>{item.severity || 'info'}</strong>
+                  <span>{item.message}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="premium-panel premium-section">
+            <div className="premium-section-header">
+              <div>
+                <div className="premium-section-kicker">Lobby</div>
+                <h2 className="premium-section-title">Workspace access and invites</h2>
+                <p className="premium-section-subtitle">Brand-safe lobby items and access grants stay organized for fast onboarding.</p>
+              </div>
+            </div>
+            <div className="gc-equity-overview">
+              <div className="gc-equity-overview-item">
+                <span className="gc-equity-overview-dot" />
+                <p>{visibleLobbyCount} lobby items ready for review</p>
+              </div>
+              <div className="gc-equity-overview-item">
+                <span className="gc-equity-overview-dot" />
+                <p>{activeOrganizationCount} organizations are available in the console</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
 
       <section className="gc-capital-hero">
         <div className="gc-capital-hero-copy">
@@ -623,6 +727,16 @@ const GlobalConsole = () => {
 
           <footer className="gc-capital-footer">
             <span>AtonixCorp • Financial Management Platform • Systems Operational</span>
+          </footer>
+
+          <footer className="premium-footer">
+            <div className="premium-footer-group">
+              <span className="premium-status-pill">Compliance current</span>
+              <span className="premium-footer-note">AtonixCorp premium console shell</span>
+            </div>
+            <div className="premium-footer-group">
+              <span className="premium-footer-note">Unified workspace, entity, and equity design system</span>
+            </div>
           </footer>
 
       {inviteModalOpen && (

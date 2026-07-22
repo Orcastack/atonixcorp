@@ -1,19 +1,19 @@
 .eq-layout {
-  --eq-ink: #16202a;
+  --eq-ink: #0b1220;
   --eq-muted: #6b7280;
-  --eq-bg: #f5f3ef;
-  --eq-surface: #fffdf9;
-  --eq-line: rgba(22, 32, 42, 0.1);
-  --eq-accent: #0f766e;
-  --eq-accent-soft: rgba(15, 118, 110, 0.12);
-  --eq-sidebar: linear-gradient(180deg, #16202a 0%, #101922 100%);
+  --eq-bg: #f7f9fc;
+  --eq-surface: rgba(255, 255, 255, 0.84);
+  --eq-line: rgba(15, 39, 71, 0.1);
+  --eq-accent: #1f5f9b;
+  --eq-accent-soft: rgba(40, 120, 189, 0.12);
+  --eq-sidebar: linear-gradient(180deg, #0f2747 0%, #101b2d 100%);
   display: flex;
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 30%),
-    linear-gradient(180deg, #f5f3ef 0%, #efeae0 100%);
+    radial-gradient(circle at top right, rgba(40, 120, 189, 0.14), transparent 30%),
+    linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%);
 }
 
 .eq-sidebar {
@@ -140,7 +140,7 @@
 
 .eq-nav-link:hover,
 .eq-nav-link.active {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(199, 162, 75, 0.14);
   color: #fff;
   transform: translateX(2px);
 }
@@ -186,7 +186,8 @@
 .eq-topbar {
   padding: 20px 28px;
   border-bottom: 1px solid var(--eq-line);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(18px);
   flex-shrink: 0;
 }
 
@@ -202,6 +203,7 @@
   margin: 4px 0 0;
   color: var(--eq-ink);
   font-size: 30px;
+  letter-spacing: -0.05em;
 }
 
 .eq-topbar-right {
@@ -212,14 +214,14 @@
 .eq-topbar-badge {
   padding: 8px 12px;
   border-radius: 999px;
-  background: var(--eq-accent-soft);
-  color: var(--eq-accent);
+  background: rgba(199, 162, 75, 0.12);
+  color: #8d6a12;
   font-size: 12px;
   font-weight: 700;
 }
 
 .eq-avatar-btn {
-  background: #16202a;
+  background: #0f2747;
   color: #fff;
 }
 
