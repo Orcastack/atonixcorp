@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEquity } from '../../../context/EquityContext';
+import { buildBalancedMetricOrder } from '../../../utils/dashboardMetrics';
+import '../../../styles/premiumDashboards.css';
 import './EquityModuleScreen.css';
 
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(Number(value || 0));
@@ -15,30 +17,33 @@ const EquityModuleScreen = ({
   emptyBody,
 }) => {
   const { loading, error } = useEquity();
+  const orderedMetrics = buildBalancedMetricOrder(metrics, metrics.length);
 
   return (
-    <section className="eq-screen">
-      <div className="eq-screen-hero">
+    <section className="eq-screen premium-dashboard-shell">
+      <div className="premium-shell-body">
+      <div className="eq-screen-hero premium-hero">
         <div>
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <div className="premium-hero-kicker">Equity operating surface</div>
+          <h2 className="premium-hero-title">{title}</h2>
+          <p className="premium-hero-text">{description}</p>
         </div>
-        <div className="eq-screen-banner">
+        <div className="eq-screen-banner premium-metric-card">
           Every action in this module is designed for auditability, ownership clarity, and institutional reporting.
         </div>
       </div>
 
-      <div className="eq-metric-grid">
-        {metrics.map((metric) => (
-          <article key={metric.label} className="eq-metric-card">
-            <span className="eq-metric-label">{metric.label}</span>
-            <strong className="eq-metric-value">{metric.format === 'currency' ? formatCurrency(metric.value) : formatNumber(metric.value)}</strong>
-            <span className="eq-metric-note">{metric.note}</span>
+      <div className="eq-metric-grid premium-grid-3">
+        {orderedMetrics.map((metric) => (
+          <article key={metric.label} className="eq-metric-card premium-metric-card">
+            <span className="eq-metric-label premium-metric-label">{metric.label}</span>
+            <strong className="eq-metric-value premium-metric-value">{metric.format === 'currency' ? formatCurrency(metric.value) : formatNumber(metric.value)}</strong>
+            <span className="eq-metric-note premium-metric-note">{metric.note}</span>
           </article>
         ))}
       </div>
 
-      <div className="eq-data-card">
+      <div className="eq-data-card premium-panel">
         <div className="eq-data-card-head">
           <h3>Live Register</h3>
           {loading && <span className="eq-status-chip">Syncing</span>}
@@ -75,6 +80,16 @@ const EquityModuleScreen = ({
             </table>
           </div>
         )}
+      </div>
+      <footer className="premium-footer">
+        <div className="premium-footer-group">
+          <span className="premium-status-pill">Compliance current</span>
+          <span className="premium-footer-note">AtonixCorp equity dashboard</span>
+        </div>
+        <div className="premium-footer-group">
+          <span className="premium-footer-note">Ownership, vesting, governance, and auditability in one surface</span>
+        </div>
+      </footer>
       </div>
     </section>
   );

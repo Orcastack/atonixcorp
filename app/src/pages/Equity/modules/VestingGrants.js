@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useEquity } from '../../../context/EquityContext';
+import { buildBalancedMetricOrder } from '../../../utils/dashboardMetrics';
 import '../components/EquityModuleScreen.css';
 import '../components/EquityCrudModuleScreen.css';
 
@@ -56,6 +57,14 @@ const VestingGrants = () => {
       { label: 'Pending vesting events', value: pendingVestEvents, note: 'Future vesting releases queued by the engine' },
     ];
   }, [grants, summary.totalGrants, vestingEvents]);
+
+  const vestingTimeline = useMemo(() => {
+    return [...vestingEvents]
+      .sort((left, right) => new Date(left.vest_date) - new Date(right.vest_date))
+      .slice(0, 6);
+  }, [vestingEvents]);
+
+  const timelineMax = useMemo(() => Math.max(...vestingTimeline.map((event) => Number(event.units || 0)), 1), [vestingTimeline]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -127,7 +136,7 @@ const VestingGrants = () => {
       </div>
 
       <div className="eq-metric-grid">
-        {metrics.map((metric) => (
+        {buildBalancedMetricOrder(metrics, metrics.length).map((metric) => (
           <article key={metric.label} className="eq-metric-card">
             <span className="eq-metric-label">{metric.label}</span>
             <strong className="eq-metric-value">{metric.value}</strong>
@@ -328,6 +337,64 @@ const VestingGrants = () => {
           </div>
         </div>
       </div>
+
+      <section className="eq-screen premium-dashboard-shell">
+        <div className="premium-shell-body">
+          <div className="eq-data-card premium-panel">
+            <div className="eq-data-card-head">
+              <h3>Vesting Timeline</h3>
+              <span className="eq-status-chip success">Schedule view</span>
+            </div>
+            <div className="eq-table-wrap">
+              <table className="eq-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Grant</th>
+                    <th>Units</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vestingTimeline.map((event) => {
+                    const width = Math.max(8, Math.round((Number(event.units || 0) / timelineMax) * 100));
+                    return (
+                      <tr key={event.id}>
+                        <td>{event.vest_date}</td>
+                        <td>{event.grant_number || '—'}</td>
+                        <td>{event.units}</td>
+                        <td>
+                          <div className="premium-progress-track">
+                            <div className="premium-progress-fill" style={{ width: `${width}%` }} />
+                          </div>
+                        </td>
+                        <td>{event.status}</td>
+                      </tr>
+                    );
+                  })}
+                  {!loading && vestingTimeline.length === 0 && (
+                    <tr>
+                      <td colSpan="5">No vesting events generated yet.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="eq-data-card premium-panel">
+            <div className="eq-data-card-head">
+              <h3>Vesting Engine Notes</h3>
+              <span className="eq-status-chip">Audit view</span>
+            </div>
+            <div className="eq-empty-state">
+              <h4>Acceleration, termination, and exercise stay synchronized</h4>
+              <p>The roadmap view now makes the vesting runway readable while preserving the grant engine and schedule controls below.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };

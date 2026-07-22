@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import EquityCrudModuleScreen from '../components/EquityCrudModuleScreen';
 import { useEquity } from '../../../context/EquityContext';
 import { organizationsAPI } from '../../../services/api';
+import { buildBalancedMetricOrder } from '../../../utils/dashboardMetrics';
 
 const EMPTY_FORM = {
   name: '',
@@ -64,6 +65,19 @@ const OwnershipRegistry = () => {
     { label: 'Beneficial owners', value: shareholders.filter((item) => item.beneficial_owner).length, note: 'Ultimate ownership disclosures tracked' },
     { label: 'Voting positions', value: holdings.length, note: 'Recorded positions with voting rights history' },
   ]), [holdings.length, shareholders, summary.totalShareholders]);
+
+  const distribution = useMemo(() => {
+    const totalQuantity = holdings.reduce((total, holding) => total + Number(holding.quantity || 0), 0) || 1;
+    return shareClasses.slice(0, 4).map((shareClass) => {
+      const classHoldings = holdings.filter((holding) => String(holding.share_class) === String(shareClass.id));
+      const quantity = classHoldings.reduce((total, holding) => total + Number(holding.quantity || 0), 0);
+      return {
+        name: shareClass.name,
+        quantity,
+        percent: Math.round((quantity / totalQuantity) * 1000) / 10,
+      };
+    });
+  }, [holdings, shareClasses]);
 
   const handleChange = (key, value) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -302,6 +316,37 @@ const OwnershipRegistry = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="eq-screen premium-dashboard-shell">
+        <div className="premium-shell-body">
+          <div className="eq-data-card premium-panel">
+            <div className="eq-data-card-head">
+              <h3>Share Class Distribution</h3>
+              <span className="eq-status-chip success">Live cap table</span>
+            </div>
+            <div className="eq-metric-grid premium-grid-3">
+              {buildBalancedMetricOrder(distribution, distribution.length).map((item) => (
+                <article key={item.name} className="eq-metric-card premium-metric-card">
+                  <span className="eq-metric-label premium-metric-label">{item.name}</span>
+                  <strong className="eq-metric-value premium-metric-value">{item.percent}%</strong>
+                  <span className="eq-metric-note premium-metric-note">{new Intl.NumberFormat('en-US').format(Number(item.quantity || 0))} issued shares</span>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="eq-data-card premium-panel">
+            <div className="eq-data-card-head">
+              <h3>Ownership Notes</h3>
+              <span className="eq-status-chip">Audit view</span>
+            </div>
+            <div className="eq-empty-state">
+              <h4>Compliance and voting posture remain synchronized</h4>
+              <p>The premium registry keeps beneficial ownership, voting rights, and investor economics visible in one audited surface.</p>
             </div>
           </div>
         </div>

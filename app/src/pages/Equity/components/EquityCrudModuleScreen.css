@@ -12,7 +12,7 @@
 
 .eq-form-copy {
   margin: 0 0 18px;
-  color: #66727d;
+  color: rgba(11, 18, 32, 0.66);
   line-height: 1.6;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .eq-form-label {
-  color: #4f5b66;
+  color: rgba(11, 18, 32, 0.66);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -44,10 +44,10 @@
 .eq-form-select,
 .eq-form-textarea {
   width: 100%;
-  border: 1px solid rgba(22, 32, 42, 0.12);
+  border: 1px solid rgba(15, 39, 71, 0.12);
   border-radius: 12px;
   background: #fff;
-  color: #16202a;
+  color: #0b1220;
   font: inherit;
 }
 
@@ -68,13 +68,13 @@
   align-items: center;
   gap: 10px;
   padding: 0 12px;
-  border: 1px solid rgba(22, 32, 42, 0.12);
+  border: 1px solid rgba(15, 39, 71, 0.12);
   border-radius: 12px;
   background: #fff;
 }
 
 .eq-form-checkbox input {
-  accent-color: #0f766e;
+  accent-color: #1f5f9b;
 }
 
 .eq-form-actions {
@@ -87,23 +87,23 @@
   padding: 0 12px;
   border: 0;
   border-radius: 10px;
-  background: #e9eef2;
-  color: #16202a;
+  background: rgba(15, 39, 71, 0.08);
+  color: #0b1220;
   cursor: pointer;
   font-weight: 600;
 }
 
 .eq-inline-btn.primary {
-  background: #0f766e;
+  background: #1f5f9b;
   color: #fff;
 }
 
 .eq-inline-btn.secondary {
-  background: #f1efe9;
+  background: rgba(199, 162, 75, 0.1);
 }
 
 .eq-inline-btn.danger {
-  background: #fce7e7;
+  background: rgba(190, 24, 93, 0.1);
   color: #9f1239;
 }
 

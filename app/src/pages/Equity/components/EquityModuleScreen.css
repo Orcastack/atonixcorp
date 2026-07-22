@@ -11,13 +11,13 @@
 
 .eq-screen-hero h2 {
   margin: 0;
-  color: #16202a;
+  color: #0b1220;
   font-size: 28px;
 }
 
 .eq-screen-hero p {
   margin: 10px 0 0;
-  color: #5f6b76;
+  color: rgba(11, 18, 32, 0.66);
   line-height: 1.6;
 }
 
@@ -25,15 +25,15 @@
 .eq-data-card,
 .eq-metric-card {
   border-radius: 22px;
-  background: rgba(255, 253, 249, 0.9);
-  border: 1px solid rgba(22, 32, 42, 0.08);
-  box-shadow: 0 16px 40px rgba(22, 32, 42, 0.07);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(15, 39, 71, 0.1);
+  box-shadow: 0 16px 40px rgba(15, 39, 71, 0.07);
 }
 
 .eq-screen-banner {
   padding: 20px;
-  color: #0f766e;
-  background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(18, 84, 109, 0.03));
+  color: #1f5f9b;
+  background: linear-gradient(135deg, rgba(40, 120, 189, 0.1), rgba(199, 162, 75, 0.05));
   font-weight: 600;
   line-height: 1.6;
 }
@@ -59,16 +59,16 @@
 }
 
 .eq-metric-label {
-  color: #6b7280;
+  color: rgba(11, 18, 32, 0.66);
 }
 
 .eq-metric-value {
   font-size: 28px;
-  color: #16202a;
+  color: #0b1220;
 }
 
 .eq-metric-note {
-  color: #7a8794;
+  color: rgba(11, 18, 32, 0.56);
 }
 
 .eq-data-card {
@@ -86,7 +86,7 @@
 .eq-data-card-head h3,
 .eq-empty-state h4 {
   margin: 0;
-  color: #16202a;
+  color: #0b1220;
 }
 
 .eq-status-chip {
@@ -96,13 +96,14 @@
   min-height: 28px;
   padding: 0 12px;
   border-radius: 999px;
-  background: rgba(15, 118, 110, 0.1);
-  color: #0f766e;
+  background: rgba(40, 120, 189, 0.1);
+  color: #1f5f9b;
   font-weight: 700;
 }
 
 .eq-status-chip.success {
   background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
 }
 
 .eq-status-chip.danger {
@@ -123,12 +124,12 @@
 }
 
 .eq-empty-state {
-  background: #f4f1ea;
+  background: rgba(15, 39, 71, 0.04);
 }
 
 .eq-empty-state p {
   margin: 8px 0 0;
-  color: #66727d;
+  color: rgba(11, 18, 32, 0.56);
 }
 
 .eq-table-wrap {
@@ -144,18 +145,18 @@
 .eq-table td {
   text-align: left;
   padding: 14px 12px;
-  border-bottom: 1px solid rgba(22, 32, 42, 0.08);
+  border-bottom: 1px solid rgba(15, 39, 71, 0.08);
 }
 
 .eq-table th {
-  color: #5f6b76;
+  color: rgba(11, 18, 32, 0.56);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .eq-table td {
-  color: #16202a;
+  color: #0b1220;
 }
 
 @media (max-width: 960px) {
