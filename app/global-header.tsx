@@ -50,7 +50,7 @@ export default function GlobalHeader() {
   const closeAll = () => { setActiveMenu(null); setMobileOpen(false); };
 
   return <header className="global-header" ref={headerRef}>
-    <div className="enterprise-utility"><div className="enterprise-wrap"><span>AtonixCorp Systems</span><div><a href="#contact">Support</a><a href="#contact">Partner network</a><a href="#contact">Client access</a></div></div></div>
+    <div className="enterprise-utility"><div className="enterprise-wrap"><span>AtonixCorp Systems</span><div className="utility-links"><a href="#contact">Support</a><a href="#contact">Partner network</a><a href="#contact">Client access</a><span className="utility-divider" /><a className="social-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="AtonixCorp on LinkedIn">in</a><a className="social-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="AtonixCorp on X">X</a><a className="social-link" href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="AtonixCorp on YouTube">▶</a></div></div></div>
     <div className="enterprise-nav-row">
       <div className="global-header-inner enterprise-wrap">
         <a className="global-brand" href="#top" aria-label="AtonixCorp home" onClick={closeAll}><Image src="/atonixcorp-icon.png" alt="" width={34} height={34} priority /><span>ATONIX<span>CORP</span></span></a>
