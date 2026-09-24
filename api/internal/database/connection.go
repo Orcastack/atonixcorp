@@ -19,8 +19,9 @@ func Connect() *gorm.DB {
 	dbname := os.Getenv("DB_NAME")
 	port := os.Getenv("DB_PORT")
 
+	// FIX: Removed Africa/Johannesburg timezone
 	dsn := fmt.Sprintf(
-		"host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Africa/Johannesburg",
+		"host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=UTC",
 		host, user, password, dbname, port,
 	)
 
@@ -29,9 +30,8 @@ func Connect() *gorm.DB {
 		log.Fatalf("❌ Failed to connect to PostgreSQL: %v", err)
 	}
 
-	log.Println("✅ Connected to PostgreSQL")
+	log.Println(" Connected to PostgreSQL")
 
-	// Auto‑migrate all models
 	migrate(db)
 
 	DB = db
