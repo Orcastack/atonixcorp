@@ -50,15 +50,19 @@ export default function GlobalHeader() {
   const closeAll = () => { setActiveMenu(null); setMobileOpen(false); };
 
   return <header className="global-header" ref={headerRef}>
-    <div className="global-header-inner">
-      <a className="global-brand" href="#top" aria-label="AtonixCorp home" onClick={closeAll}><Image src="/atonixcorp-icon.png" alt="" width={34} height={34} priority /><span>ATONIX<span>CORP</span></span></a>
-      <nav className="global-nav" aria-label="Global navigation">
-        {navigation.map((item) => item.items ? <div className="nav-menu" key={item.label}>
-          <button className={activeMenu === item.label ? "nav-trigger open" : "nav-trigger"} type="button" aria-expanded={activeMenu === item.label} onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)}>{item.label}<span aria-hidden="true">⌄</span></button>
-          <div className={activeMenu === item.label ? "dropdown visible" : "dropdown"}>{item.items.map((subItem) => <a href={subItem.href} key={subItem.label} onClick={closeAll}>{subItem.label}<span aria-hidden="true">↗</span></a>)}</div>
-        </div> : <a className="nav-trigger home-link" href={item.href} key={item.label}>{item.label}</a>)}
-      </nav>
-      <button className={mobileOpen ? "menu-toggle open" : "menu-toggle"} type="button" aria-expanded={mobileOpen} aria-label="Toggle navigation menu" onClick={() => setMobileOpen(!mobileOpen)}><span /><span /></button>
+    <div className="enterprise-utility"><div className="enterprise-wrap"><span>AtonixCorp Systems</span><div><a href="#contact">Support</a><a href="#contact">Partner network</a><a href="#contact">Client access</a></div></div></div>
+    <div className="enterprise-nav-row">
+      <div className="global-header-inner enterprise-wrap">
+        <a className="global-brand" href="#top" aria-label="AtonixCorp home" onClick={closeAll}><Image src="/atonixcorp-icon.png" alt="" width={34} height={34} priority /><span>ATONIX<span>CORP</span></span></a>
+        <nav className="global-nav" aria-label="Global navigation">
+          {navigation.map((item) => item.items ? <div className="nav-menu" key={item.label}>
+            <button className={activeMenu === item.label ? "nav-trigger open" : "nav-trigger"} type="button" aria-expanded={activeMenu === item.label} onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)}>{item.label}<span aria-hidden="true">⌄</span></button>
+            <div className={activeMenu === item.label ? "dropdown visible" : "dropdown"}>{item.items.map((subItem) => <a href={subItem.href} key={subItem.label} onClick={closeAll}>{subItem.label}<span aria-hidden="true">↗</span></a>)}</div>
+          </div> : <a className="nav-trigger home-link" href={item.href} key={item.label}>{item.label}</a>)}
+        </nav>
+        <a className="header-action" href="#contact">Contact sales <span aria-hidden="true">→</span></a>
+        <button className={mobileOpen ? "menu-toggle open" : "menu-toggle"} type="button" aria-expanded={mobileOpen} aria-label="Toggle navigation menu" onClick={() => setMobileOpen(!mobileOpen)}><span /><span /></button>
+      </div>
     </div>
     <nav className={mobileOpen ? "mobile-nav visible" : "mobile-nav"} aria-label="Mobile global navigation">
       {navigation.map((item) => <div key={item.label} className="mobile-nav-group">{item.href ? <a href={item.href} onClick={closeAll}>{item.label}</a> : <><span>{item.label}</span>{item.items?.map((subItem) => <a href={subItem.href} key={subItem.label} onClick={closeAll}>{subItem.label}</a>)}</>}</div>)}
