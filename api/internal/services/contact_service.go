@@ -15,8 +15,8 @@ type ContactService interface {
 }
 
 type contactService struct {
-	repo   repositories.ContactRepository
-	smtp   smtpConfig
+	repo repositories.ContactRepository
+	smtp smtpConfig
 }
 
 type smtpConfig struct {
