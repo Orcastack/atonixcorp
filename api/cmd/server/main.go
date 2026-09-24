@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	config.LoadConfig()
+	appConfig := config.LoadConfig()
 	r := gin.Default()
 	r.GET("/health", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{"status": "ok"})
@@ -28,7 +28,7 @@ func main() {
 
 	// Services
 	authService := services.NewAuthService(userRepo)
-	contactService := services.NewContactService(contactRepo)
+	contactService := services.NewContactService(contactRepo, appConfig)
 	blogService := services.NewBlogService(blogRepo)
 
 	// Controllers
