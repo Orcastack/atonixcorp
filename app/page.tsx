@@ -1,69 +1,28 @@
 import Image from "next/image";
+import GlobalHeader from "./global-header";
+import HeroSection from "./hero-section";
+import ContactForm from "./contact-form";
+
+const divisions = [
+  { code: "01", name: "OrcaStack", category: "Cloud, AI & Software Systems", description: "Autonomous cloud orchestration, multi-region compute clusters, secure developer environments, and enterprise platforms designed for mission-critical operations.", capabilities: ["Cloud orchestration", "AI automation", "Distributed systems"] },
+  { code: "02", name: "OrcaCompute", category: "High-Performance Infrastructure", description: "Energy-efficient hardware, distributed compute networks, advanced cooling, and scientific research environments built for enduring performance.", capabilities: ["HPC clusters", "Energy systems", "Hardware orchestration"] },
+  { code: "03", name: "PrimeSourceDaily", category: "Media Intelligence", description: "Technology reporting, infrastructure transparency, verification, and strategic communication for a globally connected engineering community.", capabilities: ["Media verification", "Strategic communication", "Global engagement"] },
+  { code: "04", name: "RIDD", category: "Research, Innovation & Development", description: "A long-horizon research engine advancing cloud systems, artificial intelligence, energy technologies, and autonomous research environments.", capabilities: ["AI research", "Energy research", "Future systems"] },
+];
+const principles = ["No investor control over engineering", "Protected intellectual property", "Autonomous operational governance", "Long-term infrastructure autonomy"];
+const roadmap = [["I", "Foundation & Stabilization", "Core infrastructure, cloud systems, HPC environments, and governance frameworks."], ["II", "Infrastructure Expansion", "Multi-region cloud, HPC, AI, and energy systems at scale."], ["III", "Global Integration", "International enterprise, research, and institutional collaboration."], ["IV", "International Positioning", "Expanded developer ecosystems and media intelligence capabilities."], ["V", "Autonomous Infrastructure Era", "Self-governing cloud, HPC, and AI operational frameworks."], ["VI", "Sovereign Technology Era", "Global operational independence and enduring technological leadership."]];
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <main>
+    <GlobalHeader />
+    <HeroSection />
+    <section className="intro section wrap" id="about"><p className="section-index">01 / Company profile</p><div className="intro-content"><h2>A global engineering corporation built for the systems that cannot fail.</h2><div><p>AtonixCorp was founded to create a unified technology ecosystem capable of supporting the world&apos;s most demanding digital operations. We design platforms that operate independently, scale intelligently, and withstand the pressures of global enterprise environments.</p><p>Our structure unites cloud engineering, high-performance computing, artificial intelligence, energy systems, media intelligence, and research into one cohesive infrastructure ecosystem.</p><a className="text-link dark-link" href="#mission">Our operating mandate <span aria-hidden="true">→</span></a></div></div></section>
+    <section className="mission" id="mission"><div className="wrap mission-grid"><div><p className="eyebrow light">02 / Mission</p><h2>Build.<br />Protect.<br /><em>Innovate.</em><br />Scale.</h2></div><div className="mission-detail"><p>We exist to engineer infrastructure that is autonomous, secure, energy-efficient, and capable of supporting the world&apos;s most advanced digital operations.</p><ul><li>Power enterprise workloads with precision and reliability</li><li>Secure critical infrastructure against digital and physical threats</li><li>Accelerate research through high-performance computing</li><li>Enable autonomous operations across distributed environments</li></ul></div></div></section>
+    <section className="section divisions" id="divisions"><div className="wrap"><p className="section-index">03 / Core divisions</p><div className="section-heading"><h2>One integrated ecosystem.<br /><em>Four operating divisions.</em></h2><p>Purpose-built capabilities, unified by a common infrastructure mandate.</p></div><div className="division-grid">{divisions.map((division) => <article className="division-card" key={division.name}><div className="division-top"><span>{division.code}</span><span className="arrow" aria-hidden="true">↗</span></div><h3>{division.name}</h3><p className="division-category">{division.category}</p><p>{division.description}</p><div className="capabilities">{division.capabilities.map((capability) => <span key={capability}>{capability}</span>)}</div></article>)}</div></div></section>
+    <section className="sovereignty"><div className="wrap sovereignty-layout"><div className="sovereignty-number">S</div><div><p className="eyebrow">04 / Technology sovereignty</p><h2>Independent engineering.<br /><em>Zero external influence.</em></h2><p className="large-copy">Every engineering decision remains protected and aligned with long-term infrastructure stability. Our sovereignty mandate protects technology from outside compromise.</p><div className="principles">{principles.map((principle, index) => <p key={principle}><span>0{index + 1}</span>{principle}</p>)}</div></div></div></section>
+    <section className="systems section wrap"><p className="section-index">05 / Integrated systems</p><div className="system-grid"><article><span className="system-symbol">◇</span><h3>Defense-grade protection</h3><p>Cyber-physical security, zero-trust architecture, autonomous threat detection, and secure hardware environments at every layer.</p><a href="#contact">Security capability <span>→</span></a></article><article><span className="system-symbol">⌁</span><h3>Developer ecosystem</h3><p>A unified global network for multi-language programming, secure development, research hubs, and autonomous tooling.</p><a href="#contact">Developer network <span>→</span></a></article><article><span className="system-symbol">⊕</span><h3>Energy-driven computing</h3><p>Solar-powered HPC, energy-aware cloud orchestration, efficient cooling, and autonomous energy management.</p><a href="#contact">Energy systems <span>→</span></a></article></div></section>
+    <section className="roadmap" id="roadmap"><div className="wrap"><div className="roadmap-head"><div><p className="eyebrow light">06 / Strategic roadmap</p><h2>Thirty years.<br /><em>Six phases.</em></h2></div><p>A future built in deliberate phases, advancing independence and infrastructure stability at each horizon.</p></div><div className="timeline">{roadmap.map(([phase, title, detail]) => <article key={phase}><span>Phase {phase}</span><h3>{title}</h3><p>{detail}</p></article>)}</div></div></section>
+    <section className="contact section" id="contact"><div className="wrap contact-grid"><div><p className="section-index">07 / Contact</p><h2>Start a strategic<br /><em>conversation.</em></h2><p className="contact-copy">Tell us how AtonixCorp can support your infrastructure, research, or enterprise program.</p></div><ContactForm /></div></section>
+    <footer><div className="wrap footer-top"><a className="brand footer-brand" href="#top"><Image src="/atonixcorp-icon.png" alt="" width={42} height={42} /><span>ATONIX<span>CORP</span></span></a><p>Engineering sovereignty.<br />Building infrastructure.<br />Advancing innovation.</p><a className="back-top" href="#top">Back to top ↑</a></div><div className="wrap footer-bottom"><span>© 2026 AtonixCorp. All rights reserved.</span><span>Global engineering corporation</span><span>Infrastructure / Research / Security</span></div></footer>
+  </main>;
 }
