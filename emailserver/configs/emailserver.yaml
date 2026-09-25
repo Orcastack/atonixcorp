@@ -1,0 +1,39 @@
+smtp:
+  listen_addr: ":587"
+  tls_cert: "configs/tls/server.crt"
+  tls_key: "configs/tls/server.key"
+
+imap:
+  listen_addr: ":143"
+
+pop3:
+  listen_addr: ":110"
+
+api:
+  listen_addr: ":8080"
+
+queue:
+  worker_count: 4
+
+blob:
+  backend: "s3"
+  bucket: "atonix-email"
+  endpoint: "https://minio.atonix.local"
+  region: "us-east-1"
+  base_path: "/var/atonixcorp/email/blobs"
+
+spam:
+  enable: true
+  blocklist: "configs/spam/blocklist.txt"
+  max_body_size: 10485760
+  rate_limit: 20
+  rate_window: 60
+
+domain:
+  default_domain: "atonixcorp.com"
+
+database:
+  dsn: "postgres://user:pass@localhost:5432/emailserver?sslmode=disable"
+
+log:
+  level: "debug"
