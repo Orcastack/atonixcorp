@@ -28,6 +28,7 @@ RUN go build -o bin/ingestor ./cmd/ingestor
 # Stage 2 — Final runtime image
 # ============================
 FROM alpine:3.19
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
 
 RUN apk add --no-cache ca-certificates
 

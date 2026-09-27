@@ -22,6 +22,7 @@ RUN go build -o atcli .
 # Stage 2 — Final Image
 # ============================
 FROM alpine:3.19
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
 
 # Install CA certificates (needed for HTTPS)
 RUN apk add --no-cache ca-certificates

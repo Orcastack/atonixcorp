@@ -86,3 +86,13 @@ func (b *OVNBackend) ApplyNATRule(nat core.NATRule) error {
 
 	return nil
 }
+
+func (b *OVNBackend) ListNetworks() ([]core.Network, error) { return nil, nil }
+
+func (b *OVNBackend) ListSubnets() ([]core.Subnet, error) { return nil, nil }
+
+func (b *OVNBackend) ListRouters() ([]core.Router, error) { return nil, nil }
+
+func (b *OVNBackend) ListPorts() ([]core.Port, error) { return nil, nil }
+
+func (b *OVNBackend) ListSecurityGroups() ([]core.SecurityGroup, error) { return nil, nil }

@@ -22,3 +22,21 @@ func (b *DnsmasqBackend) ApplySubnet(s core.Subnet) error {
 
 	return os.WriteFile(path, []byte(cfg), 0644)
 }
+
+func (b *DnsmasqBackend) ApplyNetwork(core.Network) error { return nil }
+
+func (b *DnsmasqBackend) ApplyRouter(core.Router) error { return nil }
+
+func (b *DnsmasqBackend) ApplyPort(core.Port) error { return nil }
+
+func (b *DnsmasqBackend) ApplySecurityGroup(core.SecurityGroup) error { return nil }
+
+func (b *DnsmasqBackend) ListNetworks() ([]core.Network, error) { return nil, nil }
+
+func (b *DnsmasqBackend) ListSubnets() ([]core.Subnet, error) { return nil, nil }
+
+func (b *DnsmasqBackend) ListRouters() ([]core.Router, error) { return nil, nil }
+
+func (b *DnsmasqBackend) ListPorts() ([]core.Port, error) { return nil, nil }
+
+func (b *DnsmasqBackend) ListSecurityGroups() ([]core.SecurityGroup, error) { return nil, nil }

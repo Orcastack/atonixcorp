@@ -3,6 +3,7 @@ package hypervisor
 import "fmt"
 
 type CPUPinning struct {
+	VMID  string
 	VCPU  int
 	PCPUs []int
 }

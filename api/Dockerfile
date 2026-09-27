@@ -6,6 +6,8 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /server ./cmd/server
 
 FROM alpine:3.21
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
+
 RUN addgroup -S app && adduser -S app -G app
 USER app
 WORKDIR /app

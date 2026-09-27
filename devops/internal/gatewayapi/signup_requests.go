@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	platformconfig "orcastack/internal/platform/config"
+	platformconfig "atonixcorp/devops/internal/platform/config"
 
 	_ "github.com/jackc/pgx/v5/stdlib"
 )

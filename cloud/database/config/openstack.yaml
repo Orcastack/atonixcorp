@@ -1,0 +1,53 @@
+# Default cluster (your main OpenStack deployment)
+default:
+  auth:
+    auth_url: "https://openstack.atonixcorp.cloud:5000/v3"
+    username: "admin"
+    password: "CHANGE_ME"
+    domain: "default"
+    project_id: "PROJECT_ID_HERE"
+
+  endpoints:
+    compute: "https://openstack.atonixcorp.cloud:8774/v2.1"
+    network: "https://openstack.atonixcorp.cloud:9696/v2.0"
+    volume:  "https://openstack.atonixcorp.cloud:8776/v3"
+
+
+# Multi‑region global OpenStack clusters
+regions:
+
+  af-south-1:
+    auth:
+      auth_url: "https://keystone.af-south-1.atonixcorp.cloud/v3"
+      username: "admin"
+      password: "CHANGE_ME"
+      domain: "default"
+      project_id: "PROJECT_ID_HERE"
+    endpoints:
+      compute: "https://nova.af-south-1.atonixcorp.cloud/v2.1"
+      network: "https://neutron.af-south-1.atonixcorp.cloud/v2.0"
+      volume:  "https://cinder.af-south-1.atonixcorp.cloud/v3"
+
+  us-east-1:
+    auth:
+      auth_url: "https://keystone.us-east-1.atonixcorp.cloud/v3"
+      username: "admin"
+      password: "CHANGE_ME"
+      domain: "default"
+      project_id: "PROJECT_ID_HERE"
+    endpoints:
+      compute: "https://nova.us-east-1.atonixcorp.cloud/v2.1"
+      network: "https://neutron.us-east-1.atonixcorp.cloud/v2.0"
+      volume:  "https://cinder.us-east-1.atonixcorp.cloud/v3"
+
+  eu-central-1:
+    auth:
+      auth_url: "https://keystone.eu-central-1.atonixcorp.cloud/v3"
+      username: "admin"
+      password: "CHANGE_ME"
+      domain: "default"
+      project_id: "PROJECT_ID_HERE"
+    endpoints:
+      compute: "https://nova.eu-central-1.atonixcorp.cloud/v2.1"
+      network: "https://neutron.eu-central-1.atonixcorp.cloud/v2.0"
+      volume:  "https://cinder.eu-central-1.atonixcorp.cloud/v3"

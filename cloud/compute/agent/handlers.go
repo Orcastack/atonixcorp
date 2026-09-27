@@ -37,7 +37,7 @@ func (a *Agent) HandleMessage(msg rpc.RPCMessage) {
 	case "vm.pin":
 		pin := msg.Payload.(hypervisor.CPUPinning)
 		fmt.Println("Agent: CPU pinning", pin)
-		hypervisor.PinCPU(pin.VCPU, pin)
+		hypervisor.PinCPU(pin.VMID, pin)
 
 	case "vm.numa":
 		numa := msg.Payload.(hypervisor.NUMANode)

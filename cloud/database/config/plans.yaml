@@ -1,0 +1,58 @@
+plans:
+
+  basic:
+    cpu: 1
+    memory_mb: 2048
+    storage_gb: 20
+    ha: false
+    backups: "daily"
+    read_replicas: 0
+    engines:
+      - "postgres"
+      - "mongo"
+    price_usd: 12
+
+    node_pricing:
+      cpu_usd: 3.00        # per vCPU per month
+      memory_usd: 1.50     # per GB RAM per month
+      storage_usd: 0.10    # per GB per month
+
+
+  standard:
+    cpu: 2
+    memory_mb: 4096
+    storage_gb: 50
+    ha: true
+    backups: "daily"
+    read_replicas: 1
+    engines:
+      - "postgres"
+      - "timescale"
+      - "mongo"
+      - "redis"
+    price_usd: 40
+
+    node_pricing:
+      cpu_usd: 4.00
+      memory_usd: 2.00
+      storage_usd: 0.08
+
+
+  premium:
+    cpu: 4
+    memory_mb: 8192
+    storage_gb: 100
+    ha: true
+    backups: "hourly"
+    read_replicas: 2
+    engines:
+      - "postgres"
+      - "timescale"
+      - "mongo"
+      - "redis"
+    price_usd: 120
+
+    node_pricing:
+      cpu_usd: 5.00
+      memory_usd: 2.50
+      storage_usd: 0.06

@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func StartHTTP(controller *core.Controller, policy *core.Policy) error {
+func StartHTTP(controller *core.Controller, policy core.Policy) error {
 	h := NewHandler(controller)
 
 	r := mux.NewRouter()

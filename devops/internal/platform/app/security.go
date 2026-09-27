@@ -1,8 +1,8 @@
 package app
 
 import (
-	"orcastack/internal/platform/config"
-	"orcastack/internal/platform/security"
+	"atonixcorp/devops/internal/platform/config"
+	"atonixcorp/devops/internal/platform/security"
 )
 
 const (

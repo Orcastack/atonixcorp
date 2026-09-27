@@ -1,0 +1,40 @@
+{
+  "services": {
+    "compute": {
+      "methods": ["create", "delete", "list"],
+      "path": "/compute"
+    },
+    "network": {
+      "methods": ["create", "delete", "list"],
+      "path": "/network"
+    },
+    "storage": {
+      "methods": ["create", "delete", "list"],
+      "path": "/storage"
+    },
+    "swift": {
+      "methods": ["createContainer", "deleteContainer", "uploadObject", "deleteObject"],
+      "path": "/swift"
+    },
+    "identity": {
+      "methods": ["info"],
+      "path": "/identity"
+    },
+    "images": {
+      "methods": ["list"],
+      "path": "/images"
+    },
+    "orchestration": {
+      "methods": ["events", "metrics"],
+      "path": "/orchestration"
+    },
+    "projects": {
+      "methods": ["list"],
+      "path": "/projects"
+    },
+    "telemetry": {
+      "methods": ["snapshot"],
+      "path": "/telemetry"
+    }
+  }
+}

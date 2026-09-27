@@ -4,9 +4,9 @@ import (
 	"context"
 	"log"
 
-	"orcastack/internal/gitapi"
-	"orcastack/internal/platform/app"
-	"orcastack/internal/platform/config"
+	"atonixcorp/devops/internal/gitapi"
+	"atonixcorp/devops/internal/platform/app"
+	"atonixcorp/devops/internal/platform/config"
 )
 
 func main() {

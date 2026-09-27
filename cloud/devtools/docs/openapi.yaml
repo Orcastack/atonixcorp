@@ -1,0 +1,377 @@
+openapi: 3.1.0
+info:
+  title: ATCloud API
+  version: v1
+  description: |
+    Unified API for compute, network, storage, identity, images,
+    orchestration, projects, telemetry, and object storage.
+
+servers:
+  - url: https://api.atcloud.world/v1
+
+paths:
+
+  /compute/create:
+    post:
+      summary: Create a compute instance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateComputeRequest"
+      responses:
+        "200":
+          description: Compute created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComputeInstance"
+
+  /compute/delete/{id}:
+    delete:
+      summary: Delete a compute instance
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /compute/list:
+    get:
+      summary: List compute instances
+      responses:
+        "200":
+          description: List of compute instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ComputeInstance"
+
+  /network/create:
+    post:
+      summary: Create a network
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateNetworkRequest"
+      responses:
+        "200":
+          description: Network created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Network"
+
+  /network/delete/{id}:
+    delete:
+      summary: Delete a network
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /network/list:
+    get:
+      summary: List networks
+      responses:
+        "200":
+          description: List of networks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Network"
+
+  /storage/create:
+    post:
+      summary: Create a volume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateVolumeRequest"
+      responses:
+        "200":
+          description: Volume created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Volume"
+
+  /storage/delete/{id}:
+    delete:
+      summary: Delete a volume
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /storage/list:
+    get:
+      summary: List volumes
+      responses:
+        "200":
+          description: List of volumes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Volume"
+
+  /swift/container/create:
+    post:
+      summary: Create a container
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContainerRequest"
+      responses:
+        "200":
+          description: Container created
+
+  /swift/container/delete/{name}:
+    delete:
+      summary: Delete a container
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /swift/object/upload:
+    post:
+      summary: Upload an object
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UploadObjectRequest"
+      responses:
+        "200":
+          description: Object uploaded
+
+  /swift/object/delete/{container}/{name}:
+    delete:
+      summary: Delete an object
+      parameters:
+        - name: container
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /identity/info:
+    get:
+      summary: Get identity info
+      responses:
+        "200":
+          description: Identity info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IdentityInfo"
+
+  /images/list:
+    get:
+      summary: List images
+      responses:
+        "200":
+          description: List of images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Image"
+
+  /orchestration/events:
+    get:
+      summary: List events
+      responses:
+        "200":
+          description: Events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+
+  /orchestration/metrics:
+    get:
+      summary: List metrics
+      responses:
+        "200":
+          description: Metrics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Metric"
+
+  /projects/list:
+    get:
+      summary: List projects
+      responses:
+        "200":
+          description: Projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+
+  /telemetry:
+    get:
+      summary: Telemetry snapshot
+      responses:
+        "200":
+          description: Telemetry snapshot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TelemetrySnapshot"
+
+components:
+  schemas:
+
+    CreateComputeRequest:
+      type: object
+      properties:
+        name: { type: string }
+        plan: { type: string }
+
+    ComputeInstance:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        plan: { type: string }
+        state: { type: string }
+
+    CreateNetworkRequest:
+      type: object
+      properties:
+        name: { type: string }
+        cidr: { type: string }
+
+    Network:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        cidr: { type: string }
+        state: { type: string }
+
+    CreateVolumeRequest:
+      type: object
+      properties:
+        name: { type: string }
+        size_gb: { type: integer }
+
+    Volume:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        size_gb: { type: integer }
+        state: { type: string }
+
+    CreateContainerRequest:
+      type: object
+      properties:
+        name: { type: string }
+
+    UploadObjectRequest:
+      type: object
+      properties:
+        container: { type: string }
+        name: { type: string }
+        data: { type: string }
+
+    IdentityInfo:
+      type: object
+      properties:
+        user_id: { type: string }
+        username: { type: string }
+        roles:
+          type: array
+          items: { type: string }
+        projects:
+          type: array
+          items: { type: string }
+
+    Image:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        os: { type: string }
+        version: { type: string }
+
+    Event:
+      type: object
+      properties:
+        id: { type: string }
+        type: { type: string }
+        message: { type: string }
+        timestamp: { type: integer }
+
+    Metric:
+      type: object
+      properties:
+        name: { type: string }
+        value: { type: number }
+
+    Project:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+
+    TelemetrySnapshot:
+      type: object
+      properties:
+        cpu_usage: { type: number }
+        memory_usage: { type: number }
+        disk_usage: { type: number }
+        timestamp: { type: integer }

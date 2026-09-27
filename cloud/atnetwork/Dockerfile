@@ -13,6 +13,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
 
 
 FROM debian:13-slim
+LABEL org.opencontainers.image.source="https://github.com/orcastack/atonixcorp"
 
 RUN apt-get update && apt-get install -y \
     ca-certificates \
@@ -20,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     iptables \
     dnsmasq \
     frr \
-    ovs-common \
+    openvswitch-common \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

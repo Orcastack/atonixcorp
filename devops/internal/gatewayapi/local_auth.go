@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	platformconfig "orcastack/internal/platform/config"
+	platformconfig "atonixcorp/devops/internal/platform/config"
 
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"

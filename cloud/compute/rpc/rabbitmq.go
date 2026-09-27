@@ -1,5 +1,7 @@
 package rpc
 
+import amqp "github.com/rabbitmq/amqp091-go"
+
 type RabbitRPC struct {
 	ch    *amqp.Channel
 	queue string

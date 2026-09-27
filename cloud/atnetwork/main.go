@@ -80,7 +80,7 @@ func main() {
 	// 4. Initialize controller
 	// ---------------------------------------------------------
 	controller := core.NewController(store, backends)
-	policy := core.NewPolicyEngine()
+	policy := core.NewPolicy()
 
 	// ---------------------------------------------------------
 	// 5. Start reconciler

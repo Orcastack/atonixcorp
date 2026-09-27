@@ -24,6 +24,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o bin/webmail ./cmd/webmail
 # Stage 2 — Runtime image
 # ─────────────────────────────────────────────
 FROM alpine:3.20
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
 
 WORKDIR /app
 

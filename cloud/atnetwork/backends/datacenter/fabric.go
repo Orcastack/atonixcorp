@@ -48,3 +48,13 @@ func (b *FabricBackend) ApplySecurityGroup(sg core.SecurityGroup) error {
 	fmt.Println("DC fabric: ApplySecurityGroup", sg.Name)
 	return nil
 }
+
+func (b *FabricBackend) ListNetworks() ([]core.Network, error) { return nil, nil }
+
+func (b *FabricBackend) ListSubnets() ([]core.Subnet, error) { return nil, nil }
+
+func (b *FabricBackend) ListRouters() ([]core.Router, error) { return nil, nil }
+
+func (b *FabricBackend) ListPorts() ([]core.Port, error) { return nil, nil }
+
+func (b *FabricBackend) ListSecurityGroups() ([]core.SecurityGroup, error) { return nil, nil }

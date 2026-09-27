@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"orcastack/internal/platform/config"
+	"atonixcorp/devops/internal/platform/config"
 )
 
 // Manager manages Discord webhook notifications globally

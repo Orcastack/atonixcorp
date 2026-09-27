@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+
+  devtools-api:
+    build: ./api
+    container_name: devtools-api
+    ports:
+      - "8080:8080"
+    environment:
+      ATCLOUD_ENDPOINT: "http://devtools-api:8080"
+      ATCLOUD_TOKEN: "devtools-token"
+
+  portal-backend:
+    build: ./portal/backend
+    container_name: portal-backend
+    ports:
+      - "8081:8081"
+    environment:
+      ATCLOUD_ENDPOINT: "http://devtools-api:8080"
+      ATCLOUD_TOKEN: "devtools-token"
+    depends_on:
+      - devtools-api
+
+  portal-frontend:
+    build: ./portal/frontend
+    container_name: portal-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - portal-backend

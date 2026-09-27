@@ -1,5 +1,5 @@
 
-FROM golang:1.26 AS builder
+FROM golang:1.27.1 AS builder
 
 WORKDIR /build
 
@@ -19,6 +19,8 @@ RUN go build -o orcastack-runner ./cmd/orcastack-runner
 
 
 FROM debian:stable-slim
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
+
 WORKDIR /usr/local/bin
 COPY --from=builder /build/orcastack .
 COPY --from=builder /build/orcastack-analytics-service .

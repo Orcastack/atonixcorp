@@ -4,9 +4,9 @@ import (
 	"context"
 	"log"
 
-	"orcastack/internal/platform/app"
-	"orcastack/internal/platform/config"
-	"orcastack/internal/swautomation"
+	"atonixcorp/devops/internal/platform/app"
+	"atonixcorp/devops/internal/platform/config"
+	"atonixcorp/devops/internal/swautomation"
 )
 
 func main() {

@@ -32,6 +32,24 @@ router bgp 65001
 	return exec.Command("systemctl", "reload", "frr").Run()
 }
 
+func (b *FRRBackend) ApplyNetwork(core.Network) error { return nil }
+
+func (b *FRRBackend) ApplySubnet(core.Subnet) error { return nil }
+
+func (b *FRRBackend) ApplyPort(core.Port) error { return nil }
+
+func (b *FRRBackend) ApplySecurityGroup(core.SecurityGroup) error { return nil }
+
+func (b *FRRBackend) ListNetworks() ([]core.Network, error) { return nil, nil }
+
+func (b *FRRBackend) ListSubnets() ([]core.Subnet, error) { return nil, nil }
+
+func (b *FRRBackend) ListRouters() ([]core.Router, error) { return nil, nil }
+
+func (b *FRRBackend) ListPorts() ([]core.Port, error) { return nil, nil }
+
+func (b *FRRBackend) ListSecurityGroups() ([]core.SecurityGroup, error) { return nil, nil }
+
 func (b *FRRBackend) renderConfig() error {
 	// TODO: query store for all FloatingIPs
 	// Example:

@@ -6,6 +6,8 @@ COPY . .
 RUN npm run build
 
 FROM node:22-alpine AS runner
+LABEL org.opencontainers.image.source="https://github.com/orcadevstack/atonixcorp"
+
 WORKDIR /app
 ENV NODE_ENV=production
 COPY package*.json ./

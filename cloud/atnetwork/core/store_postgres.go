@@ -88,6 +88,26 @@ func (s *PostgresStore) ListSubnets() ([]Subnet, error) {
 	return subs, nil
 }
 
+func (s *PostgresStore) GetSubnet(id string) (Subnet, error) {
+	var subnet Subnet
+	err := s.db.QueryRow(`
+		SELECT id, network_id, cidr, gateway_ip
+		FROM subnets WHERE id = $1
+	`, id).Scan(&subnet.ID, &subnet.NetworkID, &subnet.CIDR, &subnet.GatewayIP)
+	return subnet, err
+}
+
+func (s *PostgresStore) GetSubnetByNetwork(networkID string) (Subnet, error) {
+	var subnet Subnet
+	err := s.db.QueryRow(`
+		SELECT id, network_id, cidr, gateway_ip
+		FROM subnets WHERE network_id = $1
+		ORDER BY created_at
+		LIMIT 1
+	`, networkID).Scan(&subnet.ID, &subnet.NetworkID, &subnet.CIDR, &subnet.GatewayIP)
+	return subnet, err
+}
+
 //
 // ROUTERS
 //
@@ -119,6 +139,36 @@ func (s *PostgresStore) ListRouters() ([]Router, error) {
 		routers = append(routers, r)
 	}
 	return routers, nil
+}
+
+func (s *PostgresStore) GetRouter(id string) (Router, error) {
+	var router Router
+	err := s.db.QueryRow(`
+		SELECT id, name, tenant_id, external_network_id
+		FROM routers WHERE id = $1
+	`, id).Scan(&router.ID, &router.Name, &router.TenantID, &router.ExternalNetworkID)
+	return router, err
+}
+
+func (s *PostgresStore) GetRouterBySubnet(subnetID string) (Router, error) {
+	var router Router
+	err := s.db.QueryRow(`
+		SELECT r.id, r.name, r.tenant_id, r.external_network_id
+		FROM routers r
+		JOIN router_interfaces ri ON ri.router_id = r.id
+		WHERE ri.subnet_id = $1
+		ORDER BY ri.created_at
+		LIMIT 1
+	`, subnetID).Scan(&router.ID, &router.Name, &router.TenantID, &router.ExternalNetworkID)
+	return router, err
+}
+
+func (s *PostgresStore) CreateRouterInterface(routerInterface RouterInterface) error {
+	_, err := s.db.Exec(`
+		INSERT INTO router_interfaces (id, router_id, subnet_id, ip_address)
+		VALUES ($1, $2, $3, $4)
+	`, routerInterface.ID, routerInterface.RouterID, routerInterface.SubnetID, routerInterface.IPAddress)
+	return err
 }
 
 //
@@ -154,6 +204,15 @@ func (s *PostgresStore) ListPorts() ([]Port, error) {
 	return ports, nil
 }
 
+func (s *PostgresStore) GetPort(id string) (Port, error) {
+	var port Port
+	err := s.db.QueryRow(`
+        SELECT id, network_id, device_id, mac_address
+        FROM ports WHERE id = $1
+    `, id).Scan(&port.ID, &port.NetworkID, &port.DeviceID, &port.MAC)
+	return port, err
+}
+
 //
 // SECURITY GROUPS
 //
@@ -163,6 +222,22 @@ func (s *PostgresStore) CreateSecurityGroup(sg SecurityGroup) error {
         INSERT INTO security_groups (id, name, tenant_id)
         VALUES ($1, $2, $3)
     `, sg.ID, sg.Name, sg.TenantID)
+	return err
+}
+
+func (s *PostgresStore) CreateFloatingIP(floatingIP FloatingIP) error {
+	_, err := s.db.Exec(`
+		INSERT INTO floating_ips (id, tenant_id, external_ip, internal_port_id, internal_ip)
+		VALUES ($1, $2, $3, $4, $5)
+	`, floatingIP.ID, floatingIP.TenantID, floatingIP.ExternalIP, floatingIP.InternalPortID, floatingIP.InternalIP)
+	return err
+}
+
+func (s *PostgresStore) CreateNATRule(natRule NATRule) error {
+	_, err := s.db.Exec(`
+		INSERT INTO nat_rules (id, router_id, external_ip, internal_ip, type)
+		VALUES ($1, $2, $3, $4, $5)
+	`, natRule.ID, natRule.RouterID, natRule.ExternalIP, natRule.InternalIP, natRule.Type)
 	return err
 }
 

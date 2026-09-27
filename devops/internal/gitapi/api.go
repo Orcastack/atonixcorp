@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	platformconfig "orcastack/internal/platform/config"
+	platformconfig "atonixcorp/devops/internal/platform/config"
 )
 
 type verifyTokenRequest struct {
