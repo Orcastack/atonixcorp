@@ -1,0 +1,303 @@
+/* ============================================
+   ATONIXCORP — OVERVIEW PAGE (BROADCOM POLISHED)
+   ============================================ */
+
+.overview {
+  width: 100%;
+  background: #ffffff;
+  color: #111418;
+}
+
+/* Shared section block */
+.section-block {
+  padding: 140px 0; /* More breathing room */
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.wrap {
+  max-width: 1500px; /* Wider, Broadcom-style */
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section index */
+.section-index {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 48px;
+}
+
+/* Section title */
+.section-title {
+  font-size: clamp(40px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0f172a;
+  margin-bottom: 28px;
+}
+
+.section-title em {
+  font-style: normal;
+  color: #00a6a7;
+}
+
+/* Section text */
+.section-text {
+  font-size: 20px;
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 900px; /* Wider text block */
+}
+
+/* Section link */
+.section-link {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00a6a7;
+  text-decoration: none;
+  margin-top: 14px;
+  transition: color 0.25s ease;
+}
+
+.section-link:hover {
+  color: #4cd7d7;
+}
+
+/* ============================
+   Mission
+   ============================ */
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px; /* More spacing */
+}
+
+.mission-heading h2 {
+  font-size: clamp(40px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.12;
+  color: #0f172a;
+}
+
+.mission-heading em {
+  font-style: normal;
+  color: #00a6a7;
+}
+
+.mission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.mission-list li {
+  font-size: 18px;
+  color: #334155;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.mission-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00a6a7;
+  font-size: 24px;
+}
+
+/* ============================
+   Capabilities (Broadcom-style cards)
+   ============================ */
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.cap-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px; /* Straighter edges */
+  padding: 36px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cap-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06); /* Lower contrast */
+}
+
+.cap-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.cap-code {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00a6a7;
+}
+
+.cap-arrow {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.cap-name {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.cap-category {
+  font-size: 17px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.cap-description {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.cap-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.cap-tags span {
+  background: #e6fafa;
+  color: #007f80;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============================
+   Sovereignty
+   ============================ */
+
+.sovereignty-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.sovereignty-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  border-radius: 10px;
+}
+
+.sovereignty-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00a6a7;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.sovereignty-card p {
+  font-size: 18px;
+  color: #334155;
+  line-height: 1.65;
+}
+
+/* ============================
+   Roadmap
+   ============================ */
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.roadmap-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  border-radius: 10px;
+}
+
+.roadmap-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.roadmap-description {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.65;
+}
+
+/* ============================
+   Contact
+   ============================ */
+
+.contact-links {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.contact-links a {
+  background: #00a6a7;
+  color: #ffffff;
+  padding: 18px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-links a:hover {
+  background: #4cd7d7;
+  box-shadow: 0 12px 28px rgba(0, 166, 167, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .capabilities-grid,
+  .sovereignty-grid,
+  .roadmap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capabilities-grid,
+  .sovereignty-grid,
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-block {
+    padding: 100px 0;
+  }
+}

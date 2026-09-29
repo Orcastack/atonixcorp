@@ -1,0 +1,42 @@
+/* [project]/app/styles/OperationalRail.css [app-client] (css) */
+.operational-rail {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+  padding: 24px 0;
+}
+
+.rail-wrap {
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+}
+
+.rail-item {
+  flex: 1;
+}
+
+.rail-item h4 {
+  color: #111418;
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rail-item p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .rail-wrap {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/*# sourceMappingURL=app_styles_OperationalRail_css_1igg3k2._.single.css.map*/

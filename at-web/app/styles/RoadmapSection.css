@@ -1,0 +1,22 @@
+/* ============================================
+   STRATEGIC ROADMAP
+   ============================================ */
+
+.roadmap-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.roadmap-phase {
+  background: #fafafa;
+  padding: 28px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.roadmap-phase h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}

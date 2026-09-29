@@ -1,0 +1,22 @@
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
+
+.contact-links {
+  margin-top: 40px;
+  display: flex;
+  gap: 24px;
+}
+
+.contact-links a {
+  background: #00a6a7;
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  background: #4cd7d7;
+}

@@ -1,0 +1,45 @@
+/* ============================================
+   ATONIXCORP — OPERATIONAL RAIL
+   ============================================ */
+
+.operational-rail {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px 0;
+}
+
+.rail-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.rail-item {
+  flex: 1;
+}
+
+.rail-item h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111418;
+  margin-bottom: 6px;
+}
+
+.rail-item p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .rail-wrap {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,15 @@
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: Inter, system-ui, sans-serif;
+
+  /* REMOVE the forced dark background */
+  background: #ffffff; /* pure white default */
+  color: #000000;      /* pure black default */
+}

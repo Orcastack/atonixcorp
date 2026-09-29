@@ -1,0 +1,49 @@
+# HDF5 Configuration for AtonixCorp HPC Platform
+
+compression:
+  enabled: true
+  algorithm: gzip
+  level: 4
+
+chunking:
+  enabled: true
+  chunk_size:
+    x: 256
+    y: 256
+    z: 64
+
+domains:
+  robotics:
+    compression: false
+    chunking: true
+    chunk_size: { x: 128, y: 128, z: 32 }
+
+  aerospace:
+    compression: true
+    chunking: true
+    chunk_size: { x: 512, y: 512, z: 64 }
+
+  hpc:
+    compression: true
+    chunking: true
+    chunk_size: { x: 1024, y: 1024, z: 128 }
+
+  scientific:
+    compression: true
+    chunking: true
+    chunk_size: { x: 256, y: 256, z: 64 }
+
+metadata:
+  include_units: true
+  include_dimensions: true
+  include_domain_tags: true
+
+security:
+  encryption: true
+  acl_enforced: true
+  tenant_isolation: true
+  domain_isolation: true
+
+logging:
+  enabled: true
+  level: INFO

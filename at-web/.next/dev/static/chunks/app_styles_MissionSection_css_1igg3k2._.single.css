@@ -1,0 +1,79 @@
+/* [project]/app/styles/MissionSection.css [app-client] (css) */
+.mission {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+  padding: 100px 0;
+}
+
+.mission-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 60px;
+  display: grid;
+}
+
+.mission-heading h2 {
+  color: #111418;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.mission-heading em {
+  color: #00a6a7;
+  font-style: normal;
+}
+
+.section-index {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mission-summary {
+  color: #444;
+  max-width: 600px;
+  margin-bottom: 28px;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.mission-list {
+  flex-direction: column;
+  gap: 14px;
+  display: flex;
+}
+
+.mission-list li {
+  color: #333;
+  padding-left: 18px;
+  font-size: 16px;
+  position: relative;
+}
+
+.mission-list li:before {
+  content: "•";
+  color: #00a6a7;
+  font-size: 20px;
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 900px) {
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .mission-heading h2 {
+    text-align: left;
+  }
+}
+
+/*# sourceMappingURL=app_styles_MissionSection_css_1igg3k2._.single.css.map*/

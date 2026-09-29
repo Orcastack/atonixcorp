@@ -1,0 +1,90 @@
+/* [project]/app/styles/TopHeader.css [app-client] (css) */
+.top-header {
+  z-index: 3000;
+  background: #111418;
+  border-bottom: 1px solid #1f242b;
+  width: 100%;
+  padding: 6px 0;
+  position: sticky;
+  top: 0;
+}
+
+.top-header-wrap {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+}
+
+.top-left {
+  color: #d1d5db;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.header-social {
+  align-items: center;
+  gap: 14px;
+  display: flex;
+}
+
+.header-social .social-link {
+  font-size: 13px;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.header-social .social-link.linkedin {
+  color: #0a66c2;
+}
+
+.header-social .social-link.linkedin:hover {
+  color: #4cd7d7;
+}
+
+.header-social .social-link.x {
+  color: #fff;
+}
+
+.header-social .social-link.x:hover {
+  color: #4cd7d7;
+}
+
+.header-social .social-link.github {
+  color: #fff;
+}
+
+.header-social .social-link.github:hover {
+  color: #4cd7d7;
+}
+
+.top-right {
+  color: #4cd7d7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  transition: color .2s;
+}
+
+.top-right:hover {
+  color: #7eecec;
+}
+
+@media (max-width: 760px) {
+  .top-header-wrap {
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .header-social {
+    gap: 10px;
+  }
+}
+
+/*# sourceMappingURL=app_styles_TopHeader_css_1igg3k2._.single.css.map*/

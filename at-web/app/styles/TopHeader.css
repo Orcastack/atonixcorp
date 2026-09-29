@@ -1,0 +1,97 @@
+/* ============================================
+   ORCASTACK — TOP FOUNDATION HEADER (CHARCOAL)
+   ============================================ */
+
+.top-header {
+  width: 100%;
+  background: #111418; /* Charcoal black */
+  border-bottom: 1px solid #1f242b;
+  padding: 6px 0;
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+}
+
+.top-header-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left text */
+.top-left {
+  color: #d1d5db; /* Soft gray */
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Social icons */
+.header-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Default icon style */
+.header-social .social-link {
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* LinkedIn — official blue */
+.header-social .social-link.linkedin {
+  color: #0A66C2; /* LinkedIn blue */
+}
+.header-social .social-link.linkedin:hover {
+  color: #4cd7d7; /* Aqua accent */
+}
+
+/* X (Twitter) — white */
+.header-social .social-link.x {
+  color: #ffffff;
+}
+.header-social .social-link.x:hover {
+  color: #4cd7d7;
+}
+
+/* GitHub — white */
+.header-social .social-link.github {
+  color: #ffffff;
+}
+.header-social .social-link.github:hover {
+  color: #4cd7d7;
+}
+
+/* Right text */
+.top-right {
+  color: #4cd7d7; /* Aqua accent */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.top-right:hover {
+  color: #7eecec; /* Lighter aqua */
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .top-header-wrap {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .header-social {
+    gap: 10px;
+  }
+}

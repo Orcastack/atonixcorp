@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/styles/HomePage.css"],"sourcesContent":["/* ============================================\n   ATONIXCORP — HOME PAGE LAYOUT\n   ============================================ */\n\n.home-page {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  min-height: 100vh;\n  background: var(--paper);\n  color: var(--ink);\n}\n\n/* Section spacing control */\nsection {\n  width: 100%;\n  position: relative;\n}\n\n/* Optional: smooth fade-in for each section */\nsection {\n  animation: fadeIn 0.4s ease both;\n}\n\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n    transform: translateY(8px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Optional: global spacing between sections */\nsection + section {\n  margin-top: 40px;\n}\n\n@media (max-width: 760px) {\n  section + section {\n    margin-top: 28px;\n  }\n}\n"],"names":[],"mappings":"AAIA;;;;;;;;;AAUA;;;;;;AAUA;;;;;;;;;;;;AAYA;;;;AAIA;EACE"}}]
+}

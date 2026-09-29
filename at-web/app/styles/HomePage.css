@@ -1,0 +1,45 @@
+/* ============================================
+   ATONIXCORP — HOME PAGE LAYOUT
+   ============================================ */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Section spacing control */
+section {
+  width: 100%;
+  position: relative;
+}
+
+/* Optional: smooth fade-in for each section */
+section {
+  animation: fadeIn 0.4s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: global spacing between sections */
+section + section {
+  margin-top: 40px;
+}
+
+@media (max-width: 760px) {
+  section + section {
+    margin-top: 28px;
+  }
+}

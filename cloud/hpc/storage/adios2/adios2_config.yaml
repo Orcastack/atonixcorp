@@ -1,0 +1,38 @@
+# ADIOS2 Configuration for AtonixCorp HPC Platform
+
+engine: SST            # SST = low-latency streaming engine
+transport: tcp         # tcp, rdma, or shared memory
+compression: false     # enable if using BP5 with compression
+buffer_size_mb: 512    # streaming buffer size
+max_variables: 5000    # maximum number of variables per stream
+
+domains:
+  robotics:
+    engine: SST
+    qos: low_latency
+    buffer_size_mb: 256
+
+  aerospace:
+    engine: SST
+    qos: mission_critical
+    buffer_size_mb: 512
+
+  hpc:
+    engine: BP5
+    qos: high_throughput
+    buffer_size_mb: 1024
+
+  scientific:
+    engine: DataMan
+    qos: distributed
+    buffer_size_mb: 512
+
+security:
+  encryption: true
+  acl_enforced: true
+  tenant_isolation: true
+  domain_isolation: true
+
+logging:
+  enabled: true
+  level: INFO

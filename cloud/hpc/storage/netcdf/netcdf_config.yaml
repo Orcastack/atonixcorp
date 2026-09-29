@@ -1,0 +1,66 @@
+# NetCDF Configuration for AtonixCorp HPC Platform
+
+dimensions:
+  time:
+    enabled: true
+    size: unlimited
+  x:
+    enabled: true
+    size: 1024
+  y:
+    enabled: true
+    size: 1024
+  z:
+    enabled: true
+    size: 128
+
+variables:
+  temperature:
+    units: "K"
+    dtype: float32
+    dimensions: [time, x, y, z]
+    compression: true
+
+  pressure:
+    units: "Pa"
+    dtype: float32
+    dimensions: [time, x, y, z]
+    compression: true
+
+  velocity:
+    units: "m/s"
+    dtype: float32
+    dimensions: [time, x, y, z]
+    compression: false
+
+domains:
+  robotics:
+    compression: false
+    include_metadata: true
+
+  aerospace:
+    compression: true
+    include_metadata: true
+
+  hpc:
+    compression: true
+    include_metadata: true
+
+  scientific:
+    compression: true
+    include_metadata: true
+
+metadata:
+  include_units: true
+  include_dimensions: true
+  include_domain_tags: true
+
+security:
+  encryption: true
+  acl_enforced: true
+  tenant_isolation: true
+  domain_isolation: true
+
+logging:
+  enabled: true
+  level: INFO

@@ -1,0 +1,208 @@
+/* ============================================
+   ATONIXCORP — GLOBAL HEADER (ENTERPRISE POLISHED)
+   ============================================ */
+
+.global-header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Main header row */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+/* Brand */
+.global-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #111418;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.global-brand span span {
+  color: var(--accent);
+}
+
+/* Navigation */
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Top-level nav triggers */
+.nav-trigger {
+  background: none;
+  border: none;
+  color: #111418;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* upgraded spacing */
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-trigger:hover {
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.nav-trigger.open {
+  color: var(--accent);
+}
+
+/* Enterprise Chevron Icon */
+.nav-chevron {
+  display: flex;
+  align-items: center;
+  transition: transform 0.25s ease;
+  margin-left: 2px;
+}
+
+.nav-trigger.open .nav-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.nav-menu {
+  position: relative;
+  height: 100%; /* prevents leaping */
+}
+
+.dropdown {
+  position: absolute;
+  top: 52px; /* upgraded from 42px */
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 12px 0;
+  min-width: 240px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  border-radius: 6px;
+}
+
+.nav-menu:last-child .dropdown {
+  right: 0;  /* aligns Contact dropdown */
+  left: auto;
+}
+
+.dropdown.visible {
+  display: flex;
+}
+.dropdown a {
+  padding: 12px 18px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown a:hover {
+  background: #f7f7f7;
+  color: #111418;
+}
+
+/* Social icons */
+.header-social {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: 28px;
+}
+
+.header-social .social-link {
+  color: #333;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.header-social .social-link:hover {
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+/* Hide toggle on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #111418;
+  transition: transform 0.2s ease;
+}
+
+/* Mobile only */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .global-nav {
+    display: none;
+  }
+}
+
+/* Mobile nav */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-nav.visible {
+  display: flex;
+}
+
+.mobile-nav-group {
+  margin-bottom: 18px;
+}
+
+.mobile-nav-group span {
+  font-weight: 600;
+  color: #111418;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.mobile-nav-group a {
+  display: block;
+  padding: 10px 0;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.mobile-nav-group a:hover {
+  color: var(--accent);
+}
